@@ -74,7 +74,7 @@ export const Navbar: React.FC<NavbarProps> = ({ brandName = 'Portfolio' }) => {
             items={navigationItems}
           />
 
-          {/* Theme toggle */}
+          {/* Theme toggle for desktop */}
           <div className="hidden md:flex">
             <ThemeToggle />
           </div>

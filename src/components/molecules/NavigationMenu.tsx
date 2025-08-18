@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IconButton } from '../atoms';
+import { ThemeToggle } from './ThemeToggle';
 
 interface NavigationMenuProps {
   isOpen: boolean;
@@ -135,7 +136,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
       <IconButton
         icon={isOpen ? 'mdi:close' : 'mdi:menu'}
         onClick={onToggle}
-        className="md:hidden"
+        className="md:hidden relative z-[9998]"
         variant="ghost"
       />
 
@@ -202,6 +203,18 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
                     {item.label}
                   </motion.a>
                 ))}
+                
+                {/* Theme Toggle for Mobile */}
+                <motion.div
+                  className="mt-6 pt-6 border-t border-secondary-200 dark:border-secondary-700"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: items.length * 0.1 }}
+                >
+                  <div className="px-4">
+                    <ThemeToggle />
+                  </div>
+                </motion.div>
               </div>
             </motion.nav>
           </>
