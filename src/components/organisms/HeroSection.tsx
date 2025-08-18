@@ -29,24 +29,31 @@ export const HeroSection: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      const navbarHeight = 80; // Height of navbar
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center section-padding"
+      className="min-h-screen md:h-screen-nav flex items-center justify-center section-padding pt-20 md:pt-16"
     >
       <div className="container">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
         >
           {/* Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 order-2 lg:order-1">
             <motion.div variants={itemVariants}>
               <Text variant="subheading" weight="medium" color="primary">
                 {profile?.name || "Muhammad Adi Saputera"}
@@ -95,9 +102,9 @@ export const HeroSection: React.FC = () => {
           {/* Hero Image */}
           <motion.div
             variants={itemVariants}
-            className="relative order-first lg:order-last"
+            className="relative order-1 lg:order-2"
           >
-            <div className="relative w-full max-w-md mx-auto">
+            <div className="relative w-full max-w-xs sm:max-w-sm lg:max-w-xs xl:max-w-sm mx-auto">
               {/* Main Hero Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}

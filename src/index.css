@@ -8,6 +8,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* Account for navbar height (80px = 5rem) */
   }
   
   body {
@@ -72,6 +73,15 @@
   
   .navbar-blur {
     @apply backdrop-blur-md bg-white/90 dark:bg-secondary-900/90 border-b border-secondary-200/50 dark:border-secondary-700/50;
+  }
+
+  /* Utility classes for viewport height minus navbar */
+  .h-screen-nav {
+    height: calc(100vh - 5rem); /* 100vh - navbar height (80px = 5rem) */
+  }
+
+  .min-h-screen-nav {
+    min-height: calc(100vh - 5rem); /* 100vh - navbar height (80px = 5rem) */
   }
 }
 

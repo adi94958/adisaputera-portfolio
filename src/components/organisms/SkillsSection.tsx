@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Text } from '../atoms';
-import { SkillCard } from '../molecules';
-import { useAppSelector } from '../../hooks/redux';
+import React from "react";
+import { motion } from "framer-motion";
+import { Text } from "../atoms";
+import { SkillCard } from "../molecules";
+import { useAppSelector } from "../../hooks/redux";
 
 export const SkillsSection: React.FC = () => {
   const { data: abilities } = useAppSelector((state) => state.abilities);
@@ -55,7 +55,11 @@ export const SkillsSection: React.FC = () => {
               </Text>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {abilities.skill_expertise.map((skill, index) => (
-                  <SkillCard key={skill.ability_id} ability={skill} index={index} />
+                  <SkillCard
+                    key={skill.ability_id}
+                    ability={skill}
+                    index={index}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -69,7 +73,11 @@ export const SkillsSection: React.FC = () => {
               </Text>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {abilities.language_framework.map((tech, index) => (
-                  <SkillCard key={tech.ability_id} ability={tech} index={index} />
+                  <SkillCard
+                    key={tech.ability_id}
+                    ability={tech}
+                    index={index}
+                  />
                 ))}
               </div>
             </motion.div>
@@ -83,7 +91,11 @@ export const SkillsSection: React.FC = () => {
               </Text>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {abilities.tools.map((tool, index) => (
-                  <SkillCard key={tool.ability_id} ability={tool} index={index} />
+                  <SkillCard
+                    key={tool.ability_id}
+                    ability={tool}
+                    index={index}
+                  />
                 ))}
               </div>
             </motion.div>

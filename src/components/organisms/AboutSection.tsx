@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Text, Button } from '../atoms';
-import { useAppSelector, useAppDispatch } from '../../store/hooks';
-import { goToDetailedView } from '../../store/slices/uiSlice';
+import React from "react";
+import { motion } from "framer-motion";
+import { Text, Button } from "../atoms";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { goToDetailedView } from "../../store/slices/uiSlice";
 
 export const AboutSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -11,7 +11,7 @@ export const AboutSection: React.FC = () => {
   const handleLearnMore = () => {
     dispatch(goToDetailedView());
     // Scroll to top untuk efek page baru
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const containerVariants = {
@@ -35,28 +35,39 @@ export const AboutSection: React.FC = () => {
   };
 
   return (
-    <section id="about" className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative">
+    <section
+      id="about"
+      className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative"
+    >
       <div className="container relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
         >
           {/* Image */}
-          <motion.div variants={itemVariants} className="relative">
-            <div className="relative">
+          <motion.div
+            variants={itemVariants}
+            className="relative order-2 lg:order-1"
+          >
+            <div className="relative max-w-xs sm:max-w-sm lg:max-w-sm xl:max-w-md mx-auto lg:mx-0">
               <img
-                src={profile?.image_about ? `/images/${profile.image_about}` : '/images/about-placeholder.jpg'}
+                src={
+                  profile?.image_about
+                    ? `/images/${profile.image_about}`
+                    : "/images/about-placeholder.jpg"
+                }
                 alt="About me"
                 className="w-full h-auto rounded-2xl shadow-xl"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  target.src = 'https://via.placeholder.com/500x600?text=About+Image';
+                  target.src =
+                    "https://via.placeholder.com/500x600?text=About+Image";
                 }}
               />
-              
+
               {/* Floating elements */}
               <motion.div
                 animate={{
@@ -86,7 +97,7 @@ export const AboutSection: React.FC = () => {
           </motion.div>
 
           {/* Content */}
-          <div className="space-y-6">
+          <div className="space-y-6 order-1 lg:order-2">
             <motion.div variants={itemVariants}>
               <Text variant="heading" weight="bold" color="primary">
                 About Me
@@ -94,10 +105,13 @@ export const AboutSection: React.FC = () => {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Text variant="body" color="secondary" className="leading-relaxed">
-                {profile?.self_description || 
-                  "I'm a passionate developer with a love for creating beautiful and functional web experiences. My journey in technology has been driven by curiosity and a desire to solve complex problems through elegant code."
-                }
+              <Text
+                variant="body"
+                color="secondary"
+                className="leading-relaxed"
+              >
+                {profile?.self_description ||
+                  "I'm a passionate developer with a love for creating beautiful and functional web experiences. My journey in technology has been driven by curiosity and a desire to solve complex problems through elegant code."}
               </Text>
             </motion.div>
 
@@ -108,7 +122,7 @@ export const AboutSection: React.FC = () => {
                     Name
                   </Text>
                   <Text variant="body" weight="medium">
-                    {profile?.name || 'Muhammad Adi Saputera'}
+                    {profile?.name || "Muhammad Adi Saputera"}
                   </Text>
                 </div>
                 <div>
@@ -116,13 +130,16 @@ export const AboutSection: React.FC = () => {
                     Role
                   </Text>
                   <Text variant="body" weight="medium">
-                    {profile?.role || 'Full Stack Developer'}
+                    {profile?.role || "Full Stack Developer"}
                   </Text>
                 </div>
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4"
+            >
               <Button variant="primary" size="lg" onClick={handleLearnMore}>
                 Learn More
               </Button>
@@ -132,7 +149,7 @@ export const AboutSection: React.FC = () => {
                   size="lg"
                   onClick={() => {
                     // Download CV
-                    const link = document.createElement('a');
+                    const link = document.createElement("a");
                     link.href = `/files/${profile.cv}`;
                     link.download = profile.cv;
                     link.click();

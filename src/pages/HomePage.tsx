@@ -179,7 +179,7 @@ export const HomePage: React.FC = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 100 }}
                 transition={{ duration: 0.6, ease: "easeInOut" }}
-                className="min-h-screen"
+                className="min-h-screen-nav"
               >
                 <DetailedViewHeader />
                 <section id="skills">

@@ -33,6 +33,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
+      const navbarHeight = 80; // Account for navbar height
       
       // If we're at the bottom of the page, activate the last section
       if (scrollPosition + windowHeight >= documentHeight - 50) {
@@ -51,19 +52,23 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
           const elementBottom = rect.bottom;
           const elementHeight = rect.height;
 
+          // Adjust for navbar height
+          const adjustedTop = elementTop - navbarHeight;
+          const adjustedBottom = elementBottom - navbarHeight;
+
           // Calculate how much of the element is visible
           let visibleHeight = 0;
           
-          if (elementTop >= 0 && elementBottom <= windowHeight) {
+          if (adjustedTop >= 0 && adjustedBottom <= windowHeight) {
             // Element is fully visible
             visibleHeight = elementHeight;
-          } else if (elementTop < 0 && elementBottom > 0) {
+          } else if (adjustedTop < 0 && adjustedBottom > 0) {
             // Element is partially visible from top
-            visibleHeight = elementBottom;
-          } else if (elementTop < windowHeight && elementBottom > windowHeight) {
+            visibleHeight = adjustedBottom;
+          } else if (adjustedTop < windowHeight && adjustedBottom > windowHeight) {
             // Element is partially visible from bottom
-            visibleHeight = windowHeight - elementTop;
-          } else if (elementTop < 0 && elementBottom > windowHeight) {
+            visibleHeight = windowHeight - adjustedTop;
+          } else if (adjustedTop < 0 && adjustedBottom > windowHeight) {
             // Element covers the entire viewport
             visibleHeight = windowHeight;
           }
@@ -72,7 +77,7 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
           const visibilityPercentage = visibleHeight / windowHeight;
 
           // Update current section if this one is more visible
-          if (visibilityPercentage > maxVisibility && visibilityPercentage > 0.3) {
+          if (visibilityPercentage > maxVisibility && visibilityPercentage > 0.2) {
             maxVisibility = visibilityPercentage;
             currentSection = section.href;
           }
@@ -110,10 +115,17 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
     setActiveItem(href);
     onToggle();
     
-    // Smooth scroll to section
+    // Smooth scroll to section with navbar offset
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const navbarHeight = 80; // Height of navbar (16 + 4 padding = 20 * 4 = 80px)
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
