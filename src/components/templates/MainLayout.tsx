@@ -12,8 +12,11 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
   brandName,
 }) => {
   return (
-    <div className="min-h-screen bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white relative">
-      <CustomCursor />
+    <div className="min-h-screen bg-white dark:bg-secondary-900 text-secondary-900 dark:text-white relative cursor-none">
+      <CustomCursor 
+        normalCursor="/images/cursor-normal.svg"
+        pointerCursor="/images/cursor-pointer.svg"
+      />
       <ParticleBackground />
       <div className="relative z-10">
         <Navbar brandName={brandName} />
