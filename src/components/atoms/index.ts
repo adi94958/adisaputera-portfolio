@@ -5,3 +5,4 @@ export { Text } from './Text';
 export { Badge } from './Badge';
 export { BackButton } from './BackButton';
 export { ParticleBackground } from './ParticleBackground';
+export { CustomCursor } from './CustomCursor';
