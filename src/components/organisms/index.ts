@@ -1,0 +1,13 @@
+export { Navbar } from './Navbar';
+export { HeroSection } from './HeroSection';
+export { AboutSection } from './AboutSection';
+export { SkillsSection } from './SkillsSection';
+export { ProjectsSection } from './ProjectsSection';
+export { ContactSection } from './ContactSection';
+export { Footer } from './Footer';
+export { EducationSection } from './EducationSection';
+export { CertificationsSection } from './CertificationsSection';
+export { OrganizationExperienceSection } from './OrganizationExperienceSection';
+export { ProfessionalExperienceSection } from './ProfessionalExperienceSection';
+export { TestimonialsSection } from './TestimonialsSection';
+export { DetailedViewHeader } from './DetailedViewHeader';

@@ -1,0 +1,118 @@
+export interface User {
+  username: string;
+  password: string;
+  token: string;
+}
+
+export interface Profile {
+  brand_name: string;
+  name: string;
+  role: string;
+  role_description: string;
+  self_description: string;
+  image_home: string;
+  image_about: string;
+  image_projects: string;
+  image_contact_me: string;
+  image_about_detail: string;
+  cv: string;
+}
+
+export interface Contact {
+  email: string;
+  phone: string;
+  address: string;
+  social_media: {
+    linkedin: string;
+    github: string;
+    twitter: string;
+    instagram: string;
+  };
+}
+
+export interface Ability {
+  ability_id: string;
+  ability_name: string;
+  icon: string;
+}
+
+export interface Abilities {
+  skill_expertise: Ability[];
+  language_framework: Ability[];
+  tools: Ability[];
+}
+
+export interface ProfessionalExperience {
+  experience_id: string;
+  company_name: string;
+  position: string;
+  start_date: string;
+  end_date: string;
+  employee_type: string;
+  description: string;
+}
+
+export interface OrganizationExperience {
+  organization_id: string;
+  organization_name: string;
+  position: string;
+  start_date: string;
+  end_date: string;
+  description: string;
+  image: string;
+  'e-certificate': string;
+}
+
+export interface Education {
+  education_id: string;
+  institution_name: string;
+  degree: string;
+  start_date: string;
+  end_date: string;
+  image: string;
+  description: string;
+}
+
+export interface Project {
+  project_id: string;
+  project_name: string;
+  description: string;
+  image: string;
+  url: string;
+  tech_stack: string[];
+  role: string;
+}
+
+export interface Certification {
+  certification_id: string;
+  title: string;
+  issuer: string;
+  date: string;
+  certificate_url: string;
+}
+
+export interface Testimonial {
+  testimonial_id: string;
+  name: string;
+  position: string;
+  feedback: string;
+}
+
+export interface PortfolioData {
+  user: User;
+  profile: Profile;
+  contact: Contact;
+  abilities: Abilities;
+  professional_experience: ProfessionalExperience[];
+  organization_experience: OrganizationExperience[];
+  education: Education[];
+  projects: Project[];
+  certifications: Certification[];
+  testimonials: Testimonial[];
+}
+
+export interface ApiResponse<T> {
+  data: T;
+  message?: string;
+  status: 'success' | 'error';
+}

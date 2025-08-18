@@ -1,0 +1,94 @@
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { fetchProfessionalExperience } from "../../store/slices/professionalExperienceSlice";
+import { motion } from "framer-motion";
+import { Text } from "../atoms";
+import { ProfessionalExperienceCard } from "../molecules";
+
+export const ProfessionalExperienceSection: React.FC = () => {
+  const dispatch = useAppDispatch();
+  const {
+    data: experiences,
+    loading,
+    error,
+  } = useAppSelector((state) => state.professionalExperience);
+
+  useEffect(() => {
+    dispatch(fetchProfessionalExperience());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <section className="section-padding">
+        <div className="container">
+          <div className="text-center">
+            <Text variant="heading" weight="bold" color="primary">
+              Professional Experience
+            </Text>
+            <Text variant="body" color="muted">
+              Loading professional experience...
+            </Text>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    return (
+      <section className="section-padding">
+        <div className="container">
+          <div className="text-center">
+            <Text variant="heading" weight="bold" color="primary">
+              Professional Experience
+            </Text>
+            <Text variant="body" color="muted">
+              Error loading professional experience: {error}
+            </Text>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (!experiences || experiences.length === 0) {
+    return null;
+  }
+
+  return (
+    <section className="section-padding bg-gray-50 dark:bg-gray-900">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <Text variant="heading" weight="bold" color="primary">
+            Professional Experience
+          </Text>
+          <Text variant="body" color="muted" className="max-w-2xl mx-auto">
+            My journey through various professional roles and responsibilities
+          </Text>
+        </motion.div>
+
+        <div className="max-w-6xl mx-auto relative">
+          {/* Central Timeline line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+
+          <div className="space-y-12">
+            {experiences.map((experience, index) => (
+              <ProfessionalExperienceCard
+                key={experience.experience_id}
+                experience={experience}
+                index={index}
+                isLeft={index % 2 === 0}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
