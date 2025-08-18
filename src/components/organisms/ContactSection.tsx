@@ -69,11 +69,11 @@ export const ContactSection: React.FC = () => {
           className="max-w-4xl mx-auto"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center space-y-4 mb-12">
-            <Text variant="heading" weight="bold" color="primary">
+          <motion.div variants={itemVariants} className="flex flex-col items-center justify-center text-center space-y-6 mb-16">
+            <h2 className="gradient-text text-5xl md:text-6xl lg:text-7xl font-bold">
               Get In Touch
-            </Text>
-            <Text variant="body" color="muted" className="max-w-2xl mx-auto">
+            </h2>
+            <Text variant="body" color="muted" className="max-w-2xl mx-auto text-lg">
               Have a project in mind or want to collaborate? I'd love to hear from you.
             </Text>
           </motion.div>
@@ -89,7 +89,9 @@ export const ContactSection: React.FC = () => {
                 <div className="space-y-4">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                      <span className="text-primary-600 dark:text-primary-400">📧</span>
+                      <svg className="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                      </svg>
                     </div>
                     <div>
                       <Text variant="caption" color="muted">Email</Text>
@@ -99,7 +101,10 @@ export const ContactSection: React.FC = () => {
                   
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                      <span className="text-primary-600 dark:text-primary-400">📍</span>
+                      <svg className="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                      </svg>
                     </div>
                     <div>
                       <Text variant="caption" color="muted">Location</Text>
@@ -109,7 +114,9 @@ export const ContactSection: React.FC = () => {
                   
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                      <span className="text-primary-600 dark:text-primary-400">💼</span>
+                      <svg className="w-5 h-5 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0H8m8 0v2a2 2 0 01-2 2H10a2 2 0 01-2-2V6" />
+                      </svg>
                     </div>
                     <div>
                       <Text variant="caption" color="muted">Status</Text>

@@ -18,24 +18,24 @@ export const IconButton: React.FC<IconButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
+  const baseStyles = 'inline-flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95';
   
   const variants = {
-    primary: 'bg-primary-600 hover:bg-primary-700 text-white focus:ring-primary-500',
-    secondary: 'bg-secondary-600 hover:bg-secondary-700 text-white focus:ring-secondary-500',
-    ghost: 'text-secondary-700 hover:bg-secondary-100 focus:ring-secondary-500',
+    primary: 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl focus:ring-primary-500',
+    secondary: 'bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white shadow-lg hover:shadow-xl focus:ring-secondary-500',
+    ghost: 'text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100/80 dark:hover:bg-secondary-800/80 backdrop-blur-sm border border-transparent hover:border-secondary-200 dark:hover:border-secondary-700 focus:ring-primary-500',
   };
   
   const sizes = {
-    sm: 'p-1.5',
-    md: 'p-2',
-    lg: 'p-3',
+    sm: 'p-2 min-w-[36px] h-9',
+    md: 'p-2.5 min-w-[44px] h-11',
+    lg: 'p-3 min-w-[52px] h-13',
   };
   
   const iconSizes = {
-    sm: 16,
-    md: 20,
-    lg: 24,
+    sm: 18,
+    md: 22,
+    lg: 26,
   };
   
   return (

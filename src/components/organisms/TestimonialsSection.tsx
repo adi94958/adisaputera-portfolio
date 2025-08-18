@@ -40,19 +40,19 @@ export const TestimonialsSection: React.FC = () => {
   }
 
   return (
-    <section className="py-20">
-      <div className="container mx-auto px-4">
+    <section className="section-padding">
+      <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="space-y-4 mb-12"
         >
-          <Text variant="heading" className="mb-4">
+          <Text variant="heading" weight="bold" color="primary" className="gradient-text">
             What People Say
           </Text>
-          <Text variant="subheading" color="muted" className="max-w-2xl mx-auto">
+          <Text variant="body" color="muted" className="max-w-2xl">
             Feedback from colleagues and clients
           </Text>
         </motion.div>

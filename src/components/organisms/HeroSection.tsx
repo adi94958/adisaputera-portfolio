@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Icon } from "@iconify/react";
 import { Text, Button } from "../atoms";
 import { useAppSelector } from "../../hooks/redux";
 
@@ -11,18 +12,21 @@ export const HeroSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.5,
-        staggerChildren: 0.2,
+        duration: 0.8,
+        staggerChildren: 0.15,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6 },
+      scale: 1,
+      transition: {
+        duration: 0.8,
+      },
     },
   };
 
@@ -30,12 +34,13 @@ export const HeroSection: React.FC = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const navbarHeight = 80; // Height of navbar
-      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.pageYOffset;
       const offsetPosition = elementPosition - navbarHeight;
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
@@ -77,20 +82,40 @@ export const HeroSection: React.FC = () => {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button
-                variant="primary"
-                size="lg"
-                onClick={() => scrollToSection("projects")}
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                View My Work
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => scrollToSection("contact")}
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={() => scrollToSection("projects")}
+                  className="w-full sm:w-auto flex items-center gap-2 group"
+                >
+                  View My Work
+                  <motion.div
+                    animate={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Icon icon="mdi:chevron-right" width={20} height={20} />
+                  </motion.div>
+                </Button>
+              </motion.div>
+
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Get In Touch
-              </Button>
+                <Button
+                  variant="outline"
+                  size="md"
+                  onClick={() => scrollToSection("contact")}
+                  className="w-full sm:w-auto"
+                >
+                  Get In Touch
+                </Button>
+              </motion.div>
             </motion.div>
 
             {/* Social links */}

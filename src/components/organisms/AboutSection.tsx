@@ -2,11 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Text, Button } from "../atoms";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { useScrollAnimation, staggerContainerVariants, slideInFromLeft, slideInFromRight } from "../../hooks";
 import { goToDetailedView } from "../../store/slices/uiSlice";
 
 export const AboutSection: React.FC = () => {
   const dispatch = useAppDispatch();
   const { data: profile } = useAppSelector((state) => state.profile);
+  const { ref, isInView } = useScrollAnimation();
 
   const handleLearnMore = () => {
     dispatch(goToDetailedView());
@@ -14,42 +16,22 @@ export const AboutSection: React.FC = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.2,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
     <section
       id="about"
+      ref={ref}
       className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative"
     >
       <div className="container relative z-10">
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center"
         >
           {/* Image */}
           <motion.div
-            variants={itemVariants}
+            variants={slideInFromLeft}
             className="relative order-2 lg:order-1"
           >
             <div className="relative max-w-xs sm:max-w-sm lg:max-w-sm xl:max-w-md mx-auto lg:mx-0">
@@ -98,13 +80,13 @@ export const AboutSection: React.FC = () => {
 
           {/* Content */}
           <div className="space-y-6 order-1 lg:order-2">
-            <motion.div variants={itemVariants}>
+            <motion.div variants={slideInFromRight}>
               <Text variant="heading" weight="bold" color="primary">
                 About Me
               </Text>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
+            <motion.div variants={slideInFromRight}>
               <Text
                 variant="body"
                 color="secondary"
@@ -115,7 +97,7 @@ export const AboutSection: React.FC = () => {
               </Text>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="space-y-4">
+            <motion.div variants={slideInFromRight} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <Text variant="caption" color="muted" weight="medium">
@@ -137,26 +119,36 @@ export const AboutSection: React.FC = () => {
             </motion.div>
 
             <motion.div
-              variants={itemVariants}
+              variants={slideInFromRight}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <Button variant="primary" size="lg" onClick={handleLearnMore}>
-                Learn More
-              </Button>
-              {profile?.cv && (
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => {
-                    // Download CV
-                    const link = document.createElement("a");
-                    link.href = `/files/${profile.cv}`;
-                    link.download = profile.cv;
-                    link.click();
-                  }}
-                >
-                  Download CV
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Button variant="primary" size="md" onClick={handleLearnMore}>
+                  Learn More
                 </Button>
+              </motion.div>
+              {profile?.cv && (
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Button
+                    variant="outline"
+                    size="md"
+                    onClick={() => {
+                      // Download CV
+                      const link = document.createElement("a");
+                      link.href = `/files/${profile.cv}`;
+                      link.download = profile.cv;
+                      link.click();
+                    }}
+                  >
+                    Download CV
+                  </Button>
+                </motion.div>
               )}
             </motion.div>
           </div>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Text, Button } from '../atoms';
 import { ProjectCard } from '../molecules';
 import { useAppSelector } from '../../hooks/redux';
+import { useScrollAnimation, staggerContainerVariants, fadeInUp } from '../../hooks';
 import type { Project } from '../../types';
 
 interface ProjectsSectionProps {
@@ -12,52 +13,32 @@ interface ProjectsSectionProps {
 export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject }) => {
   const { data: projects } = useAppSelector((state) => state.projects);
   const [showAll, setShowAll] = useState(false);
+  const { ref, isInView } = useScrollAnimation();
 
   const displayedProjects = showAll ? projects : projects?.slice(0, 6);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6 },
-    },
-  };
-
   return (
-    <section id="projects" className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative">
+    <section id="projects" ref={ref} className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative">
       <div className="container relative z-10">
         <motion.div
-          variants={containerVariants}
+          variants={staggerContainerVariants}
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
+          animate={isInView ? "visible" : "hidden"}
           className="space-y-12"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center space-y-4">
-            <Text variant="heading" weight="bold" color="primary">
+          <motion.div variants={fadeInUp} className="space-y-4">
+            <Text variant="heading" weight="bold" color="primary" className="gradient-text">
               Featured Projects
             </Text>
-            <Text variant="body" color="muted" className="max-w-2xl mx-auto">
+            <Text variant="body" color="muted" className="max-w-2xl">
               A showcase of my recent work and creative projects
             </Text>
           </motion.div>
 
           {/* Projects Grid */}
           {displayedProjects && displayedProjects.length > 0 ? (
-            <motion.div variants={itemVariants}>
+            <motion.div variants={fadeInUp}>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {displayedProjects.map((project, index) => (
                   <ProjectCard
@@ -70,7 +51,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject 
               </div>
             </motion.div>
           ) : (
-            <motion.div variants={itemVariants} className="text-center py-12">
+            <motion.div variants={fadeInUp} className="text-center py-12">
               <Text variant="body" color="muted">
                 No projects available at the moment.
               </Text>
@@ -79,14 +60,19 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject 
 
           {/* Show More Button */}
           {projects && projects.length > 6 && (
-            <motion.div variants={itemVariants} className="text-center">
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => setShowAll(!showAll)}
+            <motion.div variants={fadeInUp} className="text-center">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {showAll ? 'Show Less' : `View All Projects (${projects.length})`}
-              </Button>
+                <Button
+                  variant="outline"
+                  size="md"
+                  onClick={() => setShowAll(!showAll)}
+                >
+                  {showAll ? 'Show Less' : `View All Projects (${projects.length})`}
+                </Button>
+              </motion.div>
             </motion.div>
           )}
         </motion.div>
