@@ -132,13 +132,13 @@ export const HeroSection: React.FC = () => {
                 initial={{ opacity: 0, scale: 0.8, rotate: 6 }}
                 animate={{ opacity: 1, scale: 1, rotate: 6 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
-                className="absolute inset-0 bg-gradient-to-br from-primary-200 to-accent-200 rounded-2xl z-10"
+                className="absolute inset-0 bg-gradient-to-br from-primary-100 to-accent-100 dark:from-primary-200 dark:to-accent-200 rounded-2xl z-10"
               />
               <motion.div 
                 initial={{ opacity: 0, scale: 0.8, rotate: -6 }}
                 animate={{ opacity: 1, scale: 1, rotate: -6 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
-                className="absolute inset-0 bg-gradient-to-br from-accent-200 to-primary-200 rounded-2xl z-0"
+                className="absolute inset-0 bg-gradient-to-br from-accent-100 to-primary-100 dark:from-accent-200 dark:to-primary-200 rounded-2xl z-0"
               />
             </div>
           </motion.div>

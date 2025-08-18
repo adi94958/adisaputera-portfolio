@@ -12,6 +12,26 @@
   
   body {
     font-feature-settings: "rlig" 1, "calt" 1;
+    @apply transition-colors duration-300;
+  }
+
+  /* Light mode styles */
+  :root {
+    --background: 255 255 255; /* white */
+    --foreground: 15 23 42; /* slate-900 */
+    --border: 226 232 240; /* slate-200 */
+  }
+
+  /* Dark mode styles */
+  .dark {
+    --background: 15 23 42; /* slate-900 */
+    --foreground: 248 250 252; /* slate-50 */
+    --border: 30 41 59; /* slate-800 */
+  }
+
+  /* Apply background colors */
+  body {
+    @apply bg-white dark:bg-secondary-900 text-secondary-900 dark:text-secondary-50;
   }
 }
 
@@ -29,7 +49,7 @@
   }
   
   .glass-effect {
-    @apply backdrop-blur-sm bg-white/10 border border-white/20;
+    @apply backdrop-blur-sm bg-white/10 border border-white/20 dark:bg-white/10 dark:border-white/20;
   }
   
   .button-primary {
@@ -41,11 +61,11 @@
   }
   
   .card {
-    @apply bg-white dark:bg-secondary-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6;
+    @apply bg-white dark:bg-secondary-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-secondary-200/50 dark:border-secondary-700/50;
   }
   
   .navbar-blur {
-    @apply backdrop-blur-md bg-white/80 dark:bg-secondary-900/80 border-b border-secondary-200 dark:border-secondary-700;
+    @apply backdrop-blur-md bg-white/90 dark:bg-secondary-900/90 border-b border-secondary-200/50 dark:border-secondary-700/50;
   }
 }
 
@@ -64,19 +84,4 @@
 
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-secondary-500 dark:bg-secondary-500;
-}
-
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: 15 23 42; /* slate-900 */
-    --foreground: 248 250 252; /* slate-50 */
-    --border: 30 41 59; /* slate-800 */
-  }
-}
-
-:root {
-  --background: 255 255 255; /* white */
-  --foreground: 15 23 42; /* slate-900 */
-  --border: 226 232 240; /* slate-200 */
 }

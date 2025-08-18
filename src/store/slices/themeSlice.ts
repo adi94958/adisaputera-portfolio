@@ -5,17 +5,17 @@ interface ThemeState {
   isDarkMode: boolean;
 }
 
-// Check localStorage or system preference
+// Check localStorage or default to dark mode
 const getInitialTheme = (): boolean => {
   if (typeof window !== 'undefined') {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
       return savedTheme === 'dark';
     }
-    // Check system preference
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Default to dark mode instead of system preference
+    return true;
   }
-  return false;
+  return true; // Default to dark mode
 };
 
 const initialState: ThemeState = {
