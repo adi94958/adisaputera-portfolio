@@ -22,21 +22,25 @@ export const ProfessionalExperienceCard: React.FC<ProfessionalExperienceCardProp
       initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
+      className={`relative flex ${
+        isLeft ? "md:justify-start" : "md:justify-end"
+      } justify-start`}
     >
-      {/* Timeline dot - always in center */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 top-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white dark:border-gray-800 z-10 shadow-lg"></div>
+      {/* Timeline dot - center on desktop, left on mobile */}
+      <div className="absolute md:left-1/2 left-4 md:transform md:-translate-x-1/2 top-6 w-4 h-4 bg-primary-500 rounded-full border-4 border-white dark:border-gray-800 z-10 shadow-lg"></div>
       
       {/* Content */}
-      <div className={`w-5/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
+      <div className={`md:w-5/12 w-full ${
+        isLeft ? "md:pr-8 pl-12" : "md:pl-8 pl-12"
+      }`}>
         <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <div className="space-y-4">
             <div className="flex flex-col space-y-2">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <Text variant="subheading" weight="semibold">
                   {experience.position}
                 </Text>
-                <Badge variant="primary" size="sm">
+                <Badge variant="primary" size="sm" className="self-start sm:self-auto">
                   {experience.employee_type}
                 </Badge>
               </div>
@@ -56,8 +60,10 @@ export const ProfessionalExperienceCard: React.FC<ProfessionalExperienceCardProp
           </div>
         </Card>
         
-        {/* Connector line from card to center */}
-        <div className={`absolute top-8 ${isLeft ? 'right-0 w-8' : 'left-0 w-8'} h-0.5 bg-primary-500/30`}></div>
+        {/* Connector line from card to timeline dot */}
+        <div className={`absolute top-8 ${
+          isLeft ? "md:right-0 md:w-8 right-12 w-4" : "md:left-0 md:w-8 right-12 w-4"
+        } h-0.5 bg-primary-500/30`}></div>
       </div>
     </motion.div>
   );

@@ -22,7 +22,7 @@ export const ProfessionalExperienceSection: React.FC = () => {
       <section className="section-padding">
         <div className="container">
           <div className="text-center">
-            <Text variant="heading" weight="bold" color="primary">
+            <Text as="h6" variant="heading" weight="bold" color="gradient">
               Professional Experience
             </Text>
             <Text variant="body" color="muted">
@@ -63,19 +63,19 @@ export const ProfessionalExperienceSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 space-y-4"
         >
-          <Text variant="heading" weight="bold" color="primary">
+          <Text variant="heading" weight="bold" color="gradient">
             Professional Experience
           </Text>
-          <Text variant="body" color="muted" className="max-w-2xl mx-auto">
+          <Text variant="body" color="muted">
             My journey through various professional roles and responsibilities
           </Text>
         </motion.div>
 
         <div className="max-w-6xl mx-auto relative">
-          {/* Central Timeline line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
+          {/* Timeline line - center on desktop, left on mobile */}
+          <div className="absolute md:left-1/2 left-4 md:transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
 
           <div className="space-y-12">
             {experiences.map((experience, index) => (

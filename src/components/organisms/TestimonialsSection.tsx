@@ -1,13 +1,17 @@
-import React, { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchTestimonials } from '../../store/slices/testimonialsSlice';
-import { motion } from 'framer-motion';
-import { Text } from '../atoms';
-import { TestimonialCard } from '../molecules';
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { fetchTestimonials } from "../../store/slices/testimonialsSlice";
+import { motion } from "framer-motion";
+import { Text } from "../atoms";
+import { TestimonialCard } from "../molecules";
 
 export const TestimonialsSection: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { data: testimonials, loading, error } = useAppSelector(state => state.testimonials);
+  const {
+    data: testimonials,
+    loading,
+    error,
+  } = useAppSelector((state) => state.testimonials);
 
   useEffect(() => {
     dispatch(fetchTestimonials());
@@ -18,8 +22,12 @@ export const TestimonialsSection: React.FC = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <Text variant="heading" className="mb-8">Testimonials</Text>
-            <Text variant="body" color="muted">Loading testimonials...</Text>
+            <Text variant="heading" className="mb-8">
+              Testimonials
+            </Text>
+            <Text variant="body" color="muted">
+              Loading testimonials...
+            </Text>
           </div>
         </div>
       </section>
@@ -31,8 +39,12 @@ export const TestimonialsSection: React.FC = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <Text variant="heading" className="mb-8">Testimonials</Text>
-            <Text variant="body" color="muted">Error loading testimonials: {error}</Text>
+            <Text variant="heading" className="mb-8">
+              Testimonials
+            </Text>
+            <Text variant="body" color="muted">
+              Error loading testimonials: {error}
+            </Text>
           </div>
         </div>
       </section>
@@ -49,7 +61,12 @@ export const TestimonialsSection: React.FC = () => {
           viewport={{ once: true }}
           className="space-y-4 mb-12"
         >
-          <Text variant="heading" weight="bold" color="primary" className="gradient-text">
+          <Text
+            variant="heading"
+            weight="bold"
+            color="gradient"
+            className="pb-2"
+          >
             What People Say
           </Text>
           <Text variant="body" color="muted" className="max-w-2xl">

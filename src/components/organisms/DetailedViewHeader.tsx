@@ -1,10 +1,10 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Text } from '../atoms';
+import React from "react";
+import { motion } from "framer-motion";
+import { Text } from "../atoms";
 
 export const DetailedViewHeader: React.FC = () => {
   return (
-    <motion.section 
+    <motion.section
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
@@ -16,14 +16,24 @@ export const DetailedViewHeader: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <Text variant="display" weight="bold" color="primary" className="mb-4">
+          <Text
+            variant="display"
+            weight="bold"
+            color="gradient"
+            className="mb-4"
+          >
             My Professional Journey
           </Text>
-          <Text variant="subheading" color="muted" className="max-w-3xl mx-auto">
-            Explore my skills, education, experiences, and certifications that define my professional growth
+          <Text
+            variant="subheading"
+            color="muted"
+            className="max-w-3xl mx-auto"
+          >
+            Explore my skills, education, experiences, and certifications that
+            define my professional growth
           </Text>
         </motion.div>
-        
+
         {/* Decorative elements */}
         <motion.div
           animate={{

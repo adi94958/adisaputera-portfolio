@@ -2,7 +2,12 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Text, Button } from "../atoms";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { useScrollAnimation, staggerContainerVariants, slideInFromLeft, slideInFromRight } from "../../hooks";
+import {
+  useScrollAnimation,
+  staggerContainerVariants,
+  slideInFromLeft,
+  slideInFromRight,
+} from "../../hooks";
 import { goToDetailedView } from "../../store/slices/uiSlice";
 
 export const AboutSection: React.FC = () => {
@@ -81,7 +86,7 @@ export const AboutSection: React.FC = () => {
           {/* Content */}
           <div className="space-y-6 order-1 lg:order-2">
             <motion.div variants={slideInFromRight}>
-              <Text variant="heading" weight="bold" color="primary">
+              <Text variant="heading" weight="bold" color="gradient">
                 About Me
               </Text>
             </motion.div>
@@ -95,27 +100,6 @@ export const AboutSection: React.FC = () => {
                 {profile?.self_description ||
                   "I'm a passionate developer with a love for creating beautiful and functional web experiences. My journey in technology has been driven by curiosity and a desire to solve complex problems through elegant code."}
               </Text>
-            </motion.div>
-
-            <motion.div variants={slideInFromRight} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <Text variant="caption" color="muted" weight="medium">
-                    Name
-                  </Text>
-                  <Text variant="body" weight="medium">
-                    {profile?.name || "Muhammad Adi Saputera"}
-                  </Text>
-                </div>
-                <div>
-                  <Text variant="caption" color="muted" weight="medium">
-                    Role
-                  </Text>
-                  <Text variant="body" weight="medium">
-                    {profile?.role || "Full Stack Developer"}
-                  </Text>
-                </div>
-              </div>
             </motion.div>
 
             <motion.div

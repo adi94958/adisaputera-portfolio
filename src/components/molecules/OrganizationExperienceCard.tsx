@@ -13,47 +13,60 @@ interface OrganizationExperienceCardProps {
 export const OrganizationExperienceCard: React.FC<
   OrganizationExperienceCardProps
 > = ({ experience, index = 0, isLeft = true }) => {
-  const duration = calculateDuration(experience.start_date, experience.end_date);
-  
+  const duration = calculateDuration(
+    experience.start_date,
+    experience.end_date
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.6, delay: index * 0.2 }}
-      className={`relative flex ${isLeft ? 'justify-start' : 'justify-end'}`}
+      className={`relative flex ${
+        isLeft ? "md:justify-start" : "md:justify-end"
+      } justify-start`}
     >
-      {/* Timeline dot - always in center */}
-      <div className="absolute left-1/2 transform -translate-x-1/2 top-6 w-4 h-4 bg-accent-500 rounded-full border-4 border-white dark:border-gray-800 z-10 shadow-lg"></div>
-      
+      {/* Timeline dot - center on desktop, left on mobile */}
+      <div className="absolute md:left-1/2 left-4 md:transform md:-translate-x-1/2 top-6 w-4 h-4 bg-accent-500 rounded-full border-4 border-white dark:border-gray-800 z-10 shadow-lg"></div>
+
       {/* Content */}
-      <div className={`w-5/12 ${isLeft ? 'pr-8' : 'pl-8'}`}>
+      <div className={`md:w-5/12 w-full ${
+        isLeft ? "md:pr-8 pl-12" : "md:pl-8 pl-12"
+      }`}>
         <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
           <div className="space-y-4">
             <div className="flex flex-col space-y-2">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                 <Text variant="subheading" weight="semibold">
                   {experience.position}
                 </Text>
-                <Badge variant="secondary" size="sm">
-                  {formatDate(experience.start_date)} - {formatDate(experience.end_date)}
+                <Badge variant="secondary" size="sm" className="self-start sm:self-auto">
+                  {formatDate(experience.start_date)} -{" "}
+                  {formatDate(experience.end_date)}
                 </Badge>
               </div>
-              
+
               <Text variant="body" weight="medium" color="accent">
                 {experience.organization_name}
               </Text>
-              
+
               <Text variant="caption" color="muted">
-                {formatDate(experience.start_date)} - {formatDate(experience.end_date)} • {duration}
+                {formatDate(experience.start_date)} -{" "}
+                {formatDate(experience.end_date)} • {duration}
               </Text>
             </div>
-            
+
             {experience.description && (
-              <Text variant="body" color="secondary" className="leading-relaxed">
+              <Text
+                variant="body"
+                color="secondary"
+                className="leading-relaxed"
+              >
                 {experience.description}
               </Text>
             )}
-            
+
             {experience.image && (
               <div className="flex items-center gap-3 pt-3 border-t border-gray-100 dark:border-gray-700">
                 <img
@@ -72,9 +85,13 @@ export const OrganizationExperienceCard: React.FC<
             )}
           </div>
         </Card>
-        
-        {/* Connector line from card to center */}
-        <div className={`absolute top-8 ${isLeft ? 'right-0 w-8' : 'left-0 w-8'} h-0.5 bg-accent-500/30`}></div>
+
+        {/* Connector line from card to timeline dot */}
+        <div
+          className={`absolute top-8 ${
+            isLeft ? "md:right-0 md:w-8 right-12 w-4" : "md:left-0 md:w-8 right-12 w-4"
+          } h-0.5 bg-accent-500/30`}
+        ></div>
       </div>
     </motion.div>
   );

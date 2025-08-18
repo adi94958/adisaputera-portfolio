@@ -60,13 +60,13 @@ export const HeroSection: React.FC = () => {
           {/* Content */}
           <div className="space-y-6 order-2 lg:order-1">
             <motion.div variants={itemVariants}>
-              <Text variant="subheading" weight="medium" color="primary">
+              <Text variant="subheading" weight="light" color="inherit">
                 {profile?.name || "Muhammad Adi Saputera"}
               </Text>
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Text variant="display" weight="bold" className="gradient-text">
+              <Text variant="display" weight="bold" color="gradient">
                 {profile?.role || "Full Stack Developer"}
               </Text>
             </motion.div>

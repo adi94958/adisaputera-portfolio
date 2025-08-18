@@ -59,12 +59,12 @@ export const CertificationsSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-12"
+          className="text-center mb-12 space-y-4"
         >
-          <Text variant="heading" weight="bold" color="primary">
+          <Text variant="heading" weight="bold" color="gradient">
             Certifications
           </Text>
-          <Text variant="body" color="muted" className="max-w-2xl mx-auto">
+          <Text variant="body" color="muted">
             Professional certifications and credentials
           </Text>
         </motion.div>

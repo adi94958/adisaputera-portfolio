@@ -39,10 +39,10 @@ export const SkillsSection: React.FC = () => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <Text variant="heading" weight="bold" color="primary">
+            <Text variant="heading" weight="bold" color="gradient">
               Skills & Expertise
             </Text>
-            <Text variant="body" color="muted" className="max-w-2xl mx-auto">
+            <Text variant="body" color="muted">
               Here are the technologies and tools I use to bring ideas to life
             </Text>
           </motion.div>

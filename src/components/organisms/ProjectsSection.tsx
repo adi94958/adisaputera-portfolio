@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Text, Button } from '../atoms';
-import { ProjectCard } from '../molecules';
-import { useAppSelector } from '../../hooks/redux';
-import { useScrollAnimation, staggerContainerVariants, fadeInUp } from '../../hooks';
-import type { Project } from '../../types';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { Text, Button } from "../atoms";
+import { ProjectCard } from "../molecules";
+import { useAppSelector } from "../../hooks/redux";
+import {
+  useScrollAnimation,
+  staggerContainerVariants,
+  fadeInUp,
+} from "../../hooks";
+import type { Project } from "../../types";
 
 interface ProjectsSectionProps {
   onViewProject?: (project: Project) => void;
 }
 
-export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject }) => {
+export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
+  onViewProject,
+}) => {
   const { data: projects } = useAppSelector((state) => state.projects);
   const [showAll, setShowAll] = useState(false);
   const { ref, isInView } = useScrollAnimation();
@@ -18,7 +24,11 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject 
   const displayedProjects = showAll ? projects : projects?.slice(0, 6);
 
   return (
-    <section id="projects" ref={ref} className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative">
+    <section
+      id="projects"
+      ref={ref}
+      className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative"
+    >
       <div className="container relative z-10">
         <motion.div
           variants={staggerContainerVariants}
@@ -28,7 +38,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject 
         >
           {/* Header */}
           <motion.div variants={fadeInUp} className="space-y-4">
-            <Text variant="heading" weight="bold" color="primary" className="gradient-text">
+            <Text variant="heading" weight="bold" color="gradient">
               Featured Projects
             </Text>
             <Text variant="body" color="muted" className="max-w-2xl">
@@ -70,7 +80,9 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject 
                   size="md"
                   onClick={() => setShowAll(!showAll)}
                 >
-                  {showAll ? 'Show Less' : `View All Projects (${projects.length})`}
+                  {showAll
+                    ? "Show Less"
+                    : `View All Projects (${projects.length})`}
                 </Button>
               </motion.div>
             </motion.div>
