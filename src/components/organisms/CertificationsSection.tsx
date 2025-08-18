@@ -52,8 +52,8 @@ export const CertificationsSection: React.FC = () => {
   }
 
   return (
-    <section className="section-padding bg-gray-50 dark:bg-gray-900">
-      <div className="container">
+    <section className="section-padding bg-gray-50/80 dark:bg-gray-900/80 relative">
+      <div className="container relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

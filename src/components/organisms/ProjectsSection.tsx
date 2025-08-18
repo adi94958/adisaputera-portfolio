@@ -36,8 +36,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({ onViewProject 
   };
 
   return (
-    <section id="projects" className="section-padding bg-secondary-50 dark:bg-secondary-900">
-      <div className="container">
+    <section id="projects" className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative">
+      <div className="container relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"

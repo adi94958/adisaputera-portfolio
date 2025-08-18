@@ -35,8 +35,8 @@ export const AboutSection: React.FC = () => {
   };
 
   return (
-    <section id="about" className="section-padding bg-secondary-50 dark:bg-secondary-900">
-      <div className="container">
+    <section id="about" className="section-padding bg-secondary-50/80 dark:bg-secondary-900/80 relative">
+      <div className="container relative z-10">
         <motion.div
           variants={containerVariants}
           initial="hidden"
