@@ -8,3 +8,6 @@ export { CertificationCard } from './CertificationCard';
 export { TestimonialCard } from './TestimonialCard';
 export { OrganizationExperienceCard } from './OrganizationExperienceCard';
 export { ThemeToggle } from './ThemeToggle';
+export { TimelineCard } from './TimelineCard';
+export { TimelineContainer } from './TimelineContainer';
+export { TimelineItem } from './TimelineItem';

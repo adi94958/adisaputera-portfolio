@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchProfessionalExperience } from "../../store/slices/professionalExperienceSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
-import { ProfessionalExperienceCard } from "../molecules";
+import { ProfessionalExperienceCard, TimelineContainer, TimelineItem } from "../molecules";
 
 export const ProfessionalExperienceSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -73,21 +73,18 @@ export const ProfessionalExperienceSection: React.FC = () => {
           </Text>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto relative">
-          {/* Timeline line - center on desktop, left on mobile */}
-          <div className="absolute md:left-1/2 left-4 md:transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
-
-          <div className="space-y-12">
-            {experiences.map((experience, index) => (
-              <ProfessionalExperienceCard
-                key={experience.experience_id}
-                experience={experience}
-                index={index}
-                isLeft={index % 2 === 0}
-              />
-            ))}
-          </div>
-        </div>
+        <TimelineContainer type="professional">
+          {experiences.map((experience, index) => (
+            <TimelineItem
+              key={experience.experience_id}
+              index={index}
+              isLeft={index % 2 === 0}
+              type="professional"
+            >
+              <ProfessionalExperienceCard experience={experience} />
+            </TimelineItem>
+          ))}
+        </TimelineContainer>
       </div>
     </section>
   );

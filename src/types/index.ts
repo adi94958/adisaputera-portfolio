@@ -23,11 +23,10 @@ export interface Contact {
   phone: string;
   address: string;
   social_media: {
-    linkedin: string;
-    github: string;
-    twitter: string;
-    instagram: string;
-  };
+    label: string;
+    link: string;
+    icon: string;
+  }[];
 }
 
 export interface Ability {
@@ -95,6 +94,7 @@ export interface Testimonial {
   testimonial_id: string;
   name: string;
   position: string;
+  organization: string;
   feedback: string;
 }
 

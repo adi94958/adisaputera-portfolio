@@ -6,3 +6,4 @@ export { Badge } from './Badge';
 export { BackButton } from './BackButton';
 export { ParticleBackground } from './ParticleBackground';
 export { CustomCursor } from './CustomCursor';
+export { Timeline } from './Timeline';

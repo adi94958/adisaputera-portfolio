@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchEducation } from "../../store/slices/educationSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
-import { EducationCard } from "../molecules";
+import { EducationCard, TimelineContainer, TimelineItem } from "../molecules";
 
 export const EducationSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -69,21 +69,18 @@ export const EducationSection: React.FC = () => {
           </Text>
         </motion.div>
 
-        <div className="max-w-6xl mx-auto relative">
-          {/* Timeline line - center on desktop, left on mobile */}
-          <div className="absolute md:left-1/2 left-4 md:transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700"></div>
-
-          <div className="space-y-12">
-            {educations.map((education, index) => (
-              <EducationCard
-                key={education.education_id}
-                education={education}
-                index={index}
-                isLeft={index % 2 === 0}
-              />
-            ))}
-          </div>
-        </div>
+        <TimelineContainer type="education">
+          {educations.map((education, index) => (
+            <TimelineItem
+              key={education.education_id}
+              index={index}
+              isLeft={index % 2 === 0}
+              type="education"
+            >
+              <EducationCard education={education} />
+            </TimelineItem>
+          ))}
+        </TimelineContainer>
       </div>
     </section>
   );

@@ -6,7 +6,7 @@ interface TextProps {
   variant?: "display" | "heading" | "subheading" | "body" | "caption" | "small";
   weight?: "light" | "normal" | "medium" | "semibold" | "bold";
   color?: "primary" | "secondary" | "accent" | "muted" | "gradient" | "inherit";
-  align?: "left" | "center" | "right";
+  align?: "left" | "center" | "right" | "justify";
   className?: string;
   children: React.ReactNode;
 }
@@ -51,6 +51,7 @@ export const Text: React.FC<TextProps> = ({
     left: "text-left",
     center: "text-center",
     right: "text-right",
+    justify: "text-justify",
   };
 
   return (

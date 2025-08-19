@@ -3,7 +3,7 @@ import { cn } from "../../utils";
 
 interface BadgeProps {
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "success" | "warning" | "error";
+  variant?: "primary" | "secondary" | "accent" | "success" | "warning" | "error";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -20,7 +20,9 @@ export const Badge: React.FC<BadgeProps> = ({
     primary:
       "bg-primary-100 text-primary-800 dark:bg-primary-900 dark:text-primary-300",
     secondary:
-      "bg-secondary-100 text-secondary-800 dark:bg-secondary-800 dark:text-secondary-300",
+      "bg-secondary-100 text-secondary-800 dark:bg-secondary-700 dark:text-secondary-200",
+    accent:
+      "bg-accent-100 text-accent-800 dark:bg-accent-900 dark:text-accent-300",
     success:
       "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300",
     warning:

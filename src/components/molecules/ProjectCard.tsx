@@ -1,7 +1,7 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, Text, Button, Badge } from '../atoms';
-import type { Project } from '../../types';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, Text, Button, Badge } from "../atoms";
+import type { Project } from "../../types";
 
 interface ProjectCardProps {
   project: Project;
@@ -9,10 +9,10 @@ interface ProjectCardProps {
   onViewDetails?: (project: Project) => void;
 }
 
-export const ProjectCard: React.FC<ProjectCardProps> = ({ 
-  project, 
-  index = 0, 
-  onViewDetails 
+export const ProjectCard: React.FC<ProjectCardProps> = ({
+  project,
+  index = 0,
+  onViewDetails,
 }) => {
   return (
     <motion.div
@@ -31,7 +31,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               className="w-full h-full object-cover"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
-                target.style.display = 'none';
+                target.style.display = "none";
                 const parent = target.parentElement;
                 if (parent) {
                   parent.innerHTML = `
@@ -49,28 +49,30 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             <div className="flex items-center justify-center h-full w-full">
               <div className="text-center p-4">
                 <div className="text-4xl mb-2">📱</div>
-                <div className="text-sm font-medium text-gray-600">{project.project_name}</div>
+                <div className="text-sm font-medium text-gray-600">
+                  {project.project_name}
+                </div>
               </div>
             </div>
           )}
         </div>
-        
+
         <div className="flex-1 flex flex-col">
           <Text variant="subheading" weight="semibold" className="mb-2">
             {project.project_name}
           </Text>
-          
+
           <Text variant="body" color="muted" className="mb-4 flex-1">
             {project.description}
           </Text>
-          
+
           {/* Role Badge */}
           <div className="mb-3">
             <Badge variant="secondary" size="sm">
               {project.role}
             </Badge>
           </div>
-          
+
           {/* Tech Stack */}
           {project.tech_stack && project.tech_stack.length > 0 && (
             <div className="mb-4">
@@ -86,20 +88,20 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               </div>
             </div>
           )}
-          
+
           <div className="flex gap-2">
-            <Button 
-              variant="primary" 
-              size="sm" 
+            <Button
+              variant="primary"
+              size="sm"
               className="flex-1"
               onClick={() => onViewDetails?.(project)}
             >
               View Details
             </Button>
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               size="sm"
-              onClick={() => window.open(project.url, '_blank')}
+              onClick={() => window.open(project.url, "_blank")}
             >
               Live Demo
             </Button>

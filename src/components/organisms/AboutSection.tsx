@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import { Text, Button } from "../atoms";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
@@ -93,6 +94,7 @@ export const AboutSection: React.FC = () => {
 
             <motion.div variants={slideInFromRight}>
               <Text
+                align="justify"
                 variant="body"
                 color="secondary"
                 className="leading-relaxed"
@@ -104,20 +106,34 @@ export const AboutSection: React.FC = () => {
 
             <motion.div
               variants={slideInFromRight}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-row gap-3 sm:flex-col sm:gap-4"
             >
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex-1 sm:flex-none"
               >
-                <Button variant="primary" size="md" onClick={handleLearnMore}>
+                <Button
+                  variant="primary"
+                  size="md"
+                  onClick={handleLearnMore}
+                  className="w-full sm:w-auto"
+                >
                   Learn More
+                  <motion.div
+                    animate={{ x: 0 }}
+                    whileHover={{ x: 5 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Icon icon="mdi:chevron-right" width={20} height={20} />
+                  </motion.div>
                 </Button>
               </motion.div>
               {profile?.cv && (
                 <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-1 sm:flex-none"
                 >
                   <Button
                     variant="outline"
@@ -129,6 +145,7 @@ export const AboutSection: React.FC = () => {
                       link.download = profile.cv;
                       link.click();
                     }}
+                    className="w-full sm:w-auto"
                   >
                     Download CV
                   </Button>

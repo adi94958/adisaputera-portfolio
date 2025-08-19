@@ -56,7 +56,7 @@ export const Navbar: React.FC<NavbarProps> = ({ brandName = "Portfolio" }) => {
             {viewMode === "detailed" && <BackButton />}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Text as="h1" variant="subheading" weight="bold" color="gradient">
-                {brandName}
+                {brandName}.
               </Text>
             </motion.div>
           </div>
