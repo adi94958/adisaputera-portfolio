@@ -13,6 +13,19 @@ export const formatDate = (dateString: string): string => {
   });
 };
 
+export const formatDateShort = (dateString: string): string => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'short',
+  });
+};
+
+export const formatDateYear = (dateString: string): string => {
+  const date = new Date(dateString);
+  return date.getFullYear().toString();
+};
+
 export const calculateDuration = (startDate: string, endDate: string): string => {
   const start = new Date(startDate);
   const end = new Date(endDate);

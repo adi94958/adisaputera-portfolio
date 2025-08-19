@@ -14,6 +14,12 @@ const typeColors = {
   organization: 'bg-accent-500',
 };
 
+const typeLineColors = {
+  education: 'bg-blue-500/30',
+  professional: 'bg-primary-500/30',
+  organization: 'bg-accent-500/30',
+};
+
 export const TimelineItem: React.FC<TimelineItemProps> = ({
   children,
   index = 0,
@@ -21,7 +27,7 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
   type = 'education'
 }) => {
   const dotColor = typeColors[type];
-  const lineColor = `${typeColors[type]}/30`;
+  const lineColor = typeLineColors[type];
 
   return (
     <motion.div

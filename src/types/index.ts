@@ -62,9 +62,12 @@ export interface OrganizationExperience {
 export interface Education {
   education_id: string;
   institution_name: string;
-  degree: string;
+  level: string;
+  major: string;
+  location: string;
   start_date: string;
   end_date: string;
+  gpa: string;
   image: string;
   description: string;
 }

@@ -5,23 +5,23 @@ interface TimelineContainerProps {
   type?: 'education' | 'professional' | 'organization';
 }
 
-const typeColors = {
-  education: 'bg-blue-500',
-  professional: 'bg-primary-500',
-  organization: 'bg-accent-500',
+const typeLineColors = {
+  education: 'bg-blue-500/30',
+  professional: 'bg-primary-500/30',
+  organization: 'bg-accent-500/30',
 };
 
 export const TimelineContainer: React.FC<TimelineContainerProps> = ({ 
   children, 
   type = 'education' 
 }) => {
-  const lineColor = typeColors[type];
+  const lineColor = typeLineColors[type];
   
   return (
     <div className="max-w-6xl mx-auto relative">
       {/* Vertical timeline line - responsive positioning */}
       <div 
-        className={`absolute md:left-1/2 md:transform md:-translate-x-1/2 left-4 transform -translate-x-1/2 top-0 bottom-0 w-0.5 ${lineColor}/30`}
+        className={`absolute md:left-1/2 md:transform md:-translate-x-1/2 left-4 transform -translate-x-1/2 top-0 bottom-0 w-0.5 ${lineColor}`}
       />
       
       {/* Timeline content */}
