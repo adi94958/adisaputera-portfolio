@@ -166,7 +166,9 @@ export const HomePage: React.FC = () => {
                 <section id="projects">
                   <ProjectsSection onViewProject={handleViewProject} />
                 </section>
-                <TestimonialsSection />
+                <section id="testimonials">
+                  <TestimonialsSection />
+                </section>
                 <section id="contact">
                   <ContactSection />
                 </section>

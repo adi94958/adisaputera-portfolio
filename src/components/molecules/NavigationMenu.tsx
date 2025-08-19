@@ -42,6 +42,20 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
         return;
       }
 
+      // Special handling for testimonials section - treat it as part of projects
+      const testimonialsElement = document.getElementById('testimonials');
+      if (testimonialsElement) {
+        const testimonialsRect = testimonialsElement.getBoundingClientRect();
+        const testimonialsTop = testimonialsRect.top - navbarHeight;
+        const testimonialsBottom = testimonialsRect.bottom - navbarHeight;
+        
+        // If we're in testimonials section, keep projects active
+        if (testimonialsTop <= windowHeight / 2 && testimonialsBottom > windowHeight / 2) {
+          setActiveItem('#projects');
+          return;
+        }
+      }
+
       // Find the section that's most visible in the viewport
       let currentSection = sections[0].href;
       let maxVisibility = 0;
@@ -150,7 +164,11 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
               e.preventDefault();
               handleItemClick(item.href);
             }}
-            className="text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400 font-medium transition-colors duration-200 relative"
+            className={`font-medium transition-colors duration-200 relative ${
+              activeItem === item.href 
+                ? 'text-primary-600 dark:text-primary-400' 
+                : 'text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400'
+            }`}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -195,7 +213,11 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
                       e.preventDefault();
                       handleItemClick(item.href);
                     }}
-                    className="block py-3 px-4 text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-800 rounded-lg font-medium transition-all duration-200"
+                    className={`block py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+                      activeItem === item.href
+                        ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
+                        : 'text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-800'
+                    }`}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
