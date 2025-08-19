@@ -152,8 +152,8 @@ export const HeroSection: React.FC = () => {
               >
                 <img
                   src={
-                    profile?.image_home
-                      ? `/images/${profile.image_home}`
+                    profile?.image_hero
+                      ? `/images/${profile.image_hero}`
                       : "/images/hero-placeholder.jpg"
                   }
                   alt={profile?.name || "Hero Image"}

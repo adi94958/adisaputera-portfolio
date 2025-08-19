@@ -10,11 +10,8 @@ export interface Profile {
   role: string;
   role_description: string;
   self_description: string;
-  image_home: string;
+  image_hero: string;
   image_about: string;
-  image_projects: string;
-  image_contact_me: string;
-  image_about_detail: string;
   cv: string;
 }
 
@@ -59,7 +56,7 @@ export interface OrganizationExperience {
   end_date: string;
   description: string;
   image: string;
-  'e-certificate': string;
+  "e-certificate": string;
 }
 
 export interface Education {
@@ -114,5 +111,5 @@ export interface PortfolioData {
 export interface ApiResponse<T> {
   data: T;
   message?: string;
-  status: 'success' | 'error';
+  status: "success" | "error";
 }

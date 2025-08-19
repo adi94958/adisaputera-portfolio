@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
 import { Text, Button, Card } from "../atoms";
+import { fetchContact } from "../../store/slices/contactSlice";
+import type { RootState, AppDispatch } from "../../store";
 
 interface ContactFormData {
   name: string;
@@ -10,6 +13,9 @@ interface ContactFormData {
 }
 
 export const ContactSection: React.FC = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { data: contact } = useSelector((state: RootState) => state.contact);
+  
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -17,6 +23,12 @@ export const ContactSection: React.FC = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (!contact) {
+      dispatch(fetchContact());
+    }
+  }, [dispatch, contact]);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -118,7 +130,7 @@ export const ContactSection: React.FC = () => {
                         Email
                       </Text>
                       <Text variant="body" weight="medium">
-                        adi.saputera@example.com
+                        {contact?.email || "adi.saputera@example.com"}
                       </Text>
                     </div>
                   </div>
@@ -150,7 +162,7 @@ export const ContactSection: React.FC = () => {
                         Location
                       </Text>
                       <Text variant="body" weight="medium">
-                        Majalengka, West Java, Indonesia
+                        {contact?.address || "Majalengka, West Java, Indonesia"}
                       </Text>
                     </div>
                   </div>
