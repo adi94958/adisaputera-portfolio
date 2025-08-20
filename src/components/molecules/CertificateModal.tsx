@@ -110,8 +110,8 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
             <div className="flex items-center justify-center space-x-3">
               {/* Download Button - Using Button Component */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={imageLoaded ? { scale: 1.02 } : {}}
+                whileTap={imageLoaded ? { scale: 0.98 } : {}}
               >
                 <Button
                   variant="solid"
@@ -154,8 +154,8 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
 
               {/* View Fullscreen Button */}
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
+                whileHover={imageLoaded ? { scale: 1.02 } : {}}
+                whileTap={imageLoaded ? { scale: 0.98 } : {}}
               >
                 <Button
                   variant="outline"

@@ -21,7 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   const baseStyles =
-    "inline-flex items-center justify-center font-semibold rounded-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed group";
+    "inline-flex items-center justify-center font-semibold rounded-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none group";
 
   // Color definitions for each color theme
   const colorStyles = {
@@ -73,11 +73,19 @@ export const Button: React.FC<ButtonProps> = ({
 
   return (
     <motion.div
-      whileHover={{
-        scale: 1.02,
-        transition: { duration: 0.3 },
-      }}
-      whileTap={{ scale: 0.98 }}
+      whileHover={
+        !disabled && !isLoading
+          ? {
+              scale: 1.02,
+              transition: { duration: 0.3 },
+            }
+          : {}
+      }
+      whileTap={
+        !disabled && !isLoading
+          ? { scale: 0.98 }
+          : {}
+      }
       className="inline-block"
     >
       <button
