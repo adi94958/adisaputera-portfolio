@@ -7,7 +7,7 @@ import educationReducer from './slices/educationSlice';
 import certificationsReducer from './slices/certificationsSlice';
 import testimonialsReducer from './slices/testimonialsSlice';
 import organizationExperienceReducer from './slices/organizationExperienceSlice';
-import professionalExperienceReducer from './slices/professionalExperienceSlice';
+import workExperienceReducer from './slices/workExperienceSlice';
 import themeReducer from './slices/themeSlice';
 import uiReducer from './slices/uiSlice';
 
@@ -21,7 +21,7 @@ export const store = configureStore({
     certifications: certificationsReducer,
     testimonials: testimonialsReducer,
     organizationExperience: organizationExperienceReducer,
-    professionalExperience: professionalExperienceReducer,
+    workExperience: workExperienceReducer,
     theme: themeReducer,
     ui: uiReducer,
   },

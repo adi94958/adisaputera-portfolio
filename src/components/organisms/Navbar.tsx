@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({ brandName = "Portfolio" }) => {
   const detailedNavigationItems = [
     { label: "Skills & Expertise", href: "#skills" },
     { label: "Education", href: "#education" },
-    { label: "Professional Experience", href: "#experience" },
+    { label: "Work Experience", href: "#experience" },
     { label: "Organization Experience", href: "#organization" },
     { label: "Certifications", href: "#certifications" },
   ];

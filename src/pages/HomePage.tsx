@@ -10,7 +10,7 @@ import {
   EducationSection,
   CertificationsSection,
   OrganizationExperienceSection,
-  ProfessionalExperienceSection,
+  WorkExperienceSection,
   TestimonialsSection,
   DetailedViewHeader
 } from '../components/organisms';
@@ -20,7 +20,7 @@ import { fetchAbilities } from '../store/slices/abilitiesSlice';
 import { fetchProjects } from '../store/slices/projectsSlice';
 import { fetchContact } from '../store/slices/contactSlice';
 import { fetchOrganizationExperience } from '../store/slices/organizationExperienceSlice';
-import { fetchProfessionalExperience } from '../store/slices/professionalExperienceSlice';
+import { fetchWorkExperience } from '../store/slices/workExperienceSlice';
 import { initializeTheme } from '../store/slices/themeSlice';
 import type { Project } from '../types';
 
@@ -100,7 +100,7 @@ export const HomePage: React.FC = () => {
       await Promise.all([
         dispatch(fetchAbilities()),
         dispatch(fetchOrganizationExperience()),
-        dispatch(fetchProfessionalExperience()),
+        dispatch(fetchWorkExperience()),
       ]);
     } catch (error) {
       console.error('Failed to load detailed data:', error);
@@ -191,7 +191,7 @@ export const HomePage: React.FC = () => {
                   <EducationSection />
                 </section>
                 <section id="experience">
-                  <ProfessionalExperienceSection />
+                  <WorkExperienceSection />
                 </section>
                 <section id="organization">
                   <OrganizationExperienceSection />

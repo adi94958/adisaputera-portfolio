@@ -4,7 +4,7 @@ import type {
   Profile,
   Contact,
   Abilities,
-  ProfessionalExperience,
+  WorkExperience,
   OrganizationExperience,
   Education,
   Project,
@@ -37,9 +37,9 @@ export const portfolioApi = {
     return response.data;
   },
 
-  // Professional Experience endpoints
-  getProfessionalExperience: async (): Promise<ProfessionalExperience[]> => {
-    const response = await apiClient.get<ProfessionalExperience[]>('/professional_experience');
+  // Work Experience endpoints
+  getWorkExperience: async (): Promise<WorkExperience[]> => {
+    const response = await apiClient.get<WorkExperience[]>('/work_experience');
     return response.data;
   },
 

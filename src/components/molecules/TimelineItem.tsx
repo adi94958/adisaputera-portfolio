@@ -5,18 +5,18 @@ interface TimelineItemProps {
   children: React.ReactNode;
   index?: number;
   isLeft?: boolean;
-  type?: "education" | "professional" | "organization";
+  type?: "education" | "work" | "organization";
 }
 
 const typeColors = {
   education: "bg-blue-500",
-  professional: "bg-primary-500",
+  work: "bg-primary-500",
   organization: "bg-accent-500",
 };
 
 const typeLineColors = {
   education: "bg-blue-500/30",
-  professional: "bg-primary-500/30",
+  work: "bg-primary-500/30",
   organization: "bg-accent-500/30",
 };
 

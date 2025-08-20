@@ -8,6 +8,6 @@ export { Footer } from './Footer';
 export { EducationSection } from './EducationSection';
 export { CertificationsSection } from './CertificationsSection';
 export { OrganizationExperienceSection } from './OrganizationExperienceSection';
-export { ProfessionalExperienceSection } from './ProfessionalExperienceSection';
+export { WorkExperienceSection } from './WorkExperienceSection';
 export { TestimonialsSection } from './TestimonialsSection';
 export { DetailedViewHeader } from './DetailedViewHeader';

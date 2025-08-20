@@ -1,6 +1,6 @@
 export { SkillCard } from './SkillCard';
 export { ProjectCard } from './ProjectCard';
-export { ProfessionalExperienceCard } from './ProfessionalExperienceCard';
+export { WorkExperienceCard } from './WorkExperienceCard';
 export { NavigationMenu } from './NavigationMenu';
 export { EducationCard } from './EducationCard';
 export { CertificationCard } from './CertificationCard';

@@ -38,13 +38,14 @@ export interface Abilities {
   tools: Ability[];
 }
 
-export interface ProfessionalExperience {
+export interface WorkExperience {
   experience_id: string;
   company_name: string;
   position: string;
   start_date: string;
   end_date: string;
-  employee_type: string;
+  work_type: string;
+  technologies: string[];
   description: string;
 }
 
@@ -103,7 +104,7 @@ export interface PortfolioData {
   profile: Profile;
   contact: Contact;
   abilities: Abilities;
-  professional_experience: ProfessionalExperience[];
+  work_experience: WorkExperience[];
   organization_experience: OrganizationExperience[];
   education: Education[];
   projects: Project[];

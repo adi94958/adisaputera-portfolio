@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { fetchProfessionalExperience } from "../../store/slices/professionalExperienceSlice";
+import { fetchWorkExperience } from "../../store/slices/workExperienceSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
-import { ProfessionalExperienceCard, TimelineContainer, TimelineItem } from "../molecules";
+import { WorkExperienceCard, TimelineContainer, TimelineItem } from "../molecules";
 
-export const ProfessionalExperienceSection: React.FC = () => {
+export const WorkExperienceSection: React.FC = () => {
   const dispatch = useAppDispatch();
   const {
     data: experiences,
     loading,
     error,
-  } = useAppSelector((state) => state.professionalExperience);
+  } = useAppSelector((state) => state.workExperience);
 
   useEffect(() => {
-    dispatch(fetchProfessionalExperience());
+    dispatch(fetchWorkExperience());
   }, [dispatch]);
 
   if (loading) {
@@ -23,10 +23,10 @@ export const ProfessionalExperienceSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text as="h6" variant="heading" weight="bold" color="gradient">
-              Professional Experience
+              Work Experience
             </Text>
             <Text variant="body" color="muted">
-              Loading professional experience...
+              Loading work experience...
             </Text>
           </div>
         </div>
@@ -40,10 +40,10 @@ export const ProfessionalExperienceSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Professional Experience
+              Work Experience
             </Text>
             <Text variant="body" color="muted">
-              Error loading professional experience: {error}
+              Error loading work experience: {error}
             </Text>
           </div>
         </div>
@@ -66,22 +66,22 @@ export const ProfessionalExperienceSection: React.FC = () => {
           className="text-center mb-12 space-y-4"
         >
           <Text variant="heading" weight="bold" color="gradient">
-            Professional Experience
+            Work Experience
           </Text>
           <Text variant="body" color="muted">
-            My journey through various professional roles and responsibilities
+            My journey through various work roles and responsibilities
           </Text>
         </motion.div>
 
-        <TimelineContainer type="professional">
+        <TimelineContainer type="work">
           {experiences.map((experience, index) => (
             <TimelineItem
               key={experience.experience_id}
               index={index}
               isLeft={index % 2 === 0}
-              type="professional"
+              type="work"
             >
-              <ProfessionalExperienceCard experience={experience} />
+              <WorkExperienceCard experience={experience} />
             </TimelineItem>
           ))}
         </TimelineContainer>

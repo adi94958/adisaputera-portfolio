@@ -1,14 +1,14 @@
 import React from "react";
 import { Card, Text, Badge } from "../atoms";
 import { formatDate, calculateDuration } from "../../utils";
-import type { ProfessionalExperience } from "../../types";
+import type { WorkExperience } from "../../types";
 
-interface ProfessionalExperienceCardProps {
-  experience: ProfessionalExperience;
+interface WorkExperienceCardProps {
+  experience: WorkExperience;
 }
 
-export const ProfessionalExperienceCard: React.FC<
-  ProfessionalExperienceCardProps
+export const WorkExperienceCard: React.FC<
+  WorkExperienceCardProps
 > = ({ experience }) => {
   const duration = calculateDuration(
     experience.start_date,
@@ -28,7 +28,7 @@ export const ProfessionalExperienceCard: React.FC<
               size="sm"
               className="self-start sm:self-auto"
             >
-              {experience.employee_type}
+              {experience.work_type}
             </Badge>
           </div>
 
@@ -45,6 +45,16 @@ export const ProfessionalExperienceCard: React.FC<
         <Text variant="body" color="secondary" className="leading-relaxed">
           {experience.description}
         </Text>
+
+        {experience.technologies && experience.technologies.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-2">
+            {experience.technologies.map((tech, index) => (
+              <Badge key={index} variant="secondary" size="sm">
+                {tech}
+              </Badge>
+            ))}
+          </div>
+        )}
       </div>
     </Card>
   );
