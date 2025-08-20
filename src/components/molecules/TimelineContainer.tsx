@@ -6,7 +6,7 @@ interface TimelineContainerProps {
 }
 
 const typeLineColors = {
-  education: 'bg-blue-500/30',
+  education: 'bg-emerald-500/30',
   work: 'bg-primary-500/30',
   organization: 'bg-accent-500/30',
 };

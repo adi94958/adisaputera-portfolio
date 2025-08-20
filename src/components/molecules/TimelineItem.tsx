@@ -9,13 +9,13 @@ interface TimelineItemProps {
 }
 
 const typeColors = {
-  education: "bg-blue-500",
+  education: "bg-emerald-500",
   work: "bg-primary-500",
   organization: "bg-accent-500",
 };
 
 const typeLineColors = {
-  education: "bg-blue-500/30",
+  education: "bg-emerald-500/30",
   work: "bg-primary-500/30",
   organization: "bg-accent-500/30",
 };
