@@ -77,6 +77,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
               >
                 <Button
                   variant="outline"
+                  color="primary"
                   size="md"
                   onClick={() => setShowAll(!showAll)}
                 >

@@ -339,7 +339,8 @@ export const ContactSection: React.FC = () => {
 
                   <Button
                     type="submit"
-                    variant="primary"
+                    variant="solid"
+                    color="primary"
                     size="lg"
                     className="w-full"
                     isLoading={isSubmitting}

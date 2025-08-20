@@ -114,7 +114,8 @@ export const AboutSection: React.FC = () => {
                 className="flex-1 sm:flex-none"
               >
                 <Button
-                  variant="primary"
+                  variant="solid"
+                  color="primary"
                   size="md"
                   onClick={handleLearnMore}
                   className="w-full sm:w-auto"
@@ -137,6 +138,7 @@ export const AboutSection: React.FC = () => {
                 >
                   <Button
                     variant="outline"
+                    color="primary"
                     size="md"
                     onClick={() => {
                       // Download CV

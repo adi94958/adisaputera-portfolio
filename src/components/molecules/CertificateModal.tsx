@@ -114,7 +114,8 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                 whileTap={{ scale: 0.98 }}
               >
                 <Button
-                  variant="primary"
+                  variant="solid"
+                  color="primary"
                   size="md"
                   disabled={!imageLoaded}
                   onClick={() => {

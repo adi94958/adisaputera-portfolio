@@ -87,7 +87,8 @@ export const HeroSection: React.FC = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 <Button
-                  variant="primary"
+                  variant="solid"
+                  color="primary"
                   size="md"
                   onClick={() => scrollToSection("projects")}
                   className="w-full sm:w-auto flex items-center gap-2 group"
@@ -109,6 +110,7 @@ export const HeroSection: React.FC = () => {
               >
                 <Button
                   variant="outline"
+                  color="primary"
                   size="md"
                   onClick={() => scrollToSection("contact")}
                   className="w-full sm:w-auto"

@@ -81,7 +81,8 @@ const RoleCard: React.FC<RoleCardProps> = ({ role }) => {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                variant="accent"
+                variant="outline"
+                color="accent"
                 size="sm"
                 onClick={() => setIsModalOpen(true)}
               >

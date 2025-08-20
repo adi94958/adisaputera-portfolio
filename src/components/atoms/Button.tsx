@@ -3,14 +3,16 @@ import { motion } from "framer-motion";
 import { cn } from "../../utils";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "accent" | "outline" | "ghost";
+  variant?: "solid" | "outline" | "ghost";
+  color?: "primary" | "secondary" | "accent";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   children: React.ReactNode;
 }
 
 export const Button: React.FC<ButtonProps> = ({
-  variant = "primary",
+  variant = "solid",
+  color = "primary",
   size = "md",
   isLoading = false,
   className,
@@ -21,17 +23,46 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles =
     "inline-flex items-center justify-center font-semibold rounded-full focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed group";
 
-  const variants = {
-    primary:
-      "bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-2xl border border-transparent",
-    secondary:
-      "bg-secondary-600 hover:bg-secondary-700 text-white shadow-lg hover:shadow-xl",
-    accent:
-      "bg-accent-600 hover:bg-accent-700 text-white shadow-lg hover:shadow-2xl border border-transparent",
-    outline:
-      "border-2 border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-primary-500/20 backdrop-blur-sm",
-    ghost:
-      "text-secondary-700 dark:text-secondary-300 hover:bg-secondary-100/80 dark:hover:bg-secondary-800/80 backdrop-blur-sm border border-transparent hover:border-secondary-200 dark:hover:border-secondary-700",
+  // Color definitions for each color theme
+  const colorStyles = {
+    primary: {
+      solid:
+        "bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-2xl border border-transparent",
+      outline:
+        "border-2 border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-primary-500/20 backdrop-blur-sm",
+      ghost:
+        "text-primary-600 dark:text-primary-400 bg-transparent border-none",
+    },
+    secondary: {
+      solid:
+        "bg-secondary-600 hover:bg-secondary-700 text-white shadow-lg hover:shadow-xl border border-transparent",
+      outline:
+        "border-2 border-secondary-500 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-secondary-500/20 backdrop-blur-sm",
+      ghost:
+        "text-secondary-600 dark:text-secondary-400 bg-transparent border-none",
+    },
+    accent: {
+      solid:
+        "bg-accent-600 hover:bg-accent-700 text-white shadow-lg hover:shadow-2xl border border-transparent",
+      outline:
+        "border-2 border-accent-500 text-accent-600 dark:text-accent-400 hover:bg-accent-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-accent-500/20 backdrop-blur-sm",
+      ghost:
+        "text-accent-600 dark:text-accent-400 bg-transparent border-none",
+    },
+  };
+
+  // Map variant to style type
+  const getButtonStyle = () => {
+    switch (variant) {
+      case "solid":
+        return colorStyles[color].solid;
+      case "outline":
+        return colorStyles[color].outline;
+      case "ghost":
+        return colorStyles[color].ghost;
+      default:
+        return colorStyles[color].solid;
+    }
   };
 
   const sizes = {
@@ -50,7 +81,7 @@ export const Button: React.FC<ButtonProps> = ({
       className="inline-block"
     >
       <button
-        className={cn(baseStyles, variants[variant], sizes[size], className)}
+        className={cn(baseStyles, getButtonStyle(), sizes[size], className)}
         disabled={disabled || isLoading}
         {...props}
       >

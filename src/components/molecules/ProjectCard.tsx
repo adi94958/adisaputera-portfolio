@@ -91,7 +91,8 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
           <div className="flex gap-2">
             <Button
-              variant="primary"
+              variant="solid"
+              color="primary"
               size="sm"
               className="flex-1"
               onClick={() => onViewDetails?.(project)}
@@ -100,6 +101,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             </Button>
             <Button
               variant="outline"
+              color="primary"
               size="sm"
               onClick={() => window.open(project.url, "_blank")}
             >

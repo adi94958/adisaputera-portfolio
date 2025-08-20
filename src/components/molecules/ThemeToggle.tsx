@@ -15,6 +15,7 @@ export const ThemeToggle: React.FC = () => {
     <Button
       onClick={handleToggle}
       variant="ghost"
+      color="primary"
       size="sm"
       className="p-2 text-current hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
       aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
