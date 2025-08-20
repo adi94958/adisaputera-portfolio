@@ -51,18 +51,14 @@ const RoleCard: React.FC<RoleCardProps> = ({ role }) => {
             </Text>
           </div>
 
-          <Badge
-            variant="secondary"
-            size="sm"
-            className="self-start sm:self-auto bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0"
-          >
+          <Badge variant="accent" size="sm">
             {formatDate(role.start_date)} - {formatDate(role.end_date)}
           </Badge>
         </div>
 
         {role.description && (
           <div className="relative">
-            <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-purple-600 rounded-full opacity-40" />
+            <div className="absolute left-0 top-0 w-1 h-full bg-accent-500 rounded-full opacity-60" />
             <Text
               variant="body"
               color="secondary"
@@ -85,7 +81,7 @@ const RoleCard: React.FC<RoleCardProps> = ({ role }) => {
               whileTap={{ scale: 0.95 }}
             >
               <Button
-                variant="outline"
+                variant="accent"
                 size="sm"
                 onClick={() => setIsModalOpen(true)}
               >
@@ -140,7 +136,7 @@ export const OrganizationExperienceCard: React.FC<
       className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white/90 via-white/80 to-white/70 dark:from-gray-800/90 dark:via-gray-800/80 dark:to-gray-900/70 backdrop-blur-xl border border-white/20 dark:border-gray-700/20 shadow-lg"
     >
       {/* Simple decorative accent */}
-      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-bl-full transform translate-x-4 -translate-y-4" />
+      <div className="absolute top-0 right-0 w-16 h-16 bg-accent-500/10 rounded-bl-full transform translate-x-4 -translate-y-4" />
 
       <div className="relative p-6 space-y-4">
         {/* Organization Header */}
@@ -158,7 +154,7 @@ export const OrganizationExperienceCard: React.FC<
                     const target = e.target as HTMLImageElement;
                     const parent = target.parentElement;
                     if (parent) {
-                      parent.innerHTML = `<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">${experience.organization_name.charAt(
+                      parent.innerHTML = `<div class="w-12 h-12 rounded-xl bg-accent-500 flex items-center justify-center text-white font-bold text-lg">${experience.organization_name.charAt(
                         0
                       )}</div>`;
                     }
@@ -166,7 +162,7 @@ export const OrganizationExperienceCard: React.FC<
                 />
               </div>
             ) : (
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg shadow-md flex-shrink-0">
+              <div className="w-16 h-16 rounded-xl bg-accent-500 flex items-center justify-center text-white font-bold text-lg shadow-md flex-shrink-0">
                 {experience.organization_name.charAt(0)}
               </div>
             )}
