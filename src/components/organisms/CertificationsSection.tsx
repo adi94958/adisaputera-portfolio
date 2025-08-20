@@ -145,56 +145,6 @@ export const CertificationsSection: React.FC = () => {
             </Text>
           </motion.div>
         )}
-
-        {/* Statistics Footer */}
-        {certifications.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="mt-16 text-center"
-          >
-            <div className="inline-flex items-center gap-6 px-6 py-4 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-200/50 dark:border-gray-700/50">
-              <div className="text-center">
-                <Text variant="subheading" weight="bold" color="primary">
-                  {certifications.length}
-                </Text>
-                <Text variant="caption" color="muted">
-                  Total Certifications
-                </Text>
-              </div>
-
-              <div className="w-px h-8 bg-gray-300 dark:bg-gray-600" />
-
-              <div className="text-center">
-                <Text variant="subheading" weight="bold" color="accent">
-                  {
-                    certifications.filter(
-                      (cert) =>
-                        !cert.expiry_date ||
-                        new Date(cert.expiry_date) > new Date()
-                    ).length
-                  }
-                </Text>
-                <Text variant="caption" color="muted">
-                  Active
-                </Text>
-              </div>
-
-              <div className="w-px h-8 bg-gray-300 dark:bg-gray-600" />
-
-              <div className="text-center">
-                <Text variant="subheading" weight="bold" color="secondary">
-                  {new Set(certifications.map((cert) => cert.issuer)).size}
-                </Text>
-                <Text variant="caption" color="muted">
-                  Issuers
-                </Text>
-              </div>
-            </div>
-          </motion.div>
-        )}
       </div>
     </section>
   );
