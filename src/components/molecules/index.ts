@@ -9,3 +9,4 @@ export { OrganizationExperienceCard } from './OrganizationExperienceCard';
 export { ThemeToggle } from './ThemeToggle';
 export { TimelineContainer } from './TimelineContainer';
 export { TimelineItem } from './TimelineItem';
+export { CertificateModal } from './CertificateModal';

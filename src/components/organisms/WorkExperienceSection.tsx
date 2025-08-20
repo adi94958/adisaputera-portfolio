@@ -3,7 +3,11 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchWorkExperience } from "../../store/slices/workExperienceSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
-import { WorkExperienceCard, TimelineContainer, TimelineItem } from "../molecules";
+import {
+  WorkExperienceCard,
+  TimelineContainer,
+  TimelineItem,
+} from "../molecules";
 
 export const WorkExperienceSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -65,7 +69,12 @@ export const WorkExperienceSection: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12 space-y-4"
         >
-          <Text variant="heading" weight="bold" color="gradient">
+          <Text
+            variant="heading"
+            weight="bold"
+            color="gradient"
+            className="mb-2"
+          >
             Work Experience
           </Text>
           <Text variant="body" color="muted">

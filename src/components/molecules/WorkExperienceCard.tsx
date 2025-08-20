@@ -40,7 +40,7 @@ export const WorkExperienceCard: React.FC<WorkExperienceCardProps> = ({
               <div className="flex items-start gap-4 mb-3">
                 {/* Company logo or initial - ukuran diperbesar */}
                 {experience.company_logo ? (
-                  <div className="w-16 h-16 rounded-xl bg-white dark:bg-gray-700 shadow-md border-2 border-white dark:border-gray-600 flex items-center justify-center p-2 flex-shrink-0">
+                  <div className="w-16 h-16 rounded-xl bg-white dark:bg-gray-700 shadow-md border-2 border-white dark:border-gray-600 flex items-center justify-center p-1 flex-shrink-0">
                     <img
                       src={`/images/${experience.company_logo}`}
                       alt={experience.company_name}

@@ -7,3 +7,6 @@ export { BackButton } from './BackButton';
 export { ParticleBackground } from './ParticleBackground';
 export { CustomCursor } from './CustomCursor';
 export { Timeline } from './Timeline';
+export { Modal } from './Modal';
+export { ModalHeader } from './ModalHeader';
+export { ModalContent } from './ModalContent';

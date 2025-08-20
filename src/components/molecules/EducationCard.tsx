@@ -32,17 +32,27 @@ export const EducationCard: React.FC<EducationCardProps> = ({ education }) => {
         <div className="space-y-6">
           {/* Header with image and institution */}
           <div className="flex items-start gap-4">
-            {education.image && (
-              <div className="flex-shrink-0">
+            {/* Institution Logo */}
+            {education.image ? (
+              <div className="w-16 h-16 rounded-xl bg-white dark:bg-gray-700 shadow-md border-2 border-white dark:border-gray-600 flex items-center justify-center p-1 flex-shrink-0">
                 <img
                   src={`/images/${education.image}`}
                   alt={education.institution_name}
-                  className="w-16 h-16 rounded-xl object-cover shadow-md border-2 border-white dark:border-gray-700"
+                  className="w-full h-full object-contain"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement;
-                    target.style.display = "none";
+                    const parent = target.parentElement;
+                    if (parent) {
+                      parent.innerHTML = `<div class="w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg">${education.institution_name.charAt(
+                        0
+                      )}</div>`;
+                    }
                   }}
                 />
+              </div>
+            ) : (
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center text-white font-bold text-lg shadow-md flex-shrink-0">
+                {education.institution_name.charAt(0)}
               </div>
             )}
 

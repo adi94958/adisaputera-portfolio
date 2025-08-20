@@ -51,15 +51,20 @@ export interface WorkExperience {
   description: string;
 }
 
-export interface OrganizationExperience {
-  organization_id: string;
-  organization_name: string;
+export interface OrganizationRole {
   position: string;
+  e_certificate: string;
   start_date: string;
   end_date: string;
   description: string;
-  image: string;
-  "e-certificate": string;
+}
+
+export interface OrganizationExperience {
+  organization_id: string;
+  organization_name: string;
+  organization_logo: string;
+  department?: string;
+  roles: OrganizationRole[];
 }
 
 export interface Education {

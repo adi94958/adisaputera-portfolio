@@ -125,7 +125,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({
 
   return (
     <motion.div
-      className="fixed top-0 left-0 pointer-events-none z-[9999]"
+      className="fixed top-0 left-0 pointer-events-none z-[99999]"
       style={{
         x: mousePosition.x - 16, // Center the larger 32px cursor
         y: mousePosition.y - 16,

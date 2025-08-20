@@ -1,16 +1,16 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Card, Text, Badge, Button } from '../atoms';
-import type { Certification } from '../../types';
+import React from "react";
+import { motion } from "framer-motion";
+import { Card, Text, Badge, Button } from "../atoms";
+import type { Certification } from "../../types";
 
 interface CertificationCardProps {
   certification: Certification;
   index?: number;
 }
 
-export const CertificationCard: React.FC<CertificationCardProps> = ({ 
-  certification, 
-  index = 0 
+export const CertificationCard: React.FC<CertificationCardProps> = ({
+  certification,
+  index = 0,
 }) => {
   return (
     <motion.div
@@ -26,7 +26,7 @@ export const CertificationCard: React.FC<CertificationCardProps> = ({
               <span className="text-2xl">📜</span>
             </div>
           </div>
-          
+
           <div className="flex-1">
             <div className="flex justify-between items-start mb-2">
               <Text variant="subheading" weight="semibold" className="flex-1">
@@ -36,15 +36,22 @@ export const CertificationCard: React.FC<CertificationCardProps> = ({
                 {new Date(certification.date).getFullYear()}
               </Badge>
             </div>
-            
-            <Text variant="body" color="primary" weight="medium" className="mb-3">
+
+            <Text
+              variant="body"
+              color="primary"
+              weight="medium"
+              className="mb-3"
+            >
               {certification.issuer}
             </Text>
-            
-            <Button 
-              variant="outline" 
+
+            <Button
+              variant="outline"
               size="sm"
-              onClick={() => window.open(certification.certificate_url, '_blank')}
+              onClick={() =>
+                window.open(certification.certificate_url, "_blank")
+              }
             >
               View Certificate
             </Button>

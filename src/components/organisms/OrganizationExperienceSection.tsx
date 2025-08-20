@@ -3,7 +3,11 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchOrganizationExperience } from "../../store/slices/organizationExperienceSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
-import { OrganizationExperienceCard, TimelineContainer, TimelineItem } from "../molecules";
+import {
+  OrganizationExperienceCard,
+  TimelineContainer,
+  TimelineItem,
+} from "../molecules";
 
 export const OrganizationExperienceSection: React.FC = () => {
   const dispatch = useAppDispatch();
