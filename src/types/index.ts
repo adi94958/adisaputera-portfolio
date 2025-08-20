@@ -94,8 +94,11 @@ export interface Certification {
   certification_id: string;
   title: string;
   issuer: string;
-  date: string;
-  certificate_url: string;
+  issuer_logo: string;
+  issued_date: string;
+  expiry_date: string | null;
+  certificate_url: string | null;
+  certificate_image: string;
 }
 
 export interface Testimonial {

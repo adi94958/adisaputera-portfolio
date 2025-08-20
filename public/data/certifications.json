@@ -1,0 +1,31 @@
+{
+  "certifications": [
+    {
+      "certification_id": "uuid-29",
+      "title": "Junior Web Developer",
+      "issuer": "Badan Nasional Sertifikasi Profesi (BNSP)",
+      "issued_date": "2023-05-01",
+      "expiry_date": "2026-05-01",
+      "certificate_url": null,
+      "certificate_image": "junior-web-dev.jpg"
+    },
+    {
+      "certification_id": "uuid-30",
+      "title": "Junior Web Developer (Vocational School Graduate Academy)",
+      "issuer": "Digital Talent Scholarship",
+      "issued_date": "2023-08-08",
+      "expiry_date": null,
+      "certificate_url": "https://digitalent.komdigi.go.id/cek-sertifikat",
+      "certificate_image": "junior-web-dev-digitalent.jpg"
+    },
+    {
+      "certification_id": "uuid-31",
+      "title": "Junior Software Quality Assurance",
+      "issuer": "Arutala Lab",
+      "issued_date": "2025-07-13",
+      "expiry_date": "2028-07-01",
+      "certificate_url": "https://atms.arutalalab.net/sertifikat/TC2025.J.SWQA.C.07.023",
+      "certificate_image": "junior-SQA.jpg"
+    }
+  ]
+}
