@@ -39,9 +39,27 @@ export const TimelineItem: React.FC<TimelineItemProps> = ({
       } justify-start`}
     >
       {/* Timeline dot - precisely aligned with vertical line */}
-      <div
-        className={`absolute md:left-1/2 md:transform md:-translate-x-1/2 left-4 transform -translate-x-1/2 top-6 w-4 h-4 ${dotColor} rounded-full border-4 border-white dark:border-gray-800 z-10 shadow-lg`}
-      />
+      <motion.div
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className={`absolute md:left-1/2 md:transform md:-translate-x-1/2 left-4 transform -translate-x-1/2 top-6 w-8 h-8 ${dotColor} rounded-full border-4 border-white dark:border-gray-800 z-10`}
+      >
+        {/* Outer glow ring */}
+        <div
+          className={`w-8 h-8 ${dotColor} rounded-full opacity-20 blur-md absolute -inset-2`}
+        />
+
+        {/* Main dot with gradient */}
+        <div
+          className={`relative w-6 h-6 ${dotColor} rounded-full border-4 border-white dark:border-gray-800 shadow-xl`}
+        >
+          {/* Inner shine effect */}
+          <div className="absolute inset-1 bg-white/30 rounded-full" />
+          {/* Pulse animation */}
+          <div
+            className={`absolute -inset-2 ${dotColor} rounded-full opacity-30 animate-ping`}
+          />
+        </div>
+      </motion.div>
 
       {/* Content container */}
       <div
