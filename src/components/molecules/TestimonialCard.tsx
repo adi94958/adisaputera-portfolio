@@ -19,7 +19,7 @@ export const TestimonialCard: React.FC<TestimonialCardProps> = ({
       transition={{ duration: 0.3, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
     >
-      <Card className="h-full hover:shadow-lg transition-all duration-300 relative">
+      <Card className="h-full relative">
         {/* Quote icon */}
         <div className="absolute top-4 right-4 text-primary-200 text-3xl">
           "

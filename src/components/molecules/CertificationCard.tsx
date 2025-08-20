@@ -19,7 +19,7 @@ export const CertificationCard: React.FC<CertificationCardProps> = ({
       transition={{ duration: 0.3, delay: index * 0.1 }}
       whileHover={{ scale: 1.02 }}
     >
-      <Card className="h-full hover:shadow-lg transition-all duration-300">
+      <Card className="h-full">
         <div className="flex items-start gap-4">
           <div className="flex-shrink-0">
             <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-blue-100 rounded-lg flex items-center justify-center">

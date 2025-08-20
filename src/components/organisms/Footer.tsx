@@ -92,8 +92,12 @@ export const Footer: React.FC = () => {
                 <motion.a
                   key={link.label}
                   href={link.href}
-                  className="block text-white/80 hover:text-primary-400 transition-colors duration-200"
-                  whileHover={{ x: 5 }}
+                  className="block text-white/80"
+                  whileHover={{ 
+                    x: 5,
+                    color: "rgb(96 165 250)", // primary-400 equivalent
+                    transition: { duration: 0.2 }
+                  }}
                   onClick={(e) => {
                     e.preventDefault();
                     const element = document.querySelector(link.href);
@@ -143,8 +147,12 @@ export const Footer: React.FC = () => {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <motion.a
               href="#privacy"
-              className="text-white/60 hover:text-primary-400 transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
+              className="text-white/60"
+              whileHover={{ 
+                scale: 1.05,
+                color: "rgb(96 165 250)", // primary-400 equivalent
+                transition: { duration: 0.2 }
+              }}
             >
               <Text variant="caption" color="inherit">
                 Privacy Policy
@@ -152,8 +160,12 @@ export const Footer: React.FC = () => {
             </motion.a>
             <motion.a
               href="#terms"
-              className="text-white/60 hover:text-primary-400 transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
+              className="text-white/60"
+              whileHover={{ 
+                scale: 1.05,
+                color: "rgb(96 165 250)", // primary-400 equivalent
+                transition: { duration: 0.2 }
+              }}
             >
               <Text variant="caption" color="inherit">
                 Terms of Service

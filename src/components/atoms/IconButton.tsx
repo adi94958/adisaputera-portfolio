@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import { cn } from '../../utils';
 
@@ -18,7 +19,7 @@ export const IconButton: React.FC<IconButtonProps> = ({
   disabled,
   ...props
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95';
+  const baseStyles = 'inline-flex items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variants = {
     primary: 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-xl focus:ring-primary-500',
@@ -39,21 +40,28 @@ export const IconButton: React.FC<IconButtonProps> = ({
   };
   
   return (
-    <button
-      className={cn(
-        baseStyles,
-        variants[variant],
-        sizes[size],
-        className
-      )}
-      disabled={disabled || isLoading}
-      {...props}
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ duration: 0.3 }}
+      className="inline-block"
     >
-      {isLoading ? (
-        <Icon icon="mdi:loading" className="animate-spin" width={iconSizes[size]} height={iconSizes[size]} />
-      ) : (
-        <Icon icon={icon} width={iconSizes[size]} height={iconSizes[size]} />
-      )}
-    </button>
+      <button
+        className={cn(
+          baseStyles,
+          variants[variant],
+          sizes[size],
+          className
+        )}
+        disabled={disabled || isLoading}
+        {...props}
+      >
+        {isLoading ? (
+          <Icon icon="mdi:loading" className="animate-spin" width={iconSizes[size]} height={iconSizes[size]} />
+        ) : (
+          <Icon icon={icon} width={iconSizes[size]} height={iconSizes[size]} />
+        )}
+      </button>
+    </motion.div>
   );
 };

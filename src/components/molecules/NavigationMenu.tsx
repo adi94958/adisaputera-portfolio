@@ -164,12 +164,16 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
               e.preventDefault();
               handleItemClick(item.href);
             }}
-            className={`font-medium transition-colors duration-200 relative ${
+            className={`font-medium relative ${
               activeItem === item.href 
                 ? 'text-primary-600 dark:text-primary-400' 
-                : 'text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400'
+                : 'text-secondary-700 dark:text-secondary-300'
             }`}
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ 
+              scale: 1.05,
+              color: activeItem === item.href ? undefined : "rgb(37 99 235)", // primary-600
+              transition: { duration: 0.2 }
+            }}
             whileTap={{ scale: 0.95 }}
           >
             {item.label}
@@ -213,11 +217,20 @@ export const NavigationMenu: React.FC<NavigationMenuProps> = ({
                       e.preventDefault();
                       handleItemClick(item.href);
                     }}
-                    className={`block py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+                    className={`block py-3 px-4 rounded-lg font-medium ${
                       activeItem === item.href
                         ? 'text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900/30'
-                        : 'text-secondary-700 dark:text-secondary-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-secondary-100 dark:hover:bg-secondary-800'
+                        : 'text-secondary-700 dark:text-secondary-300'
                     }`}
+                    whileHover={
+                      activeItem !== item.href
+                        ? {
+                            color: "rgb(37 99 235)", // primary-600
+                            backgroundColor: "rgb(241 245 249)", // secondary-100
+                            transition: { duration: 0.2 }
+                          }
+                        : {}
+                    }
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
