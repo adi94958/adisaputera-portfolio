@@ -24,11 +24,7 @@ export const DetailedViewHeader: React.FC = () => {
           >
             My Professional Journey
           </Text>
-          <Text
-            variant="subheading"
-            color="muted"
-            className="max-w-3xl mx-auto"
-          >
+          <Text variant="subheading" color="muted" className="max-w-3xl">
             Explore my skills, education, experiences, and certifications that
             define my professional growth
           </Text>

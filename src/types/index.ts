@@ -41,6 +41,8 @@ export interface Abilities {
 export interface WorkExperience {
   experience_id: string;
   company_name: string;
+  company_address: string;
+  company_logo: string;
   position: string;
   start_date: string;
   end_date: string;
