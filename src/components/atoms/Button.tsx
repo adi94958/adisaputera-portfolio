@@ -27,25 +27,25 @@ export const Button: React.FC<ButtonProps> = ({
   const colorStyles = {
     primary: {
       solid:
-        "bg-primary-600 hover:bg-primary-700 text-white shadow-lg hover:shadow-2xl border border-transparent",
+        "bg-primary-600 hover:bg-primary-700 text-white shadow-md hover:shadow-lg border border-transparent",
       outline:
-        "border-2 border-primary-500 text-primary-600 dark:text-primary-400 hover:bg-primary-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-primary-500/20 backdrop-blur-sm",
+        "border-2 border-primary-600 text-primary-600 dark:text-primary-400 hover:bg-primary-600 hover:text-white bg-transparent hover:shadow-md hover:shadow-primary-600/20 backdrop-blur-sm",
       ghost:
         "text-primary-600 dark:text-primary-400 bg-transparent border-none",
     },
     secondary: {
       solid:
-        "bg-secondary-600 hover:bg-secondary-700 text-white shadow-lg hover:shadow-xl border border-transparent",
+        "bg-secondary-600 hover:bg-secondary-700 text-white shadow-md hover:shadow-lg border border-transparent",
       outline:
-        "border-2 border-secondary-500 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-secondary-500/20 backdrop-blur-sm",
+        "border-2 border-secondary-500 text-secondary-600 dark:text-secondary-400 hover:bg-secondary-500 hover:text-white bg-transparent hover:shadow-md hover:shadow-secondary-500/20 backdrop-blur-sm",
       ghost:
         "text-secondary-600 dark:text-secondary-400 bg-transparent border-none",
     },
     accent: {
       solid:
-        "bg-accent-600 hover:bg-accent-700 text-white shadow-lg hover:shadow-2xl border border-transparent",
+        "bg-accent-600 hover:bg-accent-700 text-white shadow-md hover:shadow-lg border border-transparent",
       outline:
-        "border-2 border-accent-500 text-accent-600 dark:text-accent-400 hover:bg-accent-500 hover:text-white bg-transparent hover:shadow-lg hover:shadow-accent-500/20 backdrop-blur-sm",
+        "border-2 border-accent-500 text-accent-600 dark:text-accent-400 hover:bg-accent-500 hover:text-white bg-transparent hover:shadow-md hover:shadow-accent-500/20 backdrop-blur-sm",
       ghost:
         "text-accent-600 dark:text-accent-400 bg-transparent border-none",
     },

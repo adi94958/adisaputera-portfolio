@@ -115,7 +115,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               >
                 <Button
                   variant="solid"
-                  color="primary"
+                  color="accent"
                   size="md"
                   disabled={!imageLoaded}
                   onClick={() => {
@@ -159,6 +159,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               >
                 <Button
                   variant="outline"
+                  color="accent"
                   size="md"
                   disabled={!imageLoaded}
                   onClick={() => {
