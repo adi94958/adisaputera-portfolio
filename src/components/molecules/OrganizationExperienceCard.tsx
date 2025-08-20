@@ -16,14 +16,18 @@ export const OrganizationExperienceCard: React.FC<
   );
 
   return (
-    <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <Card>
       <div className="space-y-4">
         <div className="flex flex-col space-y-2">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
             <Text variant="subheading" weight="semibold">
               {experience.position}
             </Text>
-            <Badge variant="secondary" size="sm" className="self-start sm:self-auto">
+            <Badge
+              variant="secondary"
+              size="sm"
+              className="self-start sm:self-auto"
+            >
               {formatDate(experience.start_date)} -{" "}
               {formatDate(experience.end_date)}
             </Badge>
@@ -40,11 +44,7 @@ export const OrganizationExperienceCard: React.FC<
         </div>
 
         {experience.description && (
-          <Text
-            variant="body"
-            color="secondary"
-            className="leading-relaxed"
-          >
+          <Text variant="body" color="secondary" className="leading-relaxed">
             {experience.description}
           </Text>
         )}

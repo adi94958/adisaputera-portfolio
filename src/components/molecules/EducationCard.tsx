@@ -11,7 +11,7 @@ export const EducationCard: React.FC<EducationCardProps> = ({ education }) => {
   const duration = calculateDuration(education.start_date, education.end_date);
 
   return (
-    <Card className="hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+    <Card>
       <div className="space-y-6">
         {/* Header with image and institution */}
         <div className="flex items-start gap-4">

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { cn } from "../../utils";
 
 interface CardProps {
@@ -22,16 +23,26 @@ export const Card: React.FC<CardProps> = ({
   };
 
   return (
-    <div
+    <motion.div
       className={cn(
         "bg-white dark:bg-secondary-800 rounded-xl shadow-lg border border-secondary-200 dark:border-secondary-700",
-        hover &&
-          "hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1",
         paddingStyles[padding],
         className
       )}
+      whileHover={
+        hover
+          ? {
+              y: -4,
+              boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+            }
+          : {}
+      }
+      transition={{
+        duration: 0.3,
+        ease: "easeOut",
+      }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 };
