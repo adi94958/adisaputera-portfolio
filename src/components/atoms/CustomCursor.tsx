@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { ALT_TEXTS } from "../../constants";
 
@@ -14,78 +14,77 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isPointer, setIsPointer] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const frameRef = useRef<number>(0);
+
+  // Disable custom cursor on mobile untuk performa yang lebih baik
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Throttle mouse movement untuk performa yang lebih baik
+  const throttledUpdatePosition = useCallback((e: MouseEvent) => {
+    if (frameRef.current) {
+      cancelAnimationFrame(frameRef.current);
+    }
+    
+    frameRef.current = requestAnimationFrame(() => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
-    };
+    });
+  }, []);
+
+  // Optimasi detection untuk clickable elements  
+  const handleMouseOver = useCallback((e: MouseEvent) => {
+    const target = e.target as HTMLElement;
+    
+    // Simplified check untuk performa yang lebih baik
+    const isClickable = !!(
+      target.closest("button") ||
+      target.closest("a") ||
+      target.closest('[role="button"]') ||
+      target.closest(".cursor-pointer") ||
+      target.onclick !== null
+    );
+
+    setIsPointer(isClickable);
+  }, []);
+
+  useEffect(() => {
+    // Skip setup jika mobile
+    if (isMobile) return;
 
     const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
 
-    const handleMouseOver = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-
-      // Check if the element or its parents have cursor pointer styles
-      const isClickable = !!(
-        target.tagName === "BUTTON" ||
-        target.tagName === "A" ||
-        target.onclick !== null ||
-        target.classList.contains("cursor-pointer") ||
-        target.getAttribute("role") === "button" ||
-        target.closest("button") ||
-        target.closest("a") ||
-        target.closest('[role="button"]') ||
-        target.closest(".cursor-pointer") ||
-        // Check for interactive elements
-        target.closest("input") ||
-        target.closest("textarea") ||
-        target.closest("select")
-      );
-
-      setIsPointer(isClickable);
-    };
-
-    // Add event listeners
-    document.addEventListener("mousemove", updateMousePosition);
-    document.addEventListener("mouseover", handleMouseOver);
+    // Add event listeners dengan throttled function
+    document.addEventListener("mousemove", throttledUpdatePosition, { passive: true });
+    document.addEventListener("mouseover", handleMouseOver, { passive: true });
     document.addEventListener("mouseenter", handleMouseEnter);
     document.addEventListener("mouseleave", handleMouseLeave);
 
     // Cleanup
     return () => {
-      document.removeEventListener("mousemove", updateMousePosition);
+      if (frameRef.current) {
+        cancelAnimationFrame(frameRef.current);
+      }
+      document.removeEventListener("mousemove", throttledUpdatePosition);
       document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [throttledUpdatePosition, handleMouseOver, isMobile]);
 
-  // Check if images are available
-  useEffect(() => {
-    if (normalCursor && pointerCursor) {
-      Promise.all([
-        new Promise((resolve) => {
-          const img = new Image();
-          img.onload = resolve;
-          img.onerror = resolve;
-          img.src = normalCursor;
-        }),
-        new Promise((resolve) => {
-          const img = new Image();
-          img.onload = resolve;
-          img.onerror = resolve;
-          img.src = pointerCursor;
-        }),
-      ]).then(() => {
-        setImagesLoaded(true);
-      });
-    }
-  }, [normalCursor, pointerCursor]);
-
-  if (!isVisible) return null;
+  // Skip rendering jika mobile atau tidak visible
+  if (isMobile || !isVisible) return null;
 
   // SVG Fallback Cursors
   const NormalCursorSVG = () => (
@@ -140,7 +139,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({
         damping: 28,
       }}
     >
-      {imagesLoaded && normalCursor && pointerCursor ? (
+      {normalCursor && pointerCursor ? (
         <motion.img
           src={isPointer ? pointerCursor : normalCursor}
           alt={ALT_TEXTS.CUSTOM_CURSOR}
@@ -150,19 +149,20 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({
           }}
           transition={{
             type: "spring",
-            stiffness: 400,
-            damping: 25,
+            stiffness: 300,
+            damping: 20,
           }}
         />
       ) : (
+        // Simplified SVG fallback
         <motion.div
           animate={{
-            rotate: isPointer ? 15 : 0,
+            scale: isPointer ? 1.2 : 1,
           }}
           transition={{
             type: "spring",
-            stiffness: 400,
-            damping: 25,
+            stiffness: 300,
+            damping: 20,
           }}
         >
           {isPointer ? <PointerCursorSVG /> : <NormalCursorSVG />}

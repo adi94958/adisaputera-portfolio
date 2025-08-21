@@ -85,13 +85,20 @@ export const ParticleBackground: React.FC<ParticleBackgroundProps> = ({
 
     initializeParticles();
 
-    // Mouse move handler - track from window to avoid pointer-events issues
+    // Mouse move handler - throttled untuk performa yang lebih baik
+    let mouseMoveTimeout: ReturnType<typeof setTimeout>;
     const handleMouseMove = (event: MouseEvent) => {
-      mouseRef.current = {
-        x: event.clientX,
-        y: event.clientY,
-        isActive: true
-      };
+      if (mouseMoveTimeout) {
+        clearTimeout(mouseMoveTimeout);
+      }
+      
+      mouseMoveTimeout = setTimeout(() => {
+        mouseRef.current = {
+          x: event.clientX,
+          y: event.clientY,
+          isActive: true
+        };
+      }, 16); // ~60fps throttling
     };
 
     const handleMouseLeave = () => {

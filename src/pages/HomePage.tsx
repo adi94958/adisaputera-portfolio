@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MainLayout } from '../components/templates';
 import { 
   HeroSection, 
   AboutSection, 
-  SkillsSection, 
   ProjectsSection, 
   ContactSection,
-  EducationSection,
-  CertificationsSection,
-  OrganizationExperienceSection,
-  WorkExperienceSection,
-  TestimonialsSection,
   DetailedViewHeader
 } from '../components/organisms';
+
+// Lazy load heavy components untuk performa yang lebih baik
+const SkillsSection = lazy(() => import('../components/organisms').then(module => ({ default: module.SkillsSection })));
+const EducationSection = lazy(() => import('../components/organisms').then(module => ({ default: module.EducationSection })));
+const CertificationsSection = lazy(() => import('../components/organisms').then(module => ({ default: module.CertificationsSection })));
+const OrganizationExperienceSection = lazy(() => import('../components/organisms').then(module => ({ default: module.OrganizationExperienceSection })));
+const WorkExperienceSection = lazy(() => import('../components/organisms').then(module => ({ default: module.WorkExperienceSection })));
+const TestimonialsSection = lazy(() => import('../components/organisms').then(module => ({ default: module.TestimonialsSection })));
+
 import { BUTTON_LABELS } from '../constants';
 import { ERROR_MESSAGES } from '../constants/ui';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
@@ -89,10 +92,10 @@ export const HomePage: React.FC = () => {
     } catch {
       // Handle error silently
     } finally {
-      // Minimum loading time for better UX
+      // Kurangi loading time untuk performa yang lebih baik
       setTimeout(() => {
         setIsInitialLoading(false);
-      }, 1500);
+      }, 800); // Dikurangi dari 1500ms ke 800ms
     }
   }, [dispatch]);
 
@@ -168,7 +171,9 @@ export const HomePage: React.FC = () => {
                   <ProjectsSection onViewProject={handleViewProject} />
                 </section>
                 <section id="testimonials">
-                  <TestimonialsSection />
+                  <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-64 rounded-lg"></div>}>
+                    <TestimonialsSection />
+                  </Suspense>
                 </section>
                 <section id="contact">
                   <ContactSection />
@@ -186,19 +191,29 @@ export const HomePage: React.FC = () => {
               >
                 <DetailedViewHeader />
                 <section id="skills">
-                  <SkillsSection />
+                  <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-64 rounded-lg mx-auto max-w-6xl"></div>}>
+                    <SkillsSection />
+                  </Suspense>
                 </section>
                 <section id="education">
-                  <EducationSection />
+                  <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-64 rounded-lg mx-auto max-w-6xl"></div>}>
+                    <EducationSection />
+                  </Suspense>
                 </section>
                 <section id="experience">
-                  <WorkExperienceSection />
+                  <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-64 rounded-lg mx-auto max-w-6xl"></div>}>
+                    <WorkExperienceSection />
+                  </Suspense>
                 </section>
                 <section id="organization">
-                  <OrganizationExperienceSection />
+                  <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-64 rounded-lg mx-auto max-w-6xl"></div>}>
+                    <OrganizationExperienceSection />
+                  </Suspense>
                 </section>
                 <section id="certifications">
-                  <CertificationsSection />
+                  <Suspense fallback={<div className="animate-pulse bg-gray-200 dark:bg-gray-700 h-64 rounded-lg mx-auto max-w-6xl"></div>}>
+                    <CertificationsSection />
+                  </Suspense>
                 </section>
               </motion.div>
             )}
