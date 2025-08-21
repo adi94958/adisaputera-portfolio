@@ -2,6 +2,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { toggleTheme } from '../../store/slices/themeSlice';
 import { Button } from '../atoms';
+import { ARIA_LABELS } from '../../constants';
 
 export const ThemeToggle: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ export const ThemeToggle: React.FC = () => {
       color="primary"
       size="sm"
       className="p-2 text-current hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
-      aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+      aria-label={isDarkMode ? ARIA_LABELS.SWITCH_TO_LIGHT : ARIA_LABELS.SWITCH_TO_DARK}
     >
       {isDarkMode ? (
         <svg

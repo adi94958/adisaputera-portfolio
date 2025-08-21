@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS } from "../../constants/content";
 
 export const DetailedViewHeader: React.FC = () => {
   return (
@@ -22,11 +23,10 @@ export const DetailedViewHeader: React.FC = () => {
             color="gradient"
             className="mb-4"
           >
-            My Professional Journey
+            {SECTION_TITLES.PROFESSIONAL_JOURNEY}
           </Text>
           <Text variant="subheading" color="muted" className="max-w-3xl">
-            Explore my skills, education, experiences, and certifications that
-            define my professional growth
+            {SECTION_DESCRIPTIONS.PROFESSIONAL_JOURNEY}
           </Text>
         </motion.div>
 

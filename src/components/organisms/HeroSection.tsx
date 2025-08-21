@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { Text, Button } from "../atoms";
 import { useAppSelector } from "../../hooks/redux";
+import { ANIMATION_CONFIG, BUTTON_LABELS } from "../../constants";
 
 export const HeroSection: React.FC = () => {
   const { data: profile } = useAppSelector((state) => state.profile);
@@ -12,7 +13,7 @@ export const HeroSection: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        duration: 0.8,
+        duration: ANIMATION_CONFIG.DURATION.VERY_SLOW,
         staggerChildren: 0.15,
       },
     },
@@ -61,20 +62,19 @@ export const HeroSection: React.FC = () => {
           <div className="space-y-6 order-2 lg:order-1">
             <motion.div variants={itemVariants}>
               <Text variant="subheading" weight="light" color="inherit">
-                {profile?.name || "Muhammad Adi Saputera"}
+                {profile?.name}
               </Text>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <Text variant="display" weight="bold" color="gradient">
-                {profile?.role || "Full Stack Developer"}
+                {profile?.role}
               </Text>
             </motion.div>
 
             <motion.div variants={itemVariants}>
               <Text variant="body" color="secondary" className="max-w-lg">
-                {profile?.role_description ||
-                  "A passionate developer creating beautiful and functional web experiences with modern technologies."}
+                {profile?.role_description}
               </Text>
             </motion.div>
 
@@ -93,7 +93,7 @@ export const HeroSection: React.FC = () => {
                   onClick={() => scrollToSection("projects")}
                   className="w-full sm:w-auto flex items-center gap-2 group"
                 >
-                  View My Work
+                  {BUTTON_LABELS.VIEW_PROJECTS}
                   <motion.div
                     animate={{ x: 0 }}
                     whileHover={{ x: 5 }}
@@ -115,7 +115,7 @@ export const HeroSection: React.FC = () => {
                   onClick={() => scrollToSection("contact")}
                   className="w-full sm:w-auto"
                 >
-                  Get In Touch
+                  {BUTTON_LABELS.GET_IN_TOUCH}
                 </Button>
               </motion.div>
             </motion.div>
@@ -153,18 +153,9 @@ export const HeroSection: React.FC = () => {
                 className="relative z-30"
               >
                 <img
-                  src={
-                    profile?.image_hero
-                      ? `/images/${profile.image_hero}`
-                      : "/images/hero-placeholder.jpg"
-                  }
-                  alt={profile?.name || "Hero Image"}
+                  src={`/images/${profile?.image_hero}`}
+                  alt={profile?.name}
                   className="w-full h-auto rounded-2xl shadow-2xl"
-                  onError={(e) => {
-                    const target = e.target as HTMLImageElement;
-                    target.src =
-                      "https://via.placeholder.com/400x500?text=Hero+Image";
-                  }}
                 />
               </motion.div>
 

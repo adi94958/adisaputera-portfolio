@@ -8,6 +8,15 @@ import {
   TimelineContainer,
   TimelineItem,
 } from "../molecules";
+import { 
+  SLIDE_UP_VARIANTS, 
+  ANIMATION_CONFIG, 
+  VIEWPORT_CONFIG, 
+  LOADING_MESSAGES,
+  ERROR_MESSAGES,
+  SECTION_TITLES,
+  SECTION_DESCRIPTIONS
+} from "../../constants";
 
 export const WorkExperienceSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,10 +36,10 @@ export const WorkExperienceSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text as="h6" variant="heading" weight="bold" color="gradient">
-              Work Experience
+              {SECTION_TITLES.WORK_EXPERIENCE}
             </Text>
             <Text variant="body" color="muted">
-              Loading work experience...
+              {LOADING_MESSAGES.EXPERIENCE}
             </Text>
           </div>
         </div>
@@ -44,10 +53,10 @@ export const WorkExperienceSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Work Experience
+              {SECTION_TITLES.WORK_EXPERIENCE}
             </Text>
             <Text variant="body" color="muted">
-              Error loading work experience: {error}
+              {ERROR_MESSAGES.GENERIC}: {error}
             </Text>
           </div>
         </div>
@@ -63,10 +72,11 @@ export const WorkExperienceSection: React.FC = () => {
     <section className="section-padding bg-gray-50/80 dark:bg-gray-900/80 relative">
       <div className="container relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          variants={SLIDE_UP_VARIANTS}
+          initial="initial"
+          whileInView="animate"
+          transition={{ duration: ANIMATION_CONFIG.DURATION.SLOW }}
+          viewport={VIEWPORT_CONFIG}
           className="text-center mb-12 space-y-4"
         >
           <Text
@@ -75,10 +85,10 @@ export const WorkExperienceSection: React.FC = () => {
             color="gradient"
             className="mb-2"
           >
-            Work Experience
+            {SECTION_TITLES.WORK_EXPERIENCE}
           </Text>
           <Text variant="body" color="muted">
-            My journey through various work roles and responsibilities
+            {SECTION_DESCRIPTIONS.WORK_EXPERIENCE}
           </Text>
         </motion.div>
 

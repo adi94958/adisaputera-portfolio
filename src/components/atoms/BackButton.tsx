@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useAppDispatch } from "../../store/hooks";
 import { goToHomeView } from "../../store/slices/uiSlice";
 import { IconButton } from "./IconButton";
+import { ARIA_LABELS } from "../../constants";
 
 export const BackButton: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -20,7 +21,7 @@ export const BackButton: React.FC = () => {
         variant="ghost"
         size="md"
         className="text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300"
-        aria-label="Back to home"
+        aria-label={ARIA_LABELS.BACK_TO_HOME}
       />
     </motion.div>
   );

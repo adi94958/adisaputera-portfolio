@@ -9,6 +9,7 @@ import {
   slideInFromLeft,
   slideInFromRight,
 } from "../../hooks";
+import { SECTION_TITLES, BUTTON_LABELS, ALT_TEXTS } from "../../constants";
 import { goToDetailedView } from "../../store/slices/uiSlice";
 
 export const AboutSection: React.FC = () => {
@@ -42,18 +43,9 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative max-w-xs sm:max-w-sm lg:max-w-sm xl:max-w-md mx-auto lg:mx-0">
               <img
-                src={
-                  profile?.image_about
-                    ? `/images/${profile.image_about}`
-                    : "/images/about-placeholder.jpg"
-                }
-                alt="About me"
+                src={`/images/${profile?.image_about}`}
+                alt={ALT_TEXTS.ABOUT_IMAGE}
                 className="w-full h-auto rounded-2xl shadow-xl"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src =
-                    "https://via.placeholder.com/500x600?text=About+Image";
-                }}
               />
 
               {/* Floating elements */}
@@ -88,7 +80,7 @@ export const AboutSection: React.FC = () => {
           <div className="space-y-6 order-1 lg:order-2">
             <motion.div variants={slideInFromRight}>
               <Text variant="heading" weight="bold" color="gradient">
-                About Me
+                {SECTION_TITLES.ABOUT}
               </Text>
             </motion.div>
 
@@ -99,8 +91,7 @@ export const AboutSection: React.FC = () => {
                 color="secondary"
                 className="leading-relaxed"
               >
-                {profile?.self_description ||
-                  "I'm a passionate developer with a love for creating beautiful and functional web experiences. My journey in technology has been driven by curiosity and a desire to solve complex problems through elegant code."}
+                {profile?.self_description}
               </Text>
             </motion.div>
 
@@ -120,7 +111,7 @@ export const AboutSection: React.FC = () => {
                   onClick={handleLearnMore}
                   className="w-full sm:w-auto"
                 >
-                  Learn More
+                  {BUTTON_LABELS.LEARN_MORE}
                   <motion.div
                     animate={{ x: 0 }}
                     whileHover={{ x: 5 }}
@@ -149,7 +140,7 @@ export const AboutSection: React.FC = () => {
                     }}
                     className="w-full sm:w-auto"
                   >
-                    Download CV
+                    {BUTTON_LABELS.DOWNLOAD_CV}
                   </Button>
                 </motion.div>
               )}

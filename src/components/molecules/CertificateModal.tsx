@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Modal, ModalHeader, ModalContent, Button } from "../atoms";
+import { BUTTON_LABELS, MODAL_LABELS, EMPTY_STATE_MESSAGES } from "../../constants";
 
 interface CertificateModalProps {
   isOpen: boolean;
@@ -89,7 +90,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                               </svg>
                             </div>
-                            <p class="text-xl font-semibold mb-2 text-center">Certificate Not Found</p>
+                            <p class="text-xl font-semibold mb-2 text-center">${EMPTY_STATE_MESSAGES.CERTIFICATE_NOT_FOUND}</p>
                           </div>
                         `;
                       }}
@@ -148,7 +149,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                       clipRule="evenodd"
                     />
                   </motion.svg>
-                  Download Certificate
+                  {BUTTON_LABELS.DOWNLOAD_CERTIFICATE}
                 </Button>
               </motion.div>
 
@@ -173,7 +174,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                         newWindow.document.write(`
                           <html>
                             <head>
-                              <title>Certificate - ${title}</title>
+                              <title>${MODAL_LABELS.CERTIFICATE_TITLE} - ${title}</title>
                               <style>
                                 body { margin: 0; padding: 20px; background: #f3f4f6; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
                                 img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); }
@@ -211,7 +212,7 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                       d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
                     />
                   </motion.svg>
-                  View Fullscreen
+                  {BUTTON_LABELS.VIEW_FULLSCREEN}
                 </Button>
               </motion.div>
             </div>

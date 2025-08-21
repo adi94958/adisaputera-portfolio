@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Text } from "../atoms";
 import { SkillCard } from "../molecules";
 import { useAppSelector } from "../../hooks/redux";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS, GENERAL_LABELS } from "../../constants";
 
 export const SkillsSection: React.FC = () => {
   const { data: abilities } = useAppSelector((state) => state.abilities);
@@ -40,10 +41,10 @@ export const SkillsSection: React.FC = () => {
           {/* Header */}
           <motion.div variants={itemVariants} className="space-y-4">
             <Text variant="heading" weight="bold" color="gradient">
-              Skills & Expertise
+              {SECTION_TITLES.SKILLS}
             </Text>
             <Text variant="body" color="muted">
-              Here are the technologies and tools I use to bring ideas to life
+              {SECTION_DESCRIPTIONS.SKILLS}
             </Text>
           </motion.div>
 
@@ -51,7 +52,7 @@ export const SkillsSection: React.FC = () => {
           {abilities?.skill_expertise && (
             <motion.div variants={itemVariants} className="space-y-6">
               <Text variant="subheading" weight="semibold" color="secondary">
-                Expertise
+                {GENERAL_LABELS.EXPERTISE}
               </Text>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {abilities.skill_expertise.map((skill, index) => (
@@ -69,7 +70,7 @@ export const SkillsSection: React.FC = () => {
           {abilities?.language_framework && (
             <motion.div variants={itemVariants} className="space-y-6">
               <Text variant="subheading" weight="semibold" color="secondary">
-                Languages & Frameworks
+                {GENERAL_LABELS.LANGUAGES_FRAMEWORKS}
               </Text>
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
                 {abilities.language_framework.map((tech, index) => (
@@ -87,7 +88,7 @@ export const SkillsSection: React.FC = () => {
           {abilities?.tools && (
             <motion.div variants={itemVariants} className="space-y-6">
               <Text variant="subheading" weight="semibold" color="secondary">
-                Tools & Technologies
+                {GENERAL_LABELS.TOOLS_TECHNOLOGIES}
               </Text>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                 {abilities.tools.map((tool, index) => (

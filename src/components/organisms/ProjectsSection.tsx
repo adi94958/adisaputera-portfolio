@@ -8,6 +8,7 @@ import {
   staggerContainerVariants,
   fadeInUp,
 } from "../../hooks";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTON_LABELS, EMPTY_STATE_MESSAGES } from "../../constants";
 import type { Project } from "../../types";
 
 interface ProjectsSectionProps {
@@ -39,10 +40,10 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           {/* Header */}
           <motion.div variants={fadeInUp} className="space-y-4">
             <Text variant="heading" weight="bold" color="gradient">
-              Featured Projects
+              {SECTION_TITLES.PROJECTS}
             </Text>
             <Text variant="body" color="muted" className="max-w-2xl">
-              A showcase of my recent work and creative projects
+              {SECTION_DESCRIPTIONS.PROJECTS}
             </Text>
           </motion.div>
 
@@ -63,7 +64,7 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
           ) : (
             <motion.div variants={fadeInUp} className="text-center py-12">
               <Text variant="body" color="muted">
-                No projects available at the moment.
+                {EMPTY_STATE_MESSAGES.NO_PROJECTS_MOMENT}
               </Text>
             </motion.div>
           )}
@@ -82,8 +83,8 @@ export const ProjectsSection: React.FC<ProjectsSectionProps> = ({
                   onClick={() => setShowAll(!showAll)}
                 >
                   {showAll
-                    ? "Show Less"
-                    : `View All Projects (${projects.length})`}
+                    ? BUTTON_LABELS.SHOW_LESS
+                    : `${BUTTON_LABELS.VIEW_ALL_PROJECTS} (${projects.length})`}
                 </Button>
               </motion.div>
             </motion.div>

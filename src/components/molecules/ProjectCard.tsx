@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Card, Text, Button, Badge } from "../atoms";
+import { BUTTON_LABELS, GENERAL_LABELS } from "../../constants/content";
 import type { Project } from "../../types";
 
 interface ProjectCardProps {
@@ -77,7 +78,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           {project.tech_stack && project.tech_stack.length > 0 && (
             <div className="mb-4">
               <Text variant="caption" color="muted" className="mb-2">
-                Tech Stack:
+                {GENERAL_LABELS.TECH_STACK}:
               </Text>
               <div className="flex flex-wrap gap-1">
                 {project.tech_stack.map((tech, techIndex) => (
@@ -97,7 +98,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               className="flex-1"
               onClick={() => onViewDetails?.(project)}
             >
-              View Details
+              {BUTTON_LABELS.VIEW_DETAILS}
             </Button>
             <Button
               variant="outline"
@@ -105,7 +106,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               size="sm"
               onClick={() => window.open(project.url, "_blank")}
             >
-              Live Demo
+              {BUTTON_LABELS.LIVE_DEMO}
             </Button>
           </div>
         </div>

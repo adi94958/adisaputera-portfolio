@@ -4,6 +4,7 @@ import { fetchTestimonials } from "../../store/slices/testimonialsSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
 import { TestimonialCard } from "../molecules";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS, LOADING_MESSAGES, ERROR_MESSAGES } from "../../constants";
 
 export const TestimonialsSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -23,10 +24,10 @@ export const TestimonialsSection: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <Text variant="heading" className="mb-8">
-              Testimonials
+              {SECTION_TITLES.TESTIMONIALS}
             </Text>
             <Text variant="body" color="muted">
-              Loading testimonials...
+              {LOADING_MESSAGES.TESTIMONIALS}
             </Text>
           </div>
         </div>
@@ -40,10 +41,10 @@ export const TestimonialsSection: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <Text variant="heading" className="mb-8">
-              Testimonials
+              {SECTION_TITLES.TESTIMONIALS}
             </Text>
             <Text variant="body" color="muted">
-              Error loading testimonials: {error}
+              {ERROR_MESSAGES.GENERIC}: {error}
             </Text>
           </div>
         </div>
@@ -67,10 +68,10 @@ export const TestimonialsSection: React.FC = () => {
             color="gradient"
             className="pb-2"
           >
-            What People Say
+            {SECTION_TITLES.TESTIMONIALS}
           </Text>
           <Text variant="body" color="muted" className="max-w-2xl">
-            Feedback from colleagues and clients
+            {SECTION_DESCRIPTIONS.TESTIMONIALS}
           </Text>
         </motion.div>
 

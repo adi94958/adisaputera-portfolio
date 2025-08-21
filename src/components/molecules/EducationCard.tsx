@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Text, Badge } from "../atoms";
 import { formatDateYear, calculateDuration } from "../../utils";
+import { GENERAL_LABELS } from "../../constants/content";
 import type { Education } from "../../types";
 
 interface EducationCardProps {
@@ -116,7 +117,7 @@ export const EducationCard: React.FC<EducationCardProps> = ({ education }) => {
                     size="sm"
                     className="bg-gradient-to-r from-teal-500 to-emerald-600 text-white border-0"
                   >
-                    GPA: {education.gpa}
+                    {GENERAL_LABELS.GPA}: {education.gpa}
                   </Badge>
                 )}
               </div>
@@ -140,7 +141,7 @@ export const EducationCard: React.FC<EducationCardProps> = ({ education }) => {
                   d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
                 />
               </svg>
-              Duration: {duration}
+              {GENERAL_LABELS.DURATION}: {duration}
             </Text>
           </div>
 

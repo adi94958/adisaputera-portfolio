@@ -14,6 +14,8 @@ import {
   TestimonialsSection,
   DetailedViewHeader
 } from '../components/organisms';
+import { BUTTON_LABELS } from '../constants';
+import { ERROR_MESSAGES } from '../constants/ui';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { fetchProfile } from '../store/slices/profileSlice';
 import { fetchAbilities } from '../store/slices/abilitiesSlice';
@@ -51,13 +53,13 @@ const LoadingScreen: React.FC = () => (
 const ErrorDisplay: React.FC<{ message: string; onRetry: () => void }> = ({ message, onRetry }) => (
   <div className="container mx-auto px-4 py-20 text-center">
     <div className="max-w-md mx-auto">
-      <h2 className="text-2xl font-bold text-red-600 mb-4">Oops! Something went wrong</h2>
+      <h2 className="text-2xl font-bold text-red-600 mb-4">{ERROR_MESSAGES.TITLE}</h2>
       <p className="text-secondary-600 mb-6">{message}</p>
       <button
         onClick={onRetry}
         className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
       >
-        Try Again
+        {BUTTON_LABELS.TRY_AGAIN}
       </button>
     </div>
   </div>
@@ -128,7 +130,7 @@ export const HomePage: React.FC = () => {
     return (
       <MainLayout brandName={profile?.brand_name}>
         <ErrorDisplay 
-          message={profileError || projectsError || contactError || 'Failed to load portfolio data'} 
+          message={profileError || projectsError || contactError || ERROR_MESSAGES.PORTFOLIO_LOAD_FAILED} 
           onRetry={loadData}
         />
       </MainLayout>

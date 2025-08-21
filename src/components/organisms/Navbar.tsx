@@ -3,30 +3,20 @@ import { motion } from "framer-motion";
 import { Text, BackButton } from "../atoms";
 import { NavigationMenu, ThemeToggle } from "../molecules";
 import { useAppSelector } from "../../store/hooks";
+import { NAVIGATION } from "../../constants";
 
 interface NavbarProps {
   brandName?: string;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ brandName = "Portfolio" }) => {
+export const Navbar: React.FC<NavbarProps> = ({ brandName }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { viewMode } = useAppSelector((state) => state.ui);
 
-  const homeNavigationItems = [
-    { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
-  ];
+  const homeNavigationItems = NAVIGATION.HOME_ITEMS;
 
-  const detailedNavigationItems = [
-    { label: "Skills & Expertise", href: "#skills" },
-    { label: "Education", href: "#education" },
-    { label: "Work Experience", href: "#experience" },
-    { label: "Organization Experience", href: "#organization" },
-    { label: "Certifications", href: "#certifications" },
-  ];
+  const detailedNavigationItems = NAVIGATION.DETAILED_ITEMS;
 
   const navigationItems =
     viewMode === "detailed" ? detailedNavigationItems : homeNavigationItems;

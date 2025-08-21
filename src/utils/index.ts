@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { TEXT_LIMITS } from '../constants';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -45,7 +46,7 @@ export const calculateDuration = (startDate: string, endDate: string): string =>
   return `${years} year${years !== 1 ? 's' : ''} ${months} month${months !== 1 ? 's' : ''}`;
 };
 
-export const truncateText = (text: string, maxLength: number): string => {
+export const truncateText = (text: string, maxLength: number = TEXT_LIMITS.TRUNCATE_LENGTH): string => {
   if (text.length <= maxLength) return text;
   return text.slice(0, maxLength) + '...';
 };

@@ -4,6 +4,16 @@ import { fetchCertifications } from "../../store/slices/certificationsSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
 import { CertificationCard } from "../molecules";
+import {
+  LOADING_MESSAGES,
+  ERROR_MESSAGES,
+  SECTION_TITLES,
+  SECTION_DESCRIPTIONS,
+  EMPTY_STATE_MESSAGES,
+  SLIDE_UP_VARIANTS,
+  ANIMATION_CONFIG,
+  VIEWPORT_CONFIG
+} from "../../constants";
 
 export const CertificationsSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -23,10 +33,10 @@ export const CertificationsSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Certifications
+              {SECTION_TITLES.CERTIFICATIONS}
             </Text>
             <Text variant="body" color="muted">
-              Loading certifications...
+              {LOADING_MESSAGES.CERTIFICATIONS}
             </Text>
           </div>
         </div>
@@ -40,10 +50,10 @@ export const CertificationsSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Certifications
+              {SECTION_TITLES.CERTIFICATIONS}
             </Text>
             <Text variant="body" color="muted">
-              Error loading certifications: {error}
+              {ERROR_MESSAGES.GENERIC}: {error}
             </Text>
           </div>
         </div>
@@ -63,10 +73,11 @@ export const CertificationsSection: React.FC = () => {
       <div className="container relative z-10">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          variants={SLIDE_UP_VARIANTS}
+          initial="initial"
+          whileInView="animate"
+          transition={{ duration: ANIMATION_CONFIG.DURATION.SLOW }}
+          viewport={VIEWPORT_CONFIG}
           className="text-center mb-16"
         >
           <motion.div
@@ -81,7 +92,7 @@ export const CertificationsSection: React.FC = () => {
               color="gradient"
               className="mb-4"
             >
-              Professional Certifications
+              {SECTION_TITLES.PROFESSIONAL_CERTIFICATIONS}
             </Text>
           </motion.div>
 
@@ -92,8 +103,7 @@ export const CertificationsSection: React.FC = () => {
             viewport={{ once: true }}
           >
             <Text variant="body" color="muted" className="max-w-2xl">
-              Industry-recognized certifications that validate my skills and
-              expertise in software development and quality assurance
+              {SECTION_DESCRIPTIONS.CERTIFICATIONS}
             </Text>
           </motion.div>
         </motion.div>
@@ -138,10 +148,10 @@ export const CertificationsSection: React.FC = () => {
               color="muted"
               className="mb-2"
             >
-              No Certifications Available
+              {EMPTY_STATE_MESSAGES.NO_CERTIFICATIONS}
             </Text>
             <Text variant="body" color="muted">
-              Professional certifications will appear here once they are added
+              {EMPTY_STATE_MESSAGES.NO_CERTIFICATIONS_DESC}
             </Text>
           </motion.div>
         )}

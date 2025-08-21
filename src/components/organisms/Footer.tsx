@@ -4,6 +4,7 @@ import { Text, IconButton } from '../atoms';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { fetchContact } from '../../store/slices/contactSlice';
 import { fetchProfile } from '../../store/slices/profileSlice';
+import { FOOTER_CONTENT, CONTACT_LABELS, NAVIGATION } from '../../constants';
 
 export const Footer: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -25,30 +26,21 @@ export const Footer: React.FC = () => {
     }
   }, [contact]);
 
-  // Default social links sebagai fallback
-  const defaultSocialLinks = [
-    { icon: 'mdi:github', href: 'https://github.com', label: 'GitHub' },
-    { icon: 'mdi:linkedin', href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: 'mdi:twitter', href: 'https://twitter.com', label: 'Twitter' },
-    { icon: 'mdi:instagram', href: 'https://instagram.com', label: 'Instagram' },
-  ];
-
-  // Gunakan data dari API jika ada, atau fallback ke default
-  const socialLinks = (contact?.social_media && Array.isArray(contact.social_media)) 
+  // Gunakan data dari API
+  const socialLinks = contact?.social_media && Array.isArray(contact.social_media) 
     ? contact.social_media.map(social => ({
         icon: social.icon,
         href: social.link,
         label: social.label
       }))
-    : defaultSocialLinks;
+    : [];
 
-  const quickLinks = [
-    { label: 'Home', href: '#home' },
-    { label: 'About', href: '#about' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  const quickLinks = NAVIGATION.ALL_ITEMS.filter(item => 
+    ['#home', '#about', '#skills', '#projects', '#contact'].includes(item.href)
+  ).map(item => ({ 
+    ...item, 
+    href: item.href === '#hero' ? '#home' : item.href 
+  }));
 
   return (
     <footer className="bg-secondary-900 dark:bg-black text-white">
@@ -57,10 +49,10 @@ export const Footer: React.FC = () => {
           {/* Brand & Description */}
           <div className="md:col-span-2 space-y-4">
             <Text variant="subheading" weight="bold" color="inherit">
-              {profile?.brand_name || 'AdiSaputera'}
+              {profile?.brand_name}
             </Text>
             <Text variant="body" color="inherit" className="opacity-80 max-w-md">
-              {profile?.role_description || 'A passionate full-stack developer creating beautiful and functional web experiences with modern technologies.'}
+              {profile?.role_description}
             </Text>
             <div className="flex space-x-3">
               {socialLinks.map((social) => (
@@ -85,7 +77,7 @@ export const Footer: React.FC = () => {
           {/* Quick Links */}
           <div className="space-y-4">
             <Text variant="body" weight="semibold" color="inherit">
-              Quick Links
+              {FOOTER_CONTENT.QUICK_LINKS}
             </Text>
             <nav className="space-y-2">
               {quickLinks.map((link) => (
@@ -117,11 +109,11 @@ export const Footer: React.FC = () => {
           {/* Contact Info */}
           <div className="space-y-4">
             <Text variant="body" weight="semibold" color="inherit">
-              Contact
+              {FOOTER_CONTENT.CONNECT}
             </Text>
             <div className="space-y-2">
               <Text variant="caption" color="inherit" className="opacity-80">
-                {contact?.email || 'adi.saputera@example.com'}
+                {contact?.email}
               </Text>
               {contact?.phone && (
                 <Text variant="caption" color="inherit" className="opacity-80">
@@ -129,10 +121,10 @@ export const Footer: React.FC = () => {
                 </Text>
               )}
               <Text variant="caption" color="inherit" className="opacity-80">
-                {contact?.address || 'Majalengka, West Java, Indonesia'}
+                {contact?.address}
               </Text>
               <Text variant="caption" color="inherit" className="opacity-80">
-                Available for new opportunities
+                {CONTACT_LABELS.STATUS_AVAILABLE}
               </Text>
             </div>
           </div>
@@ -141,7 +133,7 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between">
           <Text variant="caption" color="inherit" className="opacity-60">
-            © {currentYear} {profile?.brand_name || 'AdiSaputera'}. All rights reserved.
+            © {currentYear} {profile?.brand_name}. {FOOTER_CONTENT.RIGHTS_RESERVED}.
           </Text>
           
           <div className="flex space-x-6 mt-4 md:mt-0">
@@ -155,7 +147,7 @@ export const Footer: React.FC = () => {
               }}
             >
               <Text variant="caption" color="inherit">
-                Privacy Policy
+                {FOOTER_CONTENT.PRIVACY_POLICY}
               </Text>
             </motion.a>
             <motion.a
@@ -168,7 +160,7 @@ export const Footer: React.FC = () => {
               }}
             >
               <Text variant="caption" color="inherit">
-                Terms of Service
+                {FOOTER_CONTENT.TERMS_OF_SERVICE}
               </Text>
             </motion.a>
           </div>

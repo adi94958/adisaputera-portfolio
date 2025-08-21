@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { Text, Button, Card } from "../atoms";
 import { fetchContact } from "../../store/slices/contactSlice";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS, BUTTON_LABELS, CONTACT_LABELS, FORM_PLACEHOLDERS } from "../../constants";
 import type { RootState, AppDispatch } from "../../store";
 
 interface ContactFormData {
@@ -48,8 +49,7 @@ export const ContactSection: React.FC = () => {
     setFormData({ name: "", email: "", subject: "", message: "" });
     setIsSubmitting(false);
 
-    // Show success message
-    alert("Message sent successfully!");
+    // Form submitted successfully - handled by parent component
   };
 
   const containerVariants = {
@@ -88,15 +88,14 @@ export const ContactSection: React.FC = () => {
             className="flex flex-col items-center justify-center text-center space-y-6 mb-16"
           >
             <Text variant="display" weight="bold" color="gradient">
-              Get In Touch
+              {SECTION_TITLES.CONTACT}
             </Text>
             <Text
               variant="body"
               color="muted"
               className="max-w-2xl mx-auto text-lg"
             >
-              Have a project in mind or want to collaborate? I'd love to hear
-              from you.
+              {SECTION_DESCRIPTIONS.CONTACT}
             </Text>
           </motion.div>
 
@@ -105,7 +104,7 @@ export const ContactSection: React.FC = () => {
             <motion.div variants={itemVariants} className="space-y-8">
               <div className="space-y-6">
                 <Text variant="subheading" weight="semibold" color="secondary">
-                  Let's Connect
+                  {CONTACT_LABELS.LETS_CONNECT}
                 </Text>
 
                 <div className="space-y-4">
@@ -127,10 +126,10 @@ export const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <Text variant="caption" color="muted">
-                        Email
+                        {CONTACT_LABELS.EMAIL}
                       </Text>
                       <Text variant="body" weight="medium">
-                        {contact?.email || "adi.saputera@example.com"}
+                        {contact?.email}
                       </Text>
                     </div>
                   </div>
@@ -159,10 +158,10 @@ export const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <Text variant="caption" color="muted">
-                        Location
+                        {CONTACT_LABELS.LOCATION}
                       </Text>
                       <Text variant="body" weight="medium">
-                        {contact?.address || "Majalengka, West Java, Indonesia"}
+                        {contact?.address}
                       </Text>
                     </div>
                   </div>
@@ -185,10 +184,10 @@ export const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <Text variant="caption" color="muted">
-                        Status
+                        {CONTACT_LABELS.STATUS}
                       </Text>
                       <Text variant="body" weight="medium">
-                        Available for new opportunities
+                        {CONTACT_LABELS.STATUS_AVAILABLE}
                       </Text>
                     </div>
                   </div>
@@ -198,7 +197,7 @@ export const ContactSection: React.FC = () => {
               {/* Contact Methods */}
               <div className="space-y-4">
                 <Text variant="subheading" weight="semibold" color="secondary">
-                  Preferred Contact
+                  {CONTACT_LABELS.PREFERRED_CONTACT}
                 </Text>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-3 p-3 rounded-lg bg-primary-50 dark:bg-primary-900/30">
@@ -219,10 +218,10 @@ export const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <Text variant="caption" weight="medium" color="primary">
-                        Email (Preferred)
+                        {CONTACT_LABELS.EMAIL_PREFERRED}
                       </Text>
                       <Text variant="small" color="muted">
-                        Usually responds within 24 hours
+                        {CONTACT_LABELS.RESPONDS_WITHIN}
                       </Text>
                     </div>
                   </div>
@@ -245,10 +244,10 @@ export const ContactSection: React.FC = () => {
                     </div>
                     <div>
                       <Text variant="caption" weight="medium" color="accent">
-                        Video Call
+                        {CONTACT_LABELS.VIDEO_CALL}
                       </Text>
                       <Text variant="small" color="muted">
-                        Available for project discussions
+                        {CONTACT_LABELS.AVAILABLE_FOR_DISCUSSIONS}
                       </Text>
                     </div>
                   </div>
@@ -276,7 +275,7 @@ export const ContactSection: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white"
-                        placeholder="Your name"
+                        placeholder={FORM_PLACEHOLDERS.NAME}
                       />
                     </div>
                     <div>
@@ -294,7 +293,7 @@ export const ContactSection: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white"
-                        placeholder="your.email@example.com"
+                        placeholder={FORM_PLACEHOLDERS.EMAIL}
                       />
                     </div>
                   </div>
@@ -314,7 +313,7 @@ export const ContactSection: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white"
-                      placeholder="What's this about?"
+                      placeholder={FORM_PLACEHOLDERS.SUBJECT}
                     />
                   </div>
 
@@ -333,7 +332,7 @@ export const ContactSection: React.FC = () => {
                       required
                       rows={5}
                       className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white resize-none"
-                      placeholder="Tell me about your project or just say hello!"
+                      placeholder={FORM_PLACEHOLDERS.MESSAGE}
                     />
                   </div>
 
@@ -345,7 +344,7 @@ export const ContactSection: React.FC = () => {
                     className="w-full"
                     isLoading={isSubmitting}
                   >
-                    Send Message
+                    {BUTTON_LABELS.SEND_MESSAGE}
                   </Button>
                 </form>
               </Card>

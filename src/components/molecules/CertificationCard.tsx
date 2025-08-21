@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Card, Text, Badge, Button } from "../atoms";
 import { CertificateModal } from "./CertificateModal";
+import { BUTTON_LABELS, CERTIFICATE_LABELS } from "../../constants";
 import type { Certification } from "../../types";
 
 interface CertificationCardProps {
@@ -111,7 +112,7 @@ export const CertificationCard: React.FC<CertificationCardProps> = ({
                   }
                   size="sm"
                 >
-                  Exp: {formatDate(certification.expiry_date)}
+                  {CERTIFICATE_LABELS.EXPIRY_SHORT}: {formatDate(certification.expiry_date)}
                 </Badge>
               )}
             </div>
@@ -132,7 +133,7 @@ export const CertificationCard: React.FC<CertificationCardProps> = ({
                 >
                   <path d="M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9M12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17M12,4.5C7,4.5 2.73,7.61 1,12C2.73,16.39 7,19.5 12,19.5C17,19.5 21.27,16.39 23,12C21.27,7.61 17,4.5 12,4.5Z" />
                 </svg>
-                View Certificate
+                {BUTTON_LABELS.VIEW_CERTIFICATE}
               </Button>
 
               {certification.certificate_url && (
@@ -151,7 +152,7 @@ export const CertificationCard: React.FC<CertificationCardProps> = ({
                   >
                     <path d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
                   </svg>
-                  Verify
+                  {BUTTON_LABELS.VERIFY}
                 </Button>
               )}
             </div>

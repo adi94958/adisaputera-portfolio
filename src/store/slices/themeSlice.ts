@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { THEME_CONFIG, STORAGE_KEYS } from '../../constants';
 
 interface ThemeState {
   isDarkMode: boolean;
@@ -8,14 +9,14 @@ interface ThemeState {
 // Check localStorage or default to dark mode
 const getInitialTheme = (): boolean => {
   if (typeof window !== 'undefined') {
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem(STORAGE_KEYS.THEME);
     if (savedTheme) {
       return savedTheme === 'dark';
     }
     // Default to dark mode instead of system preference
-    return true;
+    return THEME_CONFIG.DEFAULT_DARK;
   }
-  return true; // Default to dark mode
+  return THEME_CONFIG.DEFAULT_DARK; // Default to dark mode
 };
 
 const initialState: ThemeState = {
@@ -30,7 +31,7 @@ const themeSlice = createSlice({
       state.isDarkMode = !state.isDarkMode;
       // Update localStorage and document class
       if (typeof window !== 'undefined') {
-        localStorage.setItem('theme', state.isDarkMode ? 'dark' : 'light');
+        localStorage.setItem(STORAGE_KEYS.THEME, state.isDarkMode ? 'dark' : 'light');
         if (state.isDarkMode) {
           document.documentElement.classList.add('dark');
         } else {
@@ -42,7 +43,7 @@ const themeSlice = createSlice({
       state.isDarkMode = action.payload;
       // Update localStorage and document class
       if (typeof window !== 'undefined') {
-        localStorage.setItem('theme', action.payload ? 'dark' : 'light');
+        localStorage.setItem(STORAGE_KEYS.THEME, action.payload ? 'dark' : 'light');
         if (action.payload) {
           document.documentElement.classList.add('dark');
         } else {

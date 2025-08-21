@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Text, Badge } from "../atoms";
 import { formatDate, calculateDuration } from "../../utils";
+import { GENERAL_LABELS } from "../../constants/content";
 import type { WorkExperience } from "../../types";
 
 interface WorkExperienceCardProps {
@@ -125,7 +126,7 @@ export const WorkExperienceCard: React.FC<WorkExperienceCardProps> = ({
               weight="semibold"
               className="text-gray-700 dark:text-gray-300"
             >
-              Technologies
+              {GENERAL_LABELS.TECHNOLOGIES}
             </Text>
             <div className="flex flex-wrap gap-2">
               {experience.technologies.map((tech, index) => (

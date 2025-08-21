@@ -8,6 +8,7 @@ import {
   TimelineContainer,
   TimelineItem,
 } from "../molecules";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS, ERROR_MESSAGES } from "../../constants";
 
 export const OrganizationExperienceSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -27,7 +28,7 @@ export const OrganizationExperienceSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Organization Experience
+              {SECTION_TITLES.ORGANIZATION_EXPERIENCE}
             </Text>
             <Text variant="body" color="muted">
               Loading organization experience...
@@ -44,10 +45,10 @@ export const OrganizationExperienceSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Organization Experience
+              {SECTION_TITLES.ORGANIZATION_EXPERIENCE}
             </Text>
             <Text variant="body" color="muted">
-              Error loading organization experience: {error}
+              {ERROR_MESSAGES.GENERIC}: {error}
             </Text>
           </div>
         </div>
@@ -70,10 +71,10 @@ export const OrganizationExperienceSection: React.FC = () => {
           className="text-center mb-12 space-y-4"
         >
           <Text variant="heading" weight="bold" color="gradient">
-            Organization Experience
+            {SECTION_TITLES.ORGANIZATION_EXPERIENCE}
           </Text>
           <Text variant="body" color="muted">
-            Leadership and organizational involvement throughout my career
+            {SECTION_DESCRIPTIONS.ORGANIZATION_EXPERIENCE}
           </Text>
         </motion.div>
 

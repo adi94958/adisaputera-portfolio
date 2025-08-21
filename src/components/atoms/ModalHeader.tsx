@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconButton } from './IconButton';
 import { Text } from './Text';
+import { ARIA_LABELS } from '../../constants';
 
 interface ModalHeaderProps {
   title?: string;
@@ -26,7 +27,7 @@ export const ModalHeader: React.FC<ModalHeaderProps> = ({
         variant="ghost"
         size="sm"
         className="ml-auto"
-        aria-label="Close modal"
+        aria-label={ARIA_LABELS.CLOSE_MODAL}
       />
     </div>
   );

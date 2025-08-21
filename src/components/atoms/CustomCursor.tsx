@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { ALT_TEXTS } from "../../constants";
 
 interface CustomCursorProps {
   normalCursor?: string;
@@ -142,7 +143,7 @@ export const CustomCursor: React.FC<CustomCursorProps> = ({
       {imagesLoaded && normalCursor && pointerCursor ? (
         <motion.img
           src={isPointer ? pointerCursor : normalCursor}
-          alt="Custom Cursor"
+          alt={ALT_TEXTS.CUSTOM_CURSOR}
           className="w-8 h-8 object-contain drop-shadow-lg"
           animate={{
             rotate: isPointer ? 15 : 0,

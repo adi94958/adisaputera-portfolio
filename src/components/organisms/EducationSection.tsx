@@ -4,6 +4,7 @@ import { fetchEducation } from "../../store/slices/educationSlice";
 import { motion } from "framer-motion";
 import { Text } from "../atoms";
 import { EducationCard, TimelineContainer, TimelineItem } from "../molecules";
+import { SECTION_TITLES, SECTION_DESCRIPTIONS, LOADING_MESSAGES, ERROR_MESSAGES } from "../../constants";
 
 export const EducationSection: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -23,10 +24,10 @@ export const EducationSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Education
+              {SECTION_TITLES.EDUCATION}
             </Text>
             <Text variant="body" color="muted">
-              Loading education data...
+              {LOADING_MESSAGES.EDUCATION}
             </Text>
           </div>
         </div>
@@ -40,10 +41,10 @@ export const EducationSection: React.FC = () => {
         <div className="container">
           <div className="text-center">
             <Text variant="heading" weight="bold" color="primary">
-              Education
+              {SECTION_TITLES.EDUCATION}
             </Text>
             <Text variant="body" color="muted">
-              Error loading education: {error}
+              {ERROR_MESSAGES.GENERIC}: {error}
             </Text>
           </div>
         </div>
@@ -62,10 +63,10 @@ export const EducationSection: React.FC = () => {
           className="text-center mb-12 space-y-4"
         >
           <Text variant="heading" weight="bold" color="gradient">
-            Education
+            {SECTION_TITLES.EDUCATION}
           </Text>
           <Text variant="body" color="muted">
-            My academic journey and educational background
+            {SECTION_DESCRIPTIONS.EDUCATION}
           </Text>
         </motion.div>
 
