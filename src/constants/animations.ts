@@ -32,18 +32,6 @@ export const SLIDE_UP_VARIANTS = {
   exit: { opacity: 0, y: -20 },
 } as const;
 
-export const SLIDE_DOWN_VARIANTS = {
-  initial: { opacity: 0, y: -20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 20 },
-} as const;
-
-export const SCALE_VARIANTS = {
-  initial: { opacity: 0, scale: 0.8 },
-  animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.8 },
-} as const;
-
 // Viewport Configuration for Framer Motion
 export const VIEWPORT_CONFIG = {
   once: true,
