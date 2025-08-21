@@ -75,8 +75,7 @@ export const HomePage: React.FC = () => {
   const [isInitialLoading, setIsInitialLoading] = useState(true);
 
   // Handle project view (for future project detail page)
-  const handleViewProject = (project: Project) => {
-    console.log('View project:', project);
+  const handleViewProject = (_project: Project) => {
     // TODO: Navigate to project detail page
   };
 
@@ -87,8 +86,8 @@ export const HomePage: React.FC = () => {
         dispatch(fetchProjects()),
         dispatch(fetchContact()),
       ]);
-    } catch (error) {
-      console.error('Failed to load data:', error);
+    } catch {
+      // Handle error silently
     } finally {
       // Minimum loading time for better UX
       setTimeout(() => {
@@ -104,8 +103,8 @@ export const HomePage: React.FC = () => {
         dispatch(fetchOrganizationExperience()),
         dispatch(fetchWorkExperience()),
       ]);
-    } catch (error) {
-      console.error('Failed to load detailed data:', error);
+    } catch {
+      // Handle error silently
     }
   }, [dispatch]);
 

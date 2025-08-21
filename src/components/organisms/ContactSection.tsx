@@ -274,6 +274,7 @@ export const ContactSection: React.FC = () => {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
+                        autoComplete="name"
                         className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white"
                         placeholder={FORM_PLACEHOLDERS.NAME}
                       />
@@ -292,6 +293,7 @@ export const ContactSection: React.FC = () => {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
+                        autoComplete="email"
                         className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white"
                         placeholder={FORM_PLACEHOLDERS.EMAIL}
                       />
@@ -312,6 +314,7 @@ export const ContactSection: React.FC = () => {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
+                      autoComplete="off"
                       className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white"
                       placeholder={FORM_PLACEHOLDERS.SUBJECT}
                     />
@@ -331,6 +334,7 @@ export const ContactSection: React.FC = () => {
                       onChange={handleInputChange}
                       required
                       rows={5}
+                      autoComplete="off"
                       className="w-full px-4 py-2 border border-secondary-300 dark:border-secondary-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:bg-secondary-800 dark:text-white resize-none"
                       placeholder={FORM_PLACEHOLDERS.MESSAGE}
                     />

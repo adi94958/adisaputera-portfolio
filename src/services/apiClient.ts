@@ -1,6 +1,6 @@
 import axios from 'axios';
 import type { AxiosInstance, AxiosResponse, InternalAxiosRequestConfig } from 'axios';
-import { API_CONFIG, AUTH_CONFIG, HTTP_STATUS, ENV } from '../constants';
+import { API_CONFIG, AUTH_CONFIG, HTTP_STATUS } from '../constants';
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({
@@ -18,15 +18,11 @@ apiClient.interceptors.request.use(
       config.headers.Authorization = `Bearer ${token}`;
     }
     
-    // Log request in development
-    if (process.env.NODE_ENV === ENV.DEV) {
-      console.log(`🚀 [API] ${config.method?.toUpperCase()} ${config.url}`);
-    }
+
     
     return config;
   },
   (error) => {
-    console.error('❌ [API] Request error:', error);
     return Promise.reject(error);
   }
 );
@@ -34,10 +30,7 @@ apiClient.interceptors.request.use(
 // Response interceptor
 apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
-    // Log response in development
-    if (process.env.NODE_ENV === ENV.DEV) {
-      console.log(`✅ [API] ${response.config.method?.toUpperCase()} ${response.config.url} - ${response.status}`);
-    }
+
     
     return response;
   },
@@ -50,14 +43,12 @@ apiClient.interceptors.response.use(
     }
     
     if (error.response?.status === HTTP_STATUS.NOT_FOUND) {
-      console.error('❌ [API] Resource not found');
+      // Resource not found
     }
     
     if (error.response?.status >= HTTP_STATUS.INTERNAL_SERVER_ERROR) {
-      console.error('❌ [API] Server error');
+      // Server error
     }
-    
-    console.error('❌ [API] Response error:', error.response?.data || error.message);
     return Promise.reject(error);
   }
 );

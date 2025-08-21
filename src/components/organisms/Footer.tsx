@@ -17,15 +17,6 @@ export const Footer: React.FC = () => {
     dispatch(fetchProfile());
   }, [dispatch]);
 
-  // Debug log untuk melihat struktur data
-  useEffect(() => {
-    if (contact) {
-      console.log('Contact data:', contact);
-      console.log('Social media data:', contact.social_media);
-      console.log('Is social_media array?', Array.isArray(contact.social_media));
-    }
-  }, [contact]);
-
   // Gunakan data dari API
   const socialLinks = contact?.social_media && Array.isArray(contact.social_media) 
     ? contact.social_media.map(social => ({
