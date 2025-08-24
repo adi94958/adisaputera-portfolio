@@ -14,8 +14,8 @@ export const staticData = {
       "Fresh graduate in Informatics Engineering with hands-on experience as Front-End and Full-Stack Developer on academic and industrial projects.",
     self_description:
       "Hi! I'm Muhammad Adi Saputera, a Full-Stack Developer from Majalengka, Indonesia. I recently graduated from Politeknik Negeri Bandung (D3 Informatics Engineering, GPA 3.42). I have experience in building web and mobile applications using Laravel, ReactJS, and Flutter, as well as working in Agile Scrum teams. I’m passionate about web development and quality assurance, and always eager to learn and grow in software engineering.",
-    image_hero: "1000292483.jpg",
-    image_about: "1000000961.jpg",
+    image_hero: "1000292483.webp",
+    image_about: "1000000961.webp",
     cv: "Muhammad Adi Saputera_CV.pdf",
   },
 
@@ -104,26 +104,30 @@ export const staticData = {
 
   work_experience: [
     {
-      experience_id: "uuid-20",
-      company_name: "PT. Padepokan Tujuh Sembilan",
-      company_address: "Bandung, Indonesia",
-      position: "Front-End Developer (Internship)",
-      start_date: "2024-08",
-      end_date: "2024-10",
-      technologies: ["ReactJS", "Redux", "React Router", "Formik", "Yup"],
-      description:
-        "Developed responsive and modular front-end with ReactJS. Implemented Redux, Router, and form handling, while collaborating with cross-functional teams in Agile Scrum.",
-    },
-    {
       experience_id: "uuid-21",
       company_name: "PT. Padepokan Tujuh Sembilan",
-      company_address: "Bandung, Indonesia",
-      position: "Technical Writer (Internship)",
-      start_date: "2024-06",
-      end_date: "2024-07",
-      technologies: ["Google Docs", "Spreadsheet"],
+      company_address: "Bandung, West Java, Indonesia",
+      company_logo: "padepokan-79.webp",
+      position: "Front-End Developer",
+      start_date: "2024-08-30",
+      end_date: "2024-10-10",
+      work_type: "Internship",
+      technologies: ["ReactJS", "Redux", "Material UI"],
       description:
-        "Performed reverse engineering analysis on fintech apps and created Technical Analysis Document (TAD). Documented workflows, data dependencies, and system components.",
+        "Developed responsive and modular front-end components using ReactJS, Redux, and Material UI. Collaborated in an Agile Scrum team with cross-functional members, integrated RESTful APIs, and optimized performance for better user experience.",
+    },
+    {
+      experience_id: "uuid-22",
+      company_name: "PT. Padepokan Tujuh Sembilan",
+      company_address: "Bandung, West Java, Indonesia",
+      company_logo: "padepokan-79.webp",
+      position: "Technical Writer",
+      start_date: "2024-06-20",
+      end_date: "2024-08-30",
+      work_type: "Internship",
+      technologies: ["Spreadsheet", "Google Docs"],
+      description:
+        "Created and maintained Technical Analysis Documentation (TAD) for web and mobile applications. Responsible for structuring system requirements, documenting workflows, and collaborating with developers and analysts to ensure accuracy and clarity of technical documentation.",
     },
   ],
 
@@ -137,7 +141,7 @@ export const staticData = {
       tech_stack: ["Laravel", "Filament", "Flutter", "PostgreSQL"],
       description:
         "Led team to develop a POS system for sales, inventory, and zakat tijarah. Designed database schema (ERD to PDM), implemented transactions with Eloquent ORM & caching, and conducted manual testing with UAT.",
-      image: "pos.png",
+      image: "pos.webp",
     },
     {
       project_id: "uuid-23",
@@ -148,7 +152,7 @@ export const staticData = {
       tech_stack: ["Flutter", "REST API"],
       description:
         "Led front-end team in developing a student teaming app using Flutter. Built responsive modular interfaces and integrated with REST APIs for real-time data communication.",
-      image: "collabu.jpg",
+      image: "collabu.webp",
     },
     {
       project_id: "uuid-24",
@@ -159,7 +163,7 @@ export const staticData = {
       tech_stack: ["Laravel", "ReactJS", "PostgreSQL"],
       description:
         "Led project to build distribution management system. Developed Laravel back-end with role-based authentication & RESTful API, ReactJS front-end with reusable components, and PostgreSQL database integration.",
-      image: "myroti.jpg",
+      image: "myroti.webp",
     },
   ],
 
@@ -172,43 +176,43 @@ export const staticData = {
       roles: [
         {
           position: "Junior Staff",
-          e_certificate: "bem-staff-muda.jpg",
+          e_certificate: "bem-staff-muda.webp",
           start_date: "2023-05-01",
           end_date: "2023-12-01",
           description:
-            "Assisted in planning and executing community service programs, engaged with students, and supported social projects.",
+            "Actively involved in committees such as Eco Series, Social Festival, Safari Mengajar, and KKN Tematik Anantara, supporting event planning, logistics, and execution.",
         },
         {
           position: "Expert Staff",
-          e_certificate: "bem-staff-ahli.jpg",
+          e_certificate: "bem-staff-ahli.webp",
           start_date: "2024-01-01",
           end_date: "2024-12-01",
           description:
-            "Provided expertise and guidance for community engagement projects, mentored junior staff, and coordinated with external partners.",
+            "Guided and supervised junior staff in executing social community programs, ensuring effective coordination, mentoring, and smooth implementation of department activities.",
         },
       ],
     },
     {
       organization_id: "uuid-24",
       organization_name: "HIMAKOM",
-      organization_logo: "himakom.png",
+      organization_logo: "himakom.webp",
       department: "Department of External Affairs",
       roles: [
         {
           position: "Junior Staff",
-          e_certificate: "himakom-staff-muda.jpg",
+          e_certificate: "himakom-staff-muda.webp",
           start_date: "2023-03-01",
           end_date: "2023-12-01",
           description:
-            "Supported student community projects, contributed to open-source initiatives, and facilitated IT knowledge sharing sessions.",
+            "Supported external department activities and assisted in collaborations with other organizations, while participating in student events and outreach programs.",
         },
         {
           position: "Vice Head",
-          e_certificate: "himakom-vice-head.jpg",
+          e_certificate: "himakom-vice-head.webp",
           start_date: "2024-01-01",
           end_date: "2024-12-01",
           description:
-            "Supported student community projects, contributed to open-source initiatives, and facilitated IT knowledge sharing sessions.",
+            "Coordinated department members, worked with the head and expert staff in planning programs, and mentored junior members during project execution.",
         },
       ],
     },
@@ -216,16 +220,30 @@ export const staticData = {
 
   education: [
     {
-      education_id: "uuid-29",
+      education_id: "uuid-25",
       institution_name: "Politeknik Negeri Bandung",
-      level: "Associate Degree (D3)",
-      major: "Informatics Engineering",
-      location: "Bandung, Indonesia",
-      start_date: "2022-08",
-      end_date: "2025-07",
-      gpa: "3.42/4.00",
+      level: "Associate Degree",
+      major: "Computer and Informatics Engineering",
+      location: "Bandung, West Java, Indonesia",
+      start_date: "2022-08-24",
+      end_date: "2025-07-16",
+      gpa: "3.42 / 4.00",
+      image: "polban.webp",
       description:
-        "Studied core informatics subjects: Data Structures, Database, Software Engineering, Web & Mobile Development, Cloud Computing, and Project Management.",
+        "Studied core computer science and software engineering subjects including Data Structures & Algorithms, Database Systems, Software Design, Web Application Development, Mobile Application Development, and Project Management. Gained strong foundation in both front-end and back-end development, with emphasis on building scalable and maintainable systems.",
+    },
+    {
+      education_id: "uuid-26",
+      institution_name: "SMKN 1 Kertajati",
+      level: "Vocational High School",
+      major: "Software Engineering",
+      location: "Majalengka, West Java, Indonesia",
+      start_date: "2019-06-20",
+      end_date: "2022-06-20",
+      gpa: "88.32 / 100",
+      image: "smkn1kertajati.webp",
+      description:
+        "Completed a vocational education focused on software engineering, including programming fundamentals, database design, and application development.",
     },
   ],
 
@@ -234,32 +252,32 @@ export const staticData = {
       certification_id: "uuid-29",
       title: "Junior Web Developer",
       issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-      issuer_logo: "bnsp.png",
+      issuer_logo: "bnsp.webp",
       issued_date: "2023-05-01",
       expiry_date: "2026-05-01",
       certificate_url: null,
-      certificate_image: "sertif-bnsp.jpg",
+      certificate_image: "sertif-bnsp.webp",
     },
     {
       certification_id: "uuid-30",
       title: "Junior Web Developer",
       issuer: "Kominfo",
-      issuer_logo: "kominfo.png",
+      issuer_logo: "kominfo.webp",
       issued_date: "2023-08-08",
       expiry_date: null,
       certificate_url: "https://digitalent.komdigi.go.id/cek-sertifikat",
-      certificate_image: "kominfo-sertif-1.jpg",
+      certificate_image: "kominfo-sertif.webp",
     },
     {
       certification_id: "uuid-31",
       title: "Junior Software Quality Assurance",
       issuer: "Arutala Lab",
-      issuer_logo: "arutala.png",
+      issuer_logo: "arutala.webp",
       issued_date: "2025-07-13",
       expiry_date: "2028-07-01",
       certificate_url:
         "https://atms.arutalalab.net/sertifikat/TC2025.J.SWQA.C.07.023",
-      certificate_image: "junior-SQA.jpg",
+      certificate_image: "junior-SQA.webp",
     },
   ],
 
