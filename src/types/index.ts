@@ -85,9 +85,12 @@ export interface Project {
   project_name: string;
   description: string;
   image: string;
-  url: string;
+  url_demo: string | null;
+  url_repo: string | null;
   tech_stack: string[];
   role: string;
+  date_start: string;
+  date_end: string;
 }
 
 export interface Certification {

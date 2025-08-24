@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Profile } from '../../types';
 
 interface ProfileState {
@@ -18,14 +18,10 @@ const initialState: ProfileState = {
 // Async thunk for fetching profile data
 export const fetchProfile = createAsyncThunk(
   'profile/fetchProfile',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getProfile();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch profile';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return staticData.profile;
   }
 );
 
@@ -54,7 +50,7 @@ const profileSlice = createSlice({
       })
       .addCase(fetchProfile.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch profile data";
       });
   },
 });

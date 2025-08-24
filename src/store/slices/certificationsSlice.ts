@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Certification } from '../../types';
 
 interface CertificationsState {
@@ -18,14 +18,10 @@ const initialState: CertificationsState = {
 // Async thunk for fetching certifications data
 export const fetchCertifications = createAsyncThunk(
   'certifications/fetchCertifications',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getCertifications();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch certifications';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    return staticData.certifications;
   }
 );
 
@@ -54,7 +50,7 @@ const certificationsSlice = createSlice({
       })
       .addCase(fetchCertifications.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch certifications data";
       });
   },
 });

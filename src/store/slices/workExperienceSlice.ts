@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { portfolioApi } from '../../services/portfolioApi';
-import type { WorkExperience } from '../../types';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { staticData } from '../../data/staticData';
+import type { WorkExperience } from "../../types";
 
 interface WorkExperienceState {
   data: WorkExperience[];
@@ -17,15 +17,10 @@ const initialState: WorkExperienceState = {
 // Async thunk for fetching work experience
 export const fetchWorkExperience = createAsyncThunk(
   'workExperience/fetchWorkExperience',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getWorkExperience();
-      return data;
-    } catch (error) {
-      return rejectWithValue(
-        error instanceof Error ? error.message : 'Failed to fetch work experience'
-      );
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 700));
+    return staticData.work_experience;
   }
 );
 
@@ -54,7 +49,7 @@ const workExperienceSlice = createSlice({
       })
       .addCase(fetchWorkExperience.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch work experience data";
       });
   },
 });

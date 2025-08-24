@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Project } from '../../types';
 
 interface ProjectsState {
@@ -18,14 +18,10 @@ const initialState: ProjectsState = {
 // Async thunk for fetching projects data
 export const fetchProjects = createAsyncThunk(
   'projects/fetchProjects',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getProjects();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch projects';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    return staticData.projects;
   }
 );
 
@@ -54,7 +50,7 @@ const projectsSlice = createSlice({
       })
       .addCase(fetchProjects.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch projects data";
       });
   },
 });

@@ -1,6 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { portfolioApi } from '../../services/portfolioApi';
-import type { OrganizationExperience } from '../../types';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { staticData } from '../../data/staticData';
+import type { OrganizationExperience } from "../../types";
 
 interface OrganizationExperienceState {
   data: OrganizationExperience[];
@@ -17,15 +17,10 @@ const initialState: OrganizationExperienceState = {
 // Async thunk for fetching organization experience
 export const fetchOrganizationExperience = createAsyncThunk(
   'organizationExperience/fetchOrganizationExperience',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getOrganizationExperience();
-      return data;
-    } catch (error) {
-      return rejectWithValue(
-        error instanceof Error ? error.message : 'Failed to fetch organization experience'
-      );
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    return staticData.organization_experience;
   }
 );
 
@@ -54,7 +49,7 @@ const organizationExperienceSlice = createSlice({
       })
       .addCase(fetchOrganizationExperience.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch organization experience data";
       });
   },
 });

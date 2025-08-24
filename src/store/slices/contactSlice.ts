@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Contact } from '../../types';
 
 interface ContactState {
@@ -18,14 +18,10 @@ const initialState: ContactState = {
 // Async thunk for fetching contact data
 export const fetchContact = createAsyncThunk(
   'contact/fetchContact',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getContact();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch contact';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 400));
+    return staticData.contact;
   }
 );
 
@@ -54,7 +50,7 @@ const contactSlice = createSlice({
       })
       .addCase(fetchContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch contact data";
       });
   },
 });

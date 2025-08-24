@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Education } from '../../types';
 
 interface EducationState {
@@ -18,14 +18,10 @@ const initialState: EducationState = {
 // Async thunk for fetching education data
 export const fetchEducation = createAsyncThunk(
   'education/fetchEducation',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getEducation();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch education';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 800));
+    return staticData.education;
   }
 );
 
@@ -54,7 +50,7 @@ const educationSlice = createSlice({
       })
       .addCase(fetchEducation.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch education data";
       });
   },
 });

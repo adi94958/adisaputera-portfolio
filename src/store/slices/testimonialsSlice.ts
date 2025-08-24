@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Testimonial } from '../../types';
 
 interface TestimonialsState {
@@ -18,14 +18,10 @@ const initialState: TestimonialsState = {
 // Async thunk for fetching testimonials data
 export const fetchTestimonials = createAsyncThunk(
   'testimonials/fetchTestimonials',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getTestimonials();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch testimonials';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    return staticData.testimonials;
   }
 );
 
@@ -54,7 +50,7 @@ const testimonialsSlice = createSlice({
       })
       .addCase(fetchTestimonials.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch testimonials data";
       });
   },
 });

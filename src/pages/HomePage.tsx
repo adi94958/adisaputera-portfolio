@@ -8,6 +8,7 @@ import {
   ContactSection,
   DetailedViewHeader
 } from '../components/organisms';
+import { ProjectModal } from '../components/molecules';
 
 // Lazy load heavy components untuk performa yang lebih baik
 const SkillsSection = lazy(() => import('../components/organisms').then(module => ({ default: module.SkillsSection })));
@@ -76,10 +77,18 @@ export const HomePage: React.FC = () => {
   const { viewMode } = useAppSelector((state) => state.ui);
   
   const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [isProjectModalOpen, setIsProjectModalOpen] = useState(false);
 
-  // Handle project view (for future project detail page)
-  const handleViewProject = (_project: Project) => {
-    // TODO: Navigate to project detail page
+  // Handle project view modal
+  const handleViewProject = (project: Project) => {
+    setSelectedProject(project);
+    setIsProjectModalOpen(true);
+  };
+
+  const handleCloseProjectModal = () => {
+    setIsProjectModalOpen(false);
+    setSelectedProject(null);
   };
 
   const loadData = React.useCallback(async () => {
@@ -220,6 +229,13 @@ export const HomePage: React.FC = () => {
           </AnimatePresence>
         </motion.div>
       </MainLayout>
+      
+      {/* Project Modal */}
+      <ProjectModal
+        project={selectedProject}
+        isOpen={isProjectModalOpen}
+        onClose={handleCloseProjectModal}
+      />
     </>
   );
 };

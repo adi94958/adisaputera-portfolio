@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import portfolioApi from '../../services/portfolioApi';
+import { staticData } from '../../data/staticData';
 import type { Abilities } from '../../types';
 
 interface AbilitiesState {
@@ -18,14 +18,10 @@ const initialState: AbilitiesState = {
 // Async thunk for fetching abilities data
 export const fetchAbilities = createAsyncThunk(
   'abilities/fetchAbilities',
-  async (_, { rejectWithValue }) => {
-    try {
-      const data = await portfolioApi.getAbilities();
-      return data;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : 'Failed to fetch abilities';
-      return rejectWithValue(errorMessage);
-    }
+  async () => {
+    // Simulate API call with delay
+    await new Promise((resolve) => setTimeout(resolve, 600));
+    return staticData.abilities;
   }
 );
 
@@ -54,7 +50,7 @@ const abilitiesSlice = createSlice({
       })
       .addCase(fetchAbilities.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload as string;
+        state.error = action.error.message || "Failed to fetch abilities data";
       });
   },
 });
