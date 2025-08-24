@@ -142,6 +142,8 @@ export const staticData = {
       description:
         "Led team to develop a POS system for sales, inventory, and zakat tijarah. Designed database schema (ERD to PDM), implemented transactions with Eloquent ORM & caching, and conducted manual testing with UAT.",
       image: "pos.webp",
+      url_demo: null,
+      url_repo: "https://github.com/adi94958/POS-Nurafie-Laravel",
     },
     {
       project_id: "uuid-23",
@@ -153,6 +155,8 @@ export const staticData = {
       description:
         "Led front-end team in developing a student teaming app using Flutter. Built responsive modular interfaces and integrated with REST APIs for real-time data communication.",
       image: "collabu.webp",
+      url_demo: null,
+      url_repo: null,
     },
     {
       project_id: "uuid-24",
@@ -164,6 +168,8 @@ export const staticData = {
       description:
         "Led project to build distribution management system. Developed Laravel back-end with role-based authentication & RESTful API, ReactJS front-end with reusable components, and PostgreSQL database integration.",
       image: "myroti.webp",
+      url_demo: null,
+      url_repo: null,
     },
   ],
 
