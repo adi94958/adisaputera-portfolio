@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { Calendar } from "lucide-react";
 import type { Project } from "../../types";
 import { Badge, Button, Text } from "../atoms";
 

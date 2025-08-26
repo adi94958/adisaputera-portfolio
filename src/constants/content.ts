@@ -89,7 +89,7 @@ export const CERTIFICATE_LABELS = {
 } as const;
 
 // Modal & Popup Labels
-export const MODAL_PROJECT_LABELS = {
+export const MODAL_LABELS = {
   CERTIFICATE_TITLE: "Certificate",
   OVERVIEW: "Overview",
   TECH_STACK: "Tech Stack",

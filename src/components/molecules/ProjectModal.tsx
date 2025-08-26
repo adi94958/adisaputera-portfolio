@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Github, Calendar, Code2, Clock } from "lucide-react";
 import type { Project } from "../../types";
 import { Badge, Text } from "../atoms";
-import { MODAL_PROJECT_LABELS } from "../../constants";
+import { MODAL_LABELS } from "../../constants";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -179,7 +179,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                   className="flex items-center gap-6 mb-2"
                 >
                   <div className="w-1 h-5 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full" />
-                  {MODAL_PROJECT_LABELS.OVERVIEW}
+                  {MODAL_LABELS.OVERVIEW}
                 </Text>
                 <Text align="justify" variant="caption">
                   {project.description}
@@ -202,7 +202,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                     size={24}
                     className="text-indigo-600 dark:text-indigo-400"
                   />
-                  {MODAL_PROJECT_LABELS.TECH_STACK}
+                  {MODAL_LABELS.TECH_STACK}
                 </Text>
                 <div className="flex flex-wrap gap-2">
                   {project.tech_stack.map((tech, index) => (
@@ -260,7 +260,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                   <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
                     <Clock size={14} />
                     <span className="font-medium text-sm">
-                      {MODAL_PROJECT_LABELS.LINKS_UNAVAILABLE}
+                      {MODAL_LABELS.LINKS_UNAVAILABLE}
                     </span>
                   </div>
                 </motion.div>
