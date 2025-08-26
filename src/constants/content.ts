@@ -16,15 +16,19 @@ export const SECTION_TITLES = {
 // Section Descriptions
 export const SECTION_DESCRIPTIONS = {
   WORK_EXPERIENCE: "My journey through various work roles and responsibilities",
-  CERTIFICATIONS: "Industry-recognized certifications that validate my skills and expertise in software development and quality assurance",
+  CERTIFICATIONS:
+    "Industry-recognized certifications that validate my skills and expertise in software development and quality assurance",
   EDUCATION: "My academic background and educational achievements",
-  ORGANIZATION_EXPERIENCE: "Leadership roles and contributions in various organizations",
+  ORGANIZATION_EXPERIENCE:
+    "Leadership roles and contributions in various organizations",
   PROJECTS: "A showcase of my latest work and technical achievements",
   SKILLS: "Technical expertise and professional competencies",
-  ABOUT: "Get to know more about my background, interests, and professional journey",
+  ABOUT:
+    "Get to know more about my background, interests, and professional journey",
   CONTACT: "Let's connect and discuss potential opportunities",
   TESTIMONIALS: "Feedback and recommendations from colleagues and clients",
-  PROFESSIONAL_JOURNEY: "Explore my skills, education, experiences, and certifications that define my professional growth",
+  PROFESSIONAL_JOURNEY:
+    "Explore my skills, education, experiences, and certifications that define my professional growth",
 } as const;
 
 // Button Labels
@@ -55,7 +59,7 @@ export const CONTACT_LABELS = {
   STATUS_AVAILABLE: "Available for new opportunities",
   EMAIL_PREFERRED: "Email (Preferred)",
   RESPONDS_WITHIN: "Usually responds within 24 hours",
-  VIDEO_CALL: "Video Call", 
+  VIDEO_CALL: "Video Call",
   AVAILABLE_FOR_DISCUSSIONS: "Available for project discussions",
   EMAIL: "Email",
   LOCATION: "Location",
@@ -68,7 +72,7 @@ export const CONTACT_LABELS = {
 // Form Placeholders
 export const FORM_PLACEHOLDERS = {
   NAME: "Your name",
-  EMAIL: "your.email@example.com", 
+  EMAIL: "your.email@example.com",
   SUBJECT: "What's this about?",
   MESSAGE: "Tell me about your project or just say hello!",
 } as const;
@@ -85,8 +89,11 @@ export const CERTIFICATE_LABELS = {
 } as const;
 
 // Modal & Popup Labels
-export const MODAL_LABELS = {
+export const MODAL_PROJECT_LABELS = {
   CERTIFICATE_TITLE: "Certificate",
+  OVERVIEW: "Overview",
+  TECH_STACK: "Tech Stack",
+  LINKS_UNAVAILABLE: "Links currently unavailable",
 } as const;
 
 // General Labels
@@ -111,7 +118,8 @@ export const ARIA_LABELS = {
 // Empty State Messages
 export const EMPTY_STATE_MESSAGES = {
   NO_CERTIFICATIONS: "No Certifications Available",
-  NO_CERTIFICATIONS_DESC: "Professional certifications will appear here once they are added",
+  NO_CERTIFICATIONS_DESC:
+    "Professional certifications will appear here once they are added",
   NO_PROJECTS: "No Projects Available",
   NO_PROJECTS_DESC: "Projects will appear here once they are added",
   NO_PROJECTS_MOMENT: "No projects available at the moment.",

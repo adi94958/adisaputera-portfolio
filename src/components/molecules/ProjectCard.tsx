@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
-import { Calendar, ArrowRight } from "lucide-react";
+import { Calendar } from "lucide-react";
 import type { Project } from "../../types";
 import { Badge, Button, Text } from "../atoms";
 
@@ -99,21 +99,25 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 
         {/* Project Info */}
         <div className="mb-3">
-          <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1 line-clamp-2">
+          <Text className="mb-3" variant="subheading" weight="semibold">
             {project.project_name}
-          </h2>
-          <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-            <Calendar size={14} />
-            <span>{formatDateRange()}</span>
+          </Text>
+          <div className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+            <Icon icon="tabler:calendar" width={20} height={20} />
+            <Text variant="caption">{formatDateRange()}</Text>
           </div>
         </div>
 
         {/* Description */}
         <div className="relative">
           <div className="absolute left-0 top-0 w-1 h-full bg-gradient-to-b from-blue-500 to-pink-500 rounded-full opacity-40" />
-          <p className="leading-relaxed pl-4 text-gray-700 dark:text-gray-300 line-clamp-3">
+          <Text
+            variant="body"
+            weight="normal"
+            className="leading-relaxed pl-4  line-clamp-3"
+          >
             {project.description}
-          </p>
+          </Text>
         </div>
 
         {/* Tech Stack */}

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, ExternalLink, Github, Calendar, Code2, Clock } from "lucide-react";
 import type { Project } from "../../types";
 import { Badge, Text } from "../atoms";
+import { MODAL_PROJECT_LABELS } from "../../constants";
 
 interface ProjectModalProps {
   project: Project | null;
@@ -16,14 +17,15 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
   onClose,
 }) => {
   useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
     if (isOpen) {
-      document.body.classList.add("overflow-hidden");
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.classList.remove("overflow-hidden");
+      document.body.style.overflow = originalStyle;
     }
 
     return () => {
-      document.body.classList.remove("overflow-hidden");
+      document.body.style.overflow = originalStyle;
     };
   }, [isOpen]);
 
@@ -128,14 +130,16 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <motion.h1
-                  className="text-2xl font-bold mb-2 text-white/95"
+                <motion.div
+                  className="mb-2"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
                 >
-                  {project.project_name}
-                </motion.h1>
+                  <Text variant="subheading" weight="bold">
+                    {project.project_name}
+                  </Text>
+                </motion.div>
                 <motion.div
                   className="flex flex-col gap-1 text-white/80"
                   initial={{ opacity: 0, y: 20 }}
@@ -170,12 +174,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 transition={{ delay: 0.5 }}
               >
                 <Text
-                  variant="body"
+                  variant="subheading"
                   weight="semibold"
-                  className="flex items-center gap-2 mb-2"
+                  className="flex items-center gap-6 mb-2"
                 >
                   <div className="w-1 h-5 bg-gradient-to-b from-indigo-500 to-purple-600 rounded-full" />
-                  Overview
+                  {MODAL_PROJECT_LABELS.OVERVIEW}
                 </Text>
                 <Text align="justify" variant="caption">
                   {project.description}
@@ -192,13 +196,13 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                 <Text
                   className="flex items-center gap-2 mb-2"
                   weight="semibold"
-                  variant="body"
+                  variant="subheading"
                 >
                   <Code2
-                    size={16}
+                    size={24}
                     className="text-indigo-600 dark:text-indigo-400"
                   />
-                  Tech Stack
+                  {MODAL_PROJECT_LABELS.TECH_STACK}
                 </Text>
                 <div className="flex flex-wrap gap-2">
                   {project.tech_stack.map((tech, index) => (
@@ -256,7 +260,7 @@ const ProjectModal: React.FC<ProjectModalProps> = ({
                   <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
                     <Clock size={14} />
                     <span className="font-medium text-sm">
-                      Links currently unavailable
+                      {MODAL_PROJECT_LABELS.LINKS_UNAVAILABLE}
                     </span>
                   </div>
                 </motion.div>
