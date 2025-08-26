@@ -14,8 +14,8 @@ export const staticData = {
       "Fresh graduate in Informatics Engineering with hands-on experience as Front-End and Full-Stack Developer on academic and industrial projects.",
     self_description:
       "Hi! I'm Muhammad Adi Saputera, a Full-Stack Developer from Majalengka, Indonesia. I recently graduated from Politeknik Negeri Bandung (D3 Informatics Engineering, GPA 3.42). I have experience in building web and mobile applications using Laravel, ReactJS, and Flutter, as well as working in Agile Scrum teams. I’m passionate about web development and quality assurance, and always eager to learn and grow in software engineering.",
-  image_hero: "profile/1000292483.webp",
-  image_about: "profile/1000000961.webp",
+    image_hero: "profile/1000292483.webp",
+    image_about: "profile/1000000961.webp",
     cv: "Muhammad Adi Saputera_CV.pdf",
   },
 
@@ -107,7 +107,7 @@ export const staticData = {
       experience_id: "uuid-21",
       company_name: "PT. Padepokan Tujuh Sembilan",
       company_address: "Bandung, West Java, Indonesia",
-  company_logo: "organization/padepokan-79.webp",
+      company_logo: "organization/padepokan-79.webp",
       position: "Front-End Developer",
       start_date: "2024-08-30",
       end_date: "2024-10-10",
@@ -120,7 +120,7 @@ export const staticData = {
       experience_id: "uuid-22",
       company_name: "PT. Padepokan Tujuh Sembilan",
       company_address: "Bandung, West Java, Indonesia",
-  company_logo: "organization/padepokan-79.webp",
+      company_logo: "organization/padepokan-79.webp",
       position: "Technical Writer",
       start_date: "2024-06-20",
       end_date: "2024-08-30",
@@ -134,14 +134,14 @@ export const staticData = {
   projects: [
     {
       project_id: "uuid-22",
-      project_name: "POS System – Toko Nur'afie (Web & Mobile)",
+      project_name: "POS System Toko Nur'afie",
       role: "Full-Stack Developer",
       date_start: "2025-02",
       date_end: "2025-06",
       tech_stack: ["Laravel", "Filament", "Flutter", "PostgreSQL"],
       description:
         "Led team to develop a POS system for sales, inventory, and zakat tijarah. Designed database schema (ERD to PDM), implemented transactions with Eloquent ORM & caching, and conducted manual testing with UAT.",
-  image: "projects/pos.webp",
+      image: "projects/pos.webp",
       url_demo: null,
       url_repo: "https://github.com/adi94958/POS-Nurafie-Laravel",
     },
@@ -154,7 +154,7 @@ export const staticData = {
       tech_stack: ["Flutter", "REST API"],
       description:
         "Led front-end team in developing a student teaming app using Flutter. Built responsive modular interfaces and integrated with REST APIs for real-time data communication.",
-  image: "projects/collabu.webp",
+      image: "projects/collabu.webp",
       url_demo: null,
       url_repo: null,
     },
@@ -167,7 +167,7 @@ export const staticData = {
       tech_stack: ["Laravel", "ReactJS", "PostgreSQL"],
       description:
         "Led project to build distribution management system. Developed Laravel back-end with role-based authentication & RESTful API, ReactJS front-end with reusable components, and PostgreSQL database integration.",
-  image: "projects/myroti.webp",
+      image: "projects/myroti.webp",
       url_demo: null,
       url_repo: null,
     },
@@ -177,7 +177,7 @@ export const staticData = {
     {
       organization_id: "uuid-23",
       organization_name: "BEM POLBAN",
-  organization_logo: "organization/bem.webp",
+      organization_logo: "organization/bem.webp",
       department: "Department of Social Community",
       roles: [
         {
@@ -201,7 +201,7 @@ export const staticData = {
     {
       organization_id: "uuid-24",
       organization_name: "HIMAKOM",
-  organization_logo: "organization/himakom.webp",
+      organization_logo: "organization/himakom.webp",
       department: "Department of External Affairs",
       roles: [
         {
@@ -234,7 +234,7 @@ export const staticData = {
       start_date: "2022-08-24",
       end_date: "2025-07-16",
       gpa: "3.42 / 4.00",
-  image: "education/polban.webp",
+      image: "education/polban.webp",
       description:
         "Studied core computer science and software engineering subjects including Data Structures & Algorithms, Database Systems, Software Design, Web Application Development, Mobile Application Development, and Project Management. Gained strong foundation in both front-end and back-end development, with emphasis on building scalable and maintainable systems.",
     },
@@ -247,7 +247,7 @@ export const staticData = {
       start_date: "2019-06-20",
       end_date: "2022-06-20",
       gpa: "88.32 / 100",
-  image: "education/smkn1kertajati.webp",
+      image: "education/smkn1kertajati.webp",
       description:
         "Completed a vocational education focused on software engineering, including programming fundamentals, database design, and application development.",
     },
@@ -258,21 +258,21 @@ export const staticData = {
       certification_id: "uuid-29",
       title: "Junior Web Developer",
       issuer: "Badan Nasional Sertifikasi Profesi (BNSP)",
-    issuer_logo: "certifications/bnsp.webp",
-    issued_date: "2023-05-01",
-    expiry_date: "2026-05-01",
-    certificate_url: null,
-    certificate_image: "certifications/sertif-bnsp.webp",
+      issuer_logo: "certifications/bnsp.webp",
+      issued_date: "2023-05-01",
+      expiry_date: "2026-05-01",
+      certificate_url: null,
+      certificate_image: "certifications/sertif-bnsp.webp",
     },
     {
       certification_id: "uuid-30",
       title: "Junior Web Developer",
       issuer: "Kominfo",
-  issuer_logo: "certifications/kominfo.webp",
-  issued_date: "2023-08-08",
-  expiry_date: null,
-  certificate_url: "https://digitalent.komdigi.go.id/cek-sertifikat",
-  certificate_image: "certifications/kominfo-sertif.webp",
+      issuer_logo: "certifications/kominfo.webp",
+      issued_date: "2023-08-08",
+      expiry_date: null,
+      certificate_url: "https://digitalent.komdigi.go.id/cek-sertifikat",
+      certificate_image: "certifications/kominfo-sertif.webp",
     },
     {
       certification_id: "uuid-31",

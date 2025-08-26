@@ -9,7 +9,9 @@ interface BadgeProps {
     | "accent"
     | "success"
     | "warning"
-    | "error";
+    | "error"
+    | "backdrop"
+    | "outline";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -33,6 +35,9 @@ export const Badge: React.FC<BadgeProps> = ({
     warning:
       "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300",
     error: "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300",
+    backdrop: "bg-white/20 backdrop-blur-sm",
+    outline:
+      "inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/80 dark:bg-gray-800/80 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700",
   };
 
   const sizes = {
