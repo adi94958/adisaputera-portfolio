@@ -28,57 +28,40 @@ A modern, responsive portfolio website built with ReactJS, featuring atomic desi
 
 ```
 src/
-├── components/
+├── assets/              # Static assets like images, fonts, etc.
+├── components/          # React components organized by atomic design
 │   ├── atoms/           # Basic building blocks
-│   │   ├── Button.tsx
-│   │   ├── Card.tsx
-│   │   ├── Text.tsx
-│   │   ├── Badge.tsx
-│   │   └── IconButton.tsx
 │   ├── molecules/       # Simple combinations of atoms
-│   │   ├── SkillCard.tsx
-│   │   ├── ProjectCard.tsx
-│   │   ├── ExperienceCard.tsx
-│   │   └── NavigationMenu.tsx
 │   ├── organisms/       # Complex UI components
-│   │   ├── Navbar.tsx
-│   │   ├── HeroSection.tsx
-│   │   ├── AboutSection.tsx
-│   │   ├── SkillsSection.tsx
-│   │   ├── ProjectsSection.tsx
-│   │   ├── ContactSection.tsx
-│   │   └── Footer.tsx
 │   └── templates/       # Page layouts
-│       └── MainLayout.tsx
+├── constants/           # Constants and configuration files
+├── data/                # Static data for the application
+├── hooks/               # Custom React hooks
 ├── pages/               # Page components
-│   └── HomePage.tsx
+├── services/            # API services and client setup
 ├── store/               # Redux store and slices
-│   ├── slices/
-│   │   ├── profileSlice.ts
-│   │   ├── abilitiesSlice.ts
-│   │   └── projectsSlice.ts
-│   └── index.ts
-├── services/            # API services
-│   ├── apiClient.ts
-│   └── portfolioApi.ts
-├── hooks/               # Custom hooks
-│   └── redux.ts
 ├── types/               # TypeScript type definitions
-│   └── index.ts
 ├── utils/               # Utility functions
-│   └── index.ts
-└── constants/           # Constants and configuration
+├── App.css              # Global CSS styles
+├── App.tsx              # Main App component
+├── index.css            # Global Tailwind CSS imports
+├── main.tsx             # Application entry point
+├── vite-env.d.ts        # Vite environment types
 ```
+
+This structure ensures a clean and maintainable codebase, following best practices for React and TypeScript projects.
 
 ## 🔧 Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <repository-url>
    cd Porto V2
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
@@ -86,23 +69,27 @@ src/
 3. **Set up API endpoints**
    Update the base URL in `src/services/apiClient.ts` if needed:
    ```typescript
-   const BASE_URL = 'http://localhost:3000';
+   const BASE_URL = "http://localhost:3000";
    ```
 
 ## 🚀 Running the Application
 
 ### Development Mode
+
 ```bash
 npm run dev
 ```
+
 The application will be available at `http://localhost:5173`
 
 ### Production Build
+
 ```bash
 npm run build
 ```
 
 ### Preview Production Build
+
 ```bash
 npm run preview
 ```
@@ -122,16 +109,20 @@ The application expects the following API endpoints:
 ## 🎨 Design System
 
 ### Colors
+
 - **Primary**: Blue shades for main actions and highlights
 - **Secondary**: Gray shades for text and backgrounds
 - **Accent**: Purple shades for special elements
 
 ### Typography
+
 - **Font**: Inter (primary), JetBrains Mono (code)
 - **Scale**: Display, Heading, Subheading, Body, Caption, Small
 
 ### Components
+
 All components follow atomic design principles:
+
 - **Atoms**: Basic elements (buttons, text, cards)
 - **Molecules**: Simple component combinations
 - **Organisms**: Complex sections
@@ -141,11 +132,13 @@ All components follow atomic design principles:
 ## 🔄 State Management
 
 Redux Toolkit is used for state management with the following slices:
+
 - `profileSlice`: User profile data
 - `abilitiesSlice`: Skills and technologies
 - `projectsSlice`: Portfolio projects
 
 Each slice includes:
+
 - Async thunks for API calls
 - Loading and error states
 - Type-safe actions and reducers
@@ -153,6 +146,7 @@ Each slice includes:
 ## 🎭 Animations
 
 Framer Motion provides smooth animations:
+
 - Page transitions
 - Component entrance animations
 - Hover effects
@@ -162,6 +156,7 @@ Framer Motion provides smooth animations:
 ## 📱 Responsive Design
 
 The website is fully responsive with breakpoints:
+
 - Mobile: `< 768px`
 - Tablet: `768px - 1024px`
 - Desktop: `> 1024px`
@@ -169,6 +164,7 @@ The website is fully responsive with breakpoints:
 ## 🔧 Development
 
 ### Code Structure Guidelines
+
 1. Follow atomic design principles
 2. Use TypeScript for type safety
 3. Implement proper error handling
@@ -176,6 +172,7 @@ The website is fully responsive with breakpoints:
 5. Maintain consistent naming conventions
 
 ### Adding New Components
+
 1. Create component in appropriate atomic level
 2. Export from index file
 3. Add TypeScript interfaces
@@ -183,6 +180,7 @@ The website is fully responsive with breakpoints:
 5. Add animations where appropriate
 
 ### Adding New API Endpoints
+
 1. Define types in `src/types/index.ts`
 2. Add service methods in `src/services/portfolioApi.ts`
 3. Create Redux slice if needed
@@ -191,6 +189,7 @@ The website is fully responsive with breakpoints:
 ## 🌟 Features in Detail
 
 ### Homepage Sections
+
 - **Hero**: Introduction with call-to-action
 - **About**: Personal information and background
 - **Skills**: Technical expertise display
@@ -198,6 +197,7 @@ The website is fully responsive with breakpoints:
 - **Contact**: Contact form and information
 
 ### Interactive Elements
+
 - Smooth scrolling navigation
 - Hover animations
 - Loading states
@@ -227,7 +227,8 @@ This project is licensed under the MIT License.
 ## 📞 Support
 
 For questions or issues, please contact:
-- Email: adi.saputera@example.com
+
+- Email: adi94958@gmail.com
 - Location: Majalengka, West Java, Indonesia
 
 ---
