@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <title>AS CoinWatch - Icon (Text-based)</title>
+  <rect x="0" y="0" width="1024" height="1024" rx="180" ry="180" fill="#00B4FF"/>
+  <!-- Fine-tuned positions to better match the reference -->
+  <g fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-weight="700">
+    <!-- "A" -->
+    <text x="220" y="690" font-size="560" letter-spacing="-8">A</text>
+    <!-- "$" with slightly larger size and lowered baseline to mimic overshoot -->
+    <text x="520" y="705" font-size="570" letter-spacing="-12">$</text>
+  </g>
+</svg>
+

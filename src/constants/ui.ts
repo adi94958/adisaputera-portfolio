@@ -1,6 +1,6 @@
 // Theme Configuration
 export const THEME_CONFIG = {
-  STORAGE_KEY: 'theme-preference',
+  STORAGE_KEY: "theme-preference",
   DEFAULT_DARK: false,
 } as const;
 
@@ -9,7 +9,6 @@ export const NAVIGATION = {
   HOME_ITEMS: [
     { label: "Home", href: "#home" },
     { label: "About", href: "#about" },
-    { label: "Projects", href: "#projects" },
     { label: "Contact", href: "#contact" },
   ],
   DETAILED_ITEMS: [
@@ -20,13 +19,13 @@ export const NAVIGATION = {
     { label: "Certifications", href: "#certifications" },
   ],
   ALL_ITEMS: [
-    { href: '#hero', label: 'Home' },
-    { href: '#about', label: 'About' },
-    { href: '#skills', label: 'Skills' },
-    { href: '#experience', label: 'Experience' },
-    { href: '#education', label: 'Education' },
-    { href: '#projects', label: 'Projects' },
-    { href: '#contact', label: 'Contact' },
+    { href: "#hero", label: "Home" },
+    { href: "#about", label: "About" },
+    { href: "#skills", label: "Skills" },
+    { href: "#experience", label: "Experience" },
+    { href: "#education", label: "Education" },
+    { href: "#projects", label: "Projects" },
+    { href: "#contact", label: "Contact" },
   ],
 };
 
@@ -37,16 +36,16 @@ export const TEXT_LIMITS = {
 
 // Loading States
 export const LOADING_MESSAGES = {
-  DEFAULT: 'Loading...',
-  EXPERIENCE: 'Loading experience...',
-  EDUCATION: 'Loading education...',
-  TESTIMONIALS: 'Loading testimonials...',
-  CERTIFICATIONS: 'Loading certifications...',
+  DEFAULT: "Loading...",
+  EXPERIENCE: "Loading experience...",
+  EDUCATION: "Loading education...",
+  TESTIMONIALS: "Loading testimonials...",
+  CERTIFICATIONS: "Loading certifications...",
 } as const;
 
 // Error Messages
 export const ERROR_MESSAGES = {
   TITLE: "Oops! Something went wrong",
-  GENERIC: 'Something went wrong. Please try again.',
-  PORTFOLIO_LOAD_FAILED: 'Failed to load portfolio data',
+  GENERIC: "Something went wrong. Please try again.",
+  PORTFOLIO_LOAD_FAILED: "Failed to load portfolio data",
 } as const;

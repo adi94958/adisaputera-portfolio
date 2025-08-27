@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Text, IconButton } from '../atoms';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { fetchContact } from '../../store/slices/contactSlice';
-import { fetchProfile } from '../../store/slices/profileSlice';
-import { FOOTER_CONTENT, CONTACT_LABELS, NAVIGATION } from '../../constants';
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import { Text, IconButton } from "../atoms";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { fetchContact } from "../../store/slices/contactSlice";
+import { fetchProfile } from "../../store/slices/profileSlice";
+import { FOOTER_CONTENT, CONTACT_LABELS, NAVIGATION } from "../../constants";
 
 export const Footer: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,19 +18,20 @@ export const Footer: React.FC = () => {
   }, [dispatch]);
 
   // Gunakan data dari API
-  const socialLinks = contact?.social_media && Array.isArray(contact.social_media) 
-    ? contact.social_media.map(social => ({
-        icon: social.icon,
-        href: social.link,
-        label: social.label
-      }))
-    : [];
+  const socialLinks =
+    contact?.social_media && Array.isArray(contact.social_media)
+      ? contact.social_media.map((social) => ({
+          icon: social.icon,
+          href: social.link,
+          label: social.label,
+        }))
+      : [];
 
-  const quickLinks = NAVIGATION.ALL_ITEMS.filter(item => 
-    ['#home', '#about', '#skills', '#projects', '#contact'].includes(item.href)
-  ).map(item => ({ 
-    ...item, 
-    href: item.href === '#hero' ? '#home' : item.href 
+  const quickLinks = NAVIGATION.ALL_ITEMS.filter((item) =>
+    ["#home", "#about", "#skills", "#contact"].includes(item.href)
+  ).map((item) => ({
+    ...item,
+    href: item.href === "#hero" ? "#home" : item.href,
   }));
 
   return (
@@ -42,7 +43,11 @@ export const Footer: React.FC = () => {
             <Text variant="subheading" weight="bold" color="inherit">
               {profile?.brand_name}
             </Text>
-            <Text variant="body" color="inherit" className="opacity-80 max-w-md">
+            <Text
+              variant="body"
+              color="inherit"
+              className="opacity-80 max-w-md"
+            >
               {profile?.role_description}
             </Text>
             <div className="flex space-x-3">
@@ -76,16 +81,16 @@ export const Footer: React.FC = () => {
                   key={link.label}
                   href={link.href}
                   className="block text-white/80"
-                  whileHover={{ 
+                  whileHover={{
                     x: 5,
                     color: "rgb(96 165 250)", // primary-400 equivalent
-                    transition: { duration: 0.2 }
+                    transition: { duration: 0.2 },
                   }}
                   onClick={(e) => {
                     e.preventDefault();
                     const element = document.querySelector(link.href);
                     if (element) {
-                      element.scrollIntoView({ behavior: 'smooth' });
+                      element.scrollIntoView({ behavior: "smooth" });
                     }
                   }}
                 >
@@ -124,17 +129,18 @@ export const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between">
           <Text variant="caption" color="inherit" className="opacity-60">
-            © {currentYear} {profile?.brand_name}. {FOOTER_CONTENT.RIGHTS_RESERVED}.
+            © {currentYear} {profile?.brand_name}.{" "}
+            {FOOTER_CONTENT.RIGHTS_RESERVED}.
           </Text>
-          
+
           <div className="flex space-x-6 mt-4 md:mt-0">
             <motion.a
               href="#privacy"
               className="text-white/60"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 color: "rgb(96 165 250)", // primary-400 equivalent
-                transition: { duration: 0.2 }
+                transition: { duration: 0.2 },
               }}
             >
               <Text variant="caption" color="inherit">
@@ -144,10 +150,10 @@ export const Footer: React.FC = () => {
             <motion.a
               href="#terms"
               className="text-white/60"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 color: "rgb(96 165 250)", // primary-400 equivalent
-                transition: { duration: 0.2 }
+                transition: { duration: 0.2 },
               }}
             >
               <Text variant="caption" color="inherit">
