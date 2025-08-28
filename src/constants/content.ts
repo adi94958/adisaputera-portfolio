@@ -4,7 +4,7 @@ export const SECTION_TITLES = {
   PROFESSIONAL_CERTIFICATIONS: "Professional Certifications",
   EDUCATION: "Education",
   ORGANIZATION_EXPERIENCE: "Organization Experience",
-  PROJECTS: "Featured Projects",
+  PROJECTS: "Projects Experience",
   SKILLS: "Skills & Expertise",
   ABOUT: "About Me",
   CONTACT: "Get in Touch",

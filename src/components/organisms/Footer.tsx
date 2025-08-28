@@ -28,7 +28,7 @@ export const Footer: React.FC = () => {
       : [];
 
   const quickLinks = NAVIGATION.ALL_ITEMS.filter((item) =>
-    ["#home", "#about", "#skills", "#contact"].includes(item.href)
+    ["#home", "#about", "#projects", "#contact"].includes(item.href)
   ).map((item) => ({
     ...item,
     href: item.href === "#hero" ? "#home" : item.href,

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Icon } from "@iconify/react";
 import { Text, Button } from "../atoms";
@@ -7,6 +7,16 @@ import { ANIMATION_CONFIG, BUTTON_LABELS } from "../../constants";
 
 export const HeroSection: React.FC = () => {
   const { data: profile } = useAppSelector((state) => state.profile);
+
+  useEffect(() => {
+    // Ensure no horizontal overflow on initial load
+    document.body.style.overflowX = "hidden";
+
+    return () => {
+      // Cleanup overflow style
+      document.body.style.overflowX = "";
+    };
+  }, []);
 
   const containerVariants = {
     hidden: { opacity: 0 },
