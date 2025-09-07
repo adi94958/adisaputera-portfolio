@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { PayloadAction } from '@reduxjs/toolkit';
 import { staticData } from '../../data/staticData';
 import type { Certification } from '../../types';
 
@@ -43,7 +42,7 @@ const certificationsSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchCertifications.fulfilled, (state, action: PayloadAction<Certification[]>) => {
+      .addCase(fetchCertifications.fulfilled, (state, action) => {
         state.loading = false;
         state.data = action.payload;
         state.error = null;

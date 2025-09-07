@@ -409,6 +409,8 @@ export const staticData = {
       issuer: "InfaDigital Foundation",
       issuer_logo: "certifications/infradigital.webp",
       issued_date: "2021-07-05",
+      expiry_date: null,
+      certificate_url: null,
       certificate_image: "certifications/infradigital-sertif.webp",
     },
     {
@@ -417,6 +419,7 @@ export const staticData = {
       issuer: "Seamolec",
       issuer_logo: "certifications/seamolec.webp",
       issued_date: "2020-11-17",
+      expiry_date: null,
       certificate_url:
         "http://etraining.seamolec.org/verify?certificate=SC/1/00146/XI/2020",
       certificate_image: "certifications/seamolec-sertif.webp",
